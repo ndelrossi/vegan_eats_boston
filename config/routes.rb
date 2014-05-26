@@ -1,4 +1,9 @@
 VeganEatsBoston::Application.routes.draw do
+  get "users/new"
+  root  'static_pages#home'
+  match '/signup',  to: 'users#new',            via: 'get'
+  match '/places',    to: 'static_pages#places',    via: 'get'
+  match '/about',   to: 'static_pages#about',   via: 'get'
   get "static_pages/home"
   get "static_pages/places"
   get "static_pages/about"
