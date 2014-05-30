@@ -7,9 +7,11 @@ VeganEatsBoston::Application.routes.draw do
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/places',  to: 'static_pages#places',  via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
+  match '/admin',   to: 'static_pages#admin',   via: 'get'
   get "static_pages/home"
   get "static_pages/places"
   get "static_pages/about"
+  get "static_pages/admin"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
