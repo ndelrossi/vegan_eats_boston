@@ -7,4 +7,8 @@ class StaticPagesController < ApplicationController
 
   def about
   end
+
+  def admin
+    redirect_to(root_url) unless current_user.admin?
+  end
 end
