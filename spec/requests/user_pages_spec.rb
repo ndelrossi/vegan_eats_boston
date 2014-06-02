@@ -51,11 +51,14 @@ describe "User pages" do
   end
 
   describe "profile page" do
-    let(:user) { FactoryGirl.create(:user) }
-    before { visit user_path(user) }
+    let(:admin) { FactoryGirl.create(:admin) }
+    before do 
+      sign_in admin
+      visit user_path(admin)
+    end
 
-    it { should have_content(user.name) }
-    it { should have_title(user.name) }
+    it { should have_content(admin.name) }
+    it { should have_title(admin.name) }
   end
 
   describe "signup page" do

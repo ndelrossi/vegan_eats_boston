@@ -1,13 +1,15 @@
 VeganEatsBoston::Application.routes.draw do
   resources :users
+  resources :posts, only: [:index, :new, :create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
   root  'static_pages#home'
-  match '/signup',  to: 'users#new',            via: 'get'
-  match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
-  match '/places',  to: 'static_pages#places',  via: 'get'
-  match '/about',   to: 'static_pages#about',   via: 'get'
-  match '/admin',   to: 'static_pages#admin',   via: 'get'
+  match '/signup',   to: 'users#new',            via: 'get'
+  match '/signin',   to: 'sessions#new',         via: 'get'
+  match '/signout',  to: 'sessions#destroy',     via: 'delete'
+  match '/places',   to: 'static_pages#places',  via: 'get'
+  match '/about',    to: 'static_pages#about',   via: 'get'
+  match '/admin',    to: 'static_pages#admin',   via: 'get'
+  match '/new_post', to: 'posts#new',            via: 'get'
   get "static_pages/home"
   get "static_pages/places"
   get "static_pages/about"
