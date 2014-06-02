@@ -1,0 +1,19 @@
+<% provide(:title, 'Create Post') %>
+
+<div class="row">
+  <div class="form-group col-md-6 col-md-offset-3">
+    <h1 class="text-center">Create Post</h1>
+
+    <%= form_for(@post) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+
+      <%= f.label :content %>
+      <%= f.text_area :content, class: "form-control", rows: "15" %>
+
+      <%= f.submit "Post to blog", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

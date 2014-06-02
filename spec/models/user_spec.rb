@@ -17,6 +17,7 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
+  it { should respond_to(:posts) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -113,5 +114,29 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "post associations" do
+
+    before { @user.save }
+    let!(:older_post) do
+      FactoryGirl.create(:post, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_post) do
+      FactoryGirl.create(:post, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right posts in the right order" do
+      expect(@user.posts.to_a).to eq [newer_post, older_post]
+    end
+
+    it "should destroy associated posts" do
+      posts = @user.posts.to_a
+      @user.destroy
+      expect(posts).not_to be_empty
+      posts.each do |post|
+        expect(Post.where(id: post.id)).to be_empty
+      end
+    end
   end
 end

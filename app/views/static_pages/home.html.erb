@@ -1,9 +1,19 @@
-<div class="center hero-unit">
+<article class= "col-md-8">
+  <% if @posts.any? %>
+    <ol class="posts">
+      <%= render @posts %>
+    </ol>
+    <%= will_paginate @posts %>
+  <% end %>
+</article>
+<div class="jumbotron col-md-4">
   <h1>Vegan Eats Boston</h1>
 
-  <h2>
-    This is the home page for Vegan Eats Boston
-  </h2>
-
+  <p>
+    Welcome to VEB. We are currently in development and are planning a Q4 2014 release.
+  </p>
+  <p>
   <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+  </p>
 </div>
+

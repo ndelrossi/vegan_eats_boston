@@ -1,0 +1,13 @@
+<li>
+  <span class="title"><%= post.title %>
+    <% if current_page?(:controller => 'posts', :action => 'index') && current_user.admin?%>
+      | <%= link_to "delete", post, method: :delete,
+                                    data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+  <span class="timestamp">
+    Posted by <%= link_to post.user.name, post.user %> <%= time_ago_in_words(post.created_at) %> ago.
+  </span>
+  <span class="content"><%= post.content %></span>
+  
+</li>
