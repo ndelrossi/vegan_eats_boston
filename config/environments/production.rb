@@ -81,4 +81,13 @@ VeganEatsBoston::Application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security,
   # and use secure cookies.
   config.force_ssl = true
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['vegan_eats_boston'],
+      :access_key_id => ENV['AKIAIBAARYNZYRNELIRQ'],
+      :secret_access_key => ENV['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']
+    }
+  }
 end
