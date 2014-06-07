@@ -8,6 +8,11 @@
   <span class="timestamp">
     Posted by <%= link_to post.user.name, post.user %> <%= time_ago_in_words(post.created_at) %> ago.
   </span>
+  <span >
+    <% if post.image? then %>
+      <%= image_tag post.image.url, :class => "img-responsive postimage" %>
+    <% end %>
+  </span>
   <span class="content"><%= post.content %></span>
   
 </li>
