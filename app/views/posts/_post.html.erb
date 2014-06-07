@@ -6,7 +6,9 @@
     <% end %>
   </span>
   <span class="timestamp">
-    Posted by <%= link_to post.user.name, post.user %> <%= time_ago_in_words(post.created_at) %> ago.
+    Posted by <%= gravatar_for post.user, :size => 40 %>
+    <%= link_to post.user.name, post.user %><br>
+    <%= time_ago_in_words(post.created_at) %> ago.
   </span>
   <span >
     <% if post.image? then %>
