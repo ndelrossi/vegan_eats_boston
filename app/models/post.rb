@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :user
-  has_attached_file :image, :default_url => "/images/:style/missing.png"
+  has_attached_file :image, :default_url => "/images/:style/missing.png", :storage => :s3,
+            :bucket  => ENV['vegan_eats_boston']
   default_scope -> { order('created_at DESC') }
   validates :title, presence: true, length: { maximum: 80 }
   validates :content, presence: true
