@@ -85,12 +85,10 @@ VeganEatsBoston::Application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => ENV['vegan_eats_boston'],
-      :access_key_id => ENV['AKIAIBAARYNZYRNELIRQ'],
-      :secret_access_key => ENV['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']
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
-    :url ":s3_domain_url",
-    :path "/:class/:attachment/:id_partition/:style/:filename"
   }
   #config.action_controller.asset_host = "//#{ENV['vegan_eats_boston']}.s3.amazonaws.com"
 end
