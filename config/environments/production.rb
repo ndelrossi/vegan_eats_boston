@@ -89,6 +89,8 @@ VeganEatsBoston::Application.configure do
       :access_key_id => ENV['AKIAIBAARYNZYRNELIRQ'],
       :secret_access_key => ENV['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']
     }
+    :url ":s3_domain_url",
+    :path "/:class/:attachment/:id_partition/:style/:filename"
   }
   #config.action_controller.asset_host = "//#{ENV['vegan_eats_boston']}.s3.amazonaws.com"
 end
