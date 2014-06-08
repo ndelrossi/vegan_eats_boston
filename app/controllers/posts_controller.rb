@@ -1,9 +1,15 @@
 class PostsController < ApplicationController
-  before_action :signed_in_user
+  before_action :signed_in_user,  except: :show
   before_action :correct_user,   only: :destroy
 
   def index
     @posts = Post.paginate(page: params[:page])
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = @post.comments.build
   end
 
   def new

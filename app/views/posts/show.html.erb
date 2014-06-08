@@ -1,0 +1,28 @@
+<% provide(:title, 'Post') %>
+
+<div class="row">
+  <div class="form-group col-md-10 col-md-offset-1">
+    <span class="title"><%=@post.title%>
+    <% if current_page?(:controller => 'posts', :action => 'index') && current_user.admin?%>
+      | <%= link_to "delete", post, method: :delete,
+                                    data: { confirm: "You sure?" } %>
+    <% end %>
+    </span>
+    <span class="timestamp">
+      <%= gravatar_for @post.user, :size => 40 %>
+      Posted by <%= link_to @post.user.name, @post.user %><br>
+      <%= time_ago_in_words(@post.created_at) %> ago.
+    </span>
+    <span >
+      <% if @post.image? then %>
+        <%= image_tag @post.image.url, :class => "img-responsive postimage" %>
+      <% end %>
+    </span>
+    <span class="content"><%= @post.content %></span>
+    <h1>Comments:</h1>
+    <%= render 'shared/comment_form' %>
+    <ol class="posts">
+      <%= render @comments %>
+    </ol>
+  </div>
+</div>

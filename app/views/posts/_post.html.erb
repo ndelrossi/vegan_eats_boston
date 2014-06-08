@@ -1,5 +1,5 @@
 <li>
-  <span class="title"><%= post.title %>
+  <span class="title"><%= link_to post.title, post_url(post) %>
     <% if current_page?(:controller => 'posts', :action => 'index') && current_user.admin?%>
       | <%= link_to "delete", post, method: :delete,
                                     data: { confirm: "You sure?" } %>
@@ -16,5 +16,10 @@
     <% end %>
   </span>
   <span class="content"><%= post.content %></span>
-  
+  <p>
+  <%= link_to "More", post_url(post), class: "btn btn-large btn-primary" %>
+  <span class="pull-right">
+    <%= link_to "comments", post_url(post) %>(<%= post.comments.count %>)
+  </span>
+  </p>
 </li>

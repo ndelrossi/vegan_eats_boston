@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="form-group col-md-4">
+    <%= form_for(@comment) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="field">
+        <%= f.text_area :content, placeholder: "Compose new comment..." %>
+        <%= f.hidden_field :post_id, :value => params[:id] %>
+      </div>
+      <%= f.submit "Post comment", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

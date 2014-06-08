@@ -1,6 +1,7 @@
 VeganEatsBoston::Application.routes.draw do
   resources :users
-  resources :posts, only: [:index, :new, :create, :destroy]
+  resources :posts, only: [:index, :new, :show, :create, :destroy]
+  resources :comments, only: [:create]
   resources :sessions, only: [:new, :create, :destroy]
   root  'static_pages#home'
   match '/signup',   to: 'users#new',            via: 'get'
