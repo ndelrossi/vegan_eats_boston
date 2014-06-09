@@ -47,8 +47,8 @@
                 </ul>
               </li>
             <% else %>
+              <li><%= link_to "Sign in", signin_path %></li>
               <li><%= button_to "Sign up", signup_path, :method => "get", class: "btn btn-primary navbar-btn" %></li>
-              <li><%= button_to "Sign in", signin_path, :method => "get", class: "btn btn-primary navbar-btn" %></li>
             <% end %>
           </ul>
         </div>  
