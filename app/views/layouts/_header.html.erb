@@ -1,11 +1,18 @@
 <header>
-  <div id="logocontainer" class="container">
-    <%= link_to image_tag("veb_logo.png", alt: "Rails"), root_path, id: "logo" %>
-  </div>
-  <div class="navbar navbar-inverse navbar-static-top" role="navigation">
-    <div class="navbar-inner">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
-        <nav>
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-links">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to image_tag("veb_logo.png", alt: "Vegan Eats Boston"), root_path, id: "logo" %>
+        </div>
+
+        <div class="collapse navbar-collapse" id="nav-links">
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home",    root_path %></li>
             <li><%= link_to "Places",  places_path %></li>
@@ -40,11 +47,11 @@
                 </ul>
               </li>
             <% else %>
-              <li><%= link_to "Sign in", signin_path %></li>
+              <li><%= button_to "Sign up", signup_path, :method => "get", class: "btn btn-primary navbar-btn" %></li>
+              <li><%= button_to "Sign in", signin_path, :method => "get", class: "btn btn-primary navbar-btn" %></li>
             <% end %>
           </ul>
-        </nav>
+        </div>  
       </div>
-    </div>
-  </div>
+  </nav>
 </header>
