@@ -64,20 +64,19 @@ p {
 
 /* header */
 
+#nav-links {
+  background-color: #f8f8f8;;
+}
+
 nav {
   height: 60px;
   padding-top: 7px;
 }
 
-#nav-links {
-
-}
-
 .navbar-nav {
   li {
     &:last-child {
-      padding-left:5px;
-      padding-right:5px;
+      
     }
   }
 }
