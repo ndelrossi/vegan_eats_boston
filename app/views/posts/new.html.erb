@@ -17,13 +17,15 @@
       <%= f.text_area :content, class: "wysihtml5", rows: "15" %>
 
       <script type="text/javascript">
+
         $(document).ready(function(){
 
           $('.wysihtml5').each(function(i, elem) {
             $(elem).wysihtml5();
           });
 
-        })
+        }) 
+
       </script>
 
       <%= f.submit "Post to blog", class: "btn btn-large btn-primary" %>
