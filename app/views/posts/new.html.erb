@@ -19,11 +19,14 @@
       <script type="text/javascript">
         $(document).ready(function(){
 
-        $('.wysihtml5').each(function(i, elem) {
-          $(elem).wysihtml5();
-         });
+          $('.wysihtml5').each(function(i, elem) {
+            $(elem).wysihtml5();
+          });
 
-       })
+        })
+        $(document).on('page:load', function(){
+          window['rangy'].initialized = false
+        })
       </script>
 
       <%= f.submit "Post to blog", class: "btn btn-large btn-primary" %>
