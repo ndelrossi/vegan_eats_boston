@@ -220,6 +220,9 @@ input {
   display: block;
   padding: 10px 0;
   line-height: 1.5;
+  img {
+    @extend .img-responsive;
+  }
 }
 .timestamp {
   color: $gray-light;
