@@ -73,14 +73,6 @@ nav {
   padding-top: 7px;
 }
 
-.navbar-nav {
-  li {
-    &:last-child {
-      
-    }
-  }
-}
-
 header {
   padding-bottom: 10px;
 }
@@ -200,10 +192,6 @@ input {
 }
 
 /* posts */
-
-article {
-  padding-left: 40px !important;
-}
 
 .posts {
   list-style: none;
