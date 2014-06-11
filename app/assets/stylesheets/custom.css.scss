@@ -65,12 +65,7 @@ p {
 /* header */
 
 #nav-links {
-  background-color: #f8f8f8;;
-}
-
-nav {
-  height: 60px;
-  padding-top: 7px;
+  background-color: #f8f8f8;
 }
 
 header {
@@ -79,6 +74,7 @@ header {
 
 #logo {
   img {
+    margin-top: 3px;
     height: 45px;
     width: auto;
   }
