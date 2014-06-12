@@ -1,8 +1,14 @@
 class PostsController < ApplicationController
+  include ApplicationHelper
   before_action :signed_in_user,  except: :show
   before_action :correct_user,   only: :destroy
+  before_action :admin_user,     only: :approve
 
   def index
+    @posts = Post.where(:approved => true).paginate(page: params[:page], :per_page => 20)
+  end
+
+  def index_admin
     @posts = Post.paginate(page: params[:page])
   end
 
@@ -21,11 +27,20 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params) if signed_in?
     if @post.save
-      flash[:success] = "Post created!"
-      redirect_to root_url
+      flash[:success] = "Post created! It will show on home page after approval."
+      redirect_to @post
     else
       render 'posts/new'
     end
+  end
+
+  def approve
+    @post = Post.find(params[:id])
+    if @post.update_attribute(:approved, true)
+      redirect_to posts_index_admin_path
+    else
+      redirect_to posts_index_admin_path
+    end 
   end
 
   def destroy

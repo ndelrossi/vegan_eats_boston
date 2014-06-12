@@ -1,0 +1,31 @@
+<% provide(:title, 'All posts') %>
+<h1>All posts - Admin</h1>
+
+<p>All:
+<table id="tableposts">
+  <thead>
+    <tr>
+      <th>Author</th>
+      <th>Title</th>
+      <th>Date Posted</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |p| %>
+    <tr>
+      <td><%= p.user.name %></td>
+      <td><%= p.title %></td>
+      <td><%= p.created_at %></td>
+      <td><% if p.approved then %>
+        <%= "Approved" %>
+      <% else %>
+        <%= link_to "Approve", posts_approve_path(:id => p.id), method: :approve,
+                                  data: { confirm: "You sure?" } %>
+      <% end %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate %>
