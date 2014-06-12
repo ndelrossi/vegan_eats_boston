@@ -16,7 +16,7 @@
     <tr>
       <td><%= link_to p.user.name, p.user %></td>
       <td><%= link_to p.title, p %></td>
-      <td><%= p.created_at %></td>
+      <td><%= localize(p.created_at, :format => :long) %></td>
       <td><% if p.approved then %>
         <%= "Approved" %>
       <% else %>

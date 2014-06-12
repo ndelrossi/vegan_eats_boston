@@ -12,6 +12,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem "paperclip", "~> 4.1"
 gem 'aws-sdk'
 gem 'bootstrap-wysihtml5-rails'
+gem 'rails-i18n', '~> 4.0.0'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
