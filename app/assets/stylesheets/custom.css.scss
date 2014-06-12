@@ -236,3 +236,17 @@ aside {
     margin-bottom: 5px;
   }
 }
+
+#tableposts {
+  border-collapse: collapse;
+  width: 100%;
+  th {
+    border: 2px solid white;
+    font-weight: bold;
+    background-color: wheat;
+    td {
+      padding: 4px;
+      text-align: left;
+    }
+  }
+}

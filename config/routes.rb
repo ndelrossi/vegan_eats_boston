@@ -1,6 +1,6 @@
 VeganEatsBoston::Application.routes.draw do
   resources :users
-  resources :posts, only: [:index, :new, :show, :create, :destroy]
+  resources :posts, only: [:index, :index_admin, :new, :show, :create, :destroy]
   resources :comments, only: [:create]
   resources :sessions, only: [:new, :create, :destroy]
   root  'static_pages#home'
@@ -11,6 +11,8 @@ VeganEatsBoston::Application.routes.draw do
   match '/about',    to: 'static_pages#about',   via: 'get'
   match '/admin',    to: 'static_pages#admin',   via: 'get'
   match '/new_post', to: 'posts#new',            via: 'get'
+  match '/posts_index_admin', to: 'posts#index_admin',            via: 'get'
+  match '/posts/approve', to: 'posts#approve',            via: 'post'
   get "static_pages/home"
   get "static_pages/places"
   get "static_pages/about"
