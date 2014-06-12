@@ -14,8 +14,8 @@
   <tbody>
     <% @posts.each do |p| %>
     <tr>
-      <td><%= p.user.name %></td>
-      <td><%= p.title %></td>
+      <td><%= link_to p.user.name, p.user %></td>
+      <td><%= link_to p.title, p %></td>
       <td><%= p.created_at %></td>
       <td><% if p.approved then %>
         <%= "Approved" %>
