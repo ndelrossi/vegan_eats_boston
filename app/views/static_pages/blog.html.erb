@@ -1,0 +1,12 @@
+<% provide(:title, 'Blog') %>
+
+<div class="row">
+  <article class= "col-md-10 col-md-offset-1">
+    <% if @posts.any? %>
+      <ol class="posts">
+        <%= render @posts %>
+      </ol>
+      <%= will_paginate @posts %>
+    <% end %>
+  </article>
+</div>

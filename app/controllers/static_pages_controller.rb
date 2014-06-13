@@ -1,9 +1,13 @@
 class StaticPagesController < ApplicationController
   def home
-    @posts = Post.where(:approved => true).paginate(page: params[:page], :per_page => 10)
+    @posts = Post.where(:approved => true).paginate(page: params[:page], :per_page => 6)
   end
 
   def places
+  end
+
+  def blog
+    @posts = Post.where(:approved => true).paginate(page: params[:page], :per_page => 12)
   end
 
   def about

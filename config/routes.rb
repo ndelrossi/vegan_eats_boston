@@ -4,19 +4,17 @@ VeganEatsBoston::Application.routes.draw do
   resources :comments, only: [:create]
   resources :sessions, only: [:new, :create, :destroy]
   root  'static_pages#home'
-  match '/signup',   to: 'users#new',            via: 'get'
-  match '/signin',   to: 'sessions#new',         via: 'get'
-  match '/signout',  to: 'sessions#destroy',     via: 'delete'
-  match '/places',   to: 'static_pages#places',  via: 'get'
-  match '/about',    to: 'static_pages#about',   via: 'get'
-  match '/admin',    to: 'static_pages#admin',   via: 'get'
-  match '/new_post', to: 'posts#new',            via: 'get'
-  match '/posts_index_admin', to: 'posts#index_admin',            via: 'get'
-  match '/posts/approve', to: 'posts#approve',            via: 'post'
-  get "static_pages/home"
-  get "static_pages/places"
-  get "static_pages/about"
-  get "static_pages/admin"
+  match '/signup',            to: 'users#new',            via: 'get'
+  match '/signin',            to: 'sessions#new',         via: 'get'
+  match '/signout',           to: 'sessions#destroy',     via: 'delete'
+  match '/places',            to: 'static_pages#places',  via: 'get'
+  match '/blog',              to: 'static_pages#blog',    via: 'get'
+  match '/about',             to: 'static_pages#about',   via: 'get'
+  match '/admin',             to: 'static_pages#admin',   via: 'get'
+  match '/new_post',          to: 'posts#new',            via: 'get'
+  match '/posts_index_admin', to: 'posts#index_admin',    via: 'get'
+  match '/posts/approve',     to: 'posts#approve',        via: 'post'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
