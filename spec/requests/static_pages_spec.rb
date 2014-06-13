@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'ruby-debug'
 
 describe "Static pages" do
 
@@ -15,6 +16,7 @@ describe "Static pages" do
     it { should_not have_title('| Home') }
 
     describe "posts" do
+      
       it { should have_content(p1.content) }
       it { should have_content(p2.content) }
     end

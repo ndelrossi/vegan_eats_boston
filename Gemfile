@@ -13,9 +13,11 @@ gem "paperclip", "~> 4.1"
 gem 'aws-sdk'
 gem 'bootstrap-wysihtml5-rails'
 gem 'rails-i18n', '~> 4.0.0'
+gem 'launchy', '~> 2.4.2'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
+  gem 'debugger', '~> 1.6.8'
 end
 
 group :test do
