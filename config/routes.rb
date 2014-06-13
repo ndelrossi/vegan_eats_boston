@@ -1,6 +1,6 @@
 VeganEatsBoston::Application.routes.draw do
   resources :users
-  resources :posts, only: [:index, :index_admin, :new, :show, :create, :destroy]
+  resources :posts
   resources :comments, only: [:create]
   resources :sessions, only: [:new, :create, :destroy]
   root  'static_pages#home'
@@ -11,9 +11,9 @@ VeganEatsBoston::Application.routes.draw do
   match '/blog',              to: 'static_pages#blog',    via: 'get'
   match '/about',             to: 'static_pages#about',   via: 'get'
   match '/admin',             to: 'static_pages#admin',   via: 'get'
-  match '/new_post',          to: 'posts#new',            via: 'get'
   match '/posts_index_admin', to: 'posts#index_admin',    via: 'get'
   match '/posts/approve',     to: 'posts#approve',        via: 'post'
+  match '/posts/unapprove',   to: 'posts#unapprove',      via: 'post'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

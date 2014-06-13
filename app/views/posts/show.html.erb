@@ -5,7 +5,7 @@
     <span class="title"><%=@post.title%>
     <% if current_page?(:controller => 'posts', :action => 'index') && current_user.admin?%>
       | <%= link_to "delete", post, method: :delete,
-                                    data: { confirm: "You sure?" } %>
+                                    data: { confirm: "Delete this post?" } %>
     <% end %>
     </span>
     <span class="timestamp">
@@ -18,7 +18,7 @@
         <%= image_tag @post.image.url, :class => "img-responsive postimage" %>
       <% end %>
     </span>
-    <span class="content"><%= @post.content %></span>
+    <span class="content"><%= @post.content.html_safe %></span>
     <h1>Comments:</h1>
     <%= render 'shared/comment_form' %>
     <ol class="posts">

@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   include ApplicationHelper
   before_action :signed_in_user,  except: :show
-  before_action :correct_user,   only: :destroy
-  before_action :admin_user,     only: :approve
+  before_action :correct_user,   only: [:edit, :update, :destroy]
+  before_action :admin_user,     only: [:approve, :unapprove, :index_admin]
 
   def index
     @posts = Post.where(:approved => true).paginate(page: params[:page], :per_page => 20)
@@ -34,6 +34,18 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @post.update_attributes(post_params)
+      flash[:success] = "Post updated"
+      redirect_to @post
+    else
+      render 'edit'
+    end
+  end
+
   def approve
     @post = Post.find(params[:id])
     if @post.update_attribute(:approved, true)
@@ -43,8 +55,18 @@ class PostsController < ApplicationController
     end 
   end
 
+  def unapprove
+    @post = Post.find(params[:id])
+    if @post.update_attribute(:approved, false)
+      redirect_to posts_index_admin_path
+    else
+      redirect_to posts_index_admin_path
+    end 
+  end
+
   def destroy
     @post.destroy
+    #redirect_to posts_index_admin_path if current_user.admin? and return
     redirect_to posts_url
   end
 
@@ -56,6 +78,9 @@ class PostsController < ApplicationController
 
     def correct_user
       @post = current_user.posts.find_by(id: params[:id])
+      if current_user.admin?
+        @post ||= @post = Post.find(params[:id])
+      end
       redirect_to root_url if @post.nil?
     end
 end
