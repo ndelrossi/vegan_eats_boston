@@ -1,0 +1,32 @@
+<h4>Posts:</h4>
+<table class="admin_table">
+  <thead>
+    <tr>
+      <th>Author</th>
+      <th>Title</th>
+      <th>Date Posted</th>
+      <th>Control</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |p| %>
+    <tr>
+      <td><%= link_to p.user.name, p.user %></td>
+      <td><%= link_to p.title, p %></td>
+      <td><%= localize(p.created_at, :format => :long) %></td>
+      <td>
+        <% if p.approved then %>
+          <%= link_to "unapprove", posts_unapprove_path(:id => p.id), method: :unapprove,
+                                    data: { confirm: "Unapprove this post?" } %>
+        <% else %>
+          <%= link_to "approve", posts_approve_path(:id => p.id), method: :approve,
+                                    data: { confirm: "Approve this post?" } %>
+        <% end %>
+        / <%= link_to "edit", edit_post_path(p) %>
+        / <%= link_to "delete", p, method: :delete,
+                                    data: { confirm: "Delete this post?" } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,11 +1,16 @@
 <% provide(:title, 'Admin') %>
 
-<h1>Admin</h1>
-<p>
-  This is the Admin page for Vegan Eats Boston
-  <br>
-  Access:
-  <br>
-  <%= link_to "Users",  users_path %><br>
-  <%= link_to "Posts",  posts_index_admin_path %>
-</p>
+<div class="row">
+  <div class="form-group col-md-12">
+    <h1>Admin</h1>
+    <%= render 'posts/table_posts' %>
+    <%= link_to "All posts", posts_index_admin_path %>
+    <%= render 'comments/table_comments' %>
+    <%= link_to "All comments", comments_path %>
+    <%= render 'users/table_users' %>
+    <%= link_to "All users", users_path %>
+  </div>
+</div>
+
+
+

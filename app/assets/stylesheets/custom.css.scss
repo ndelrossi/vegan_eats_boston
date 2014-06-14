@@ -116,6 +116,20 @@ footer {
   @include box_sizing;
 }
 
+.admin_table {
+  border-collapse: collapse;
+  width: 100%;
+  th {
+    border: 2px solid white;
+    font-weight: bold;
+    background-color: wheat;
+    td {
+      padding: 4px;
+      text-align: left;
+    }
+  }
+}
+
 /* sidebar */
 
 aside {
@@ -171,22 +185,6 @@ input {
   @extend .has-error;
 }
 
-/* Users index */
-
-.users {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-top: 1px solid $gray-lighter;
-    &:last-child {
-      border-bottom: 1px solid $gray-lighter;
-    }
-  }
-}
-
 /* posts */
 
 .posts {
@@ -237,16 +235,3 @@ aside {
   }
 }
 
-#tableposts {
-  border-collapse: collapse;
-  width: 100%;
-  th {
-    border: 2px solid white;
-    font-weight: bold;
-    background-color: wheat;
-    td {
-      padding: 4px;
-      text-align: left;
-    }
-  }
-}
