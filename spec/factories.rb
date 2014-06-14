@@ -13,6 +13,7 @@ FactoryGirl.define do
   factory :post do
     title "Title"
     content "Lorem ipsum"
+    approved true
     user
   end
 

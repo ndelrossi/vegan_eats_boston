@@ -19,13 +19,12 @@ class PostsController < ApplicationController
   end
 
   def new
-    signed_in_user
     @post = Post.new
     @user = current_user
   end
 
   def create
-    @post = current_user.posts.build(post_params) if signed_in?
+    @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "Post created! It will show on home page after approval."
       redirect_to @post
