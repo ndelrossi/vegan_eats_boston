@@ -203,6 +203,7 @@ input {
     padding-bottom: 15px;
   }
 }
+
 .title {
   @extend h3;
   margin: 0;
@@ -210,6 +211,7 @@ input {
   display: block;
   padding-bottom: 5px;
 }
+
 .content {
   display: block;
   padding: 10px 0;
@@ -218,16 +220,20 @@ input {
     @extend .img-responsive;
   }
 }
+
 .timestamp {
   color: $gray-light;
 }
+
 .gravatar {
   float: left;
   margin-right: 10px;
 }
+
 .postimage {
   margin-top: 5px;
 }
+
 aside {
   textarea {
     height: 100px;
@@ -235,3 +241,8 @@ aside {
   }
 }
 
+/* places */
+
+.place_address {
+  line-height: 1em;
+}
