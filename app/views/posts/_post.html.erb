@@ -1,14 +1,15 @@
 <li>
-  <span class="title"><%= link_to post.title, post_url(post) %>
-    <% if current_page?(:controller => 'posts', :action => 'index') && current_user.admin?%>
-      | <%= link_to "delete", post, method: :delete,
-                                    data: { confirm: "You sure?" } %>
-    <% end %>
-  </span>
+  <span class="title"><%= link_to post.title, post_url(post) %></span>
   <span class="timestamp">
     Posted by <%= gravatar_for post.user, :size => 40 %>
-    <%= link_to post.user.name, post.user %><br>
+    <%= link_to post.user.name, post.user %>
+    <br>
     <%= time_ago_in_words(post.created_at) %> ago.
+    <% if post.user == current_user %>
+      <%= link_to "edit", edit_post_path(post) %>
+      <%= link_to "delete", post, method: :delete,
+                                    data: { confirm: "Delete this post?" } %>
+    <% end %>
   </span>
   <span >
     <% if post.image? then %>

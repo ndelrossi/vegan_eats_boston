@@ -2,16 +2,17 @@
 
 <div class="row">
   <div class="form-group col-md-10 col-md-offset-1">
-    <span class="title"><%=@post.title%>
-    <% if current_page?(:controller => 'posts', :action => 'index') && current_user.admin?%>
-      | <%= link_to "delete", post, method: :delete,
-                                    data: { confirm: "Delete this post?" } %>
-    <% end %>
-    </span>
+    <span class="title"><%=@post.title%></span>
     <span class="timestamp">
       <%= gravatar_for @post.user, :size => 40 %>
-      Posted by <%= link_to @post.user.name, @post.user %><br>
+      Posted by <%= link_to @post.user.name, @post.user %>
+      <br>
       <%= time_ago_in_words(@post.created_at) %> ago.
+      <% if @post.user == current_user %>
+        <%= link_to "edit", edit_post_path(@post) %>
+        <%= link_to "delete", @post, method: :delete,
+                                      data: { confirm: "Delete this post?" } %>
+      <% end %>
     </span>
     <span >
       <% if @post.image? then %>
