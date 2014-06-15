@@ -1,7 +1,7 @@
 <% provide(:title, 'Post') %>
 
 <div class="row">
-  <div class="form-group col-md-10 col-md-offset-1">
+  <div class="col-md-10 col-md-offset-1">
     <span class="title"><%=@post.title%></span>
     <span class="timestamp">
       <%= gravatar_for @post.user, :size => 40 %>

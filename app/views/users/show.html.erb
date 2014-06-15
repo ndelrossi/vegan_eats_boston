@@ -1,14 +1,22 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-        <% if @user.admin? %>
-          | <%= " (Admin)" %>
-        <% end %>
-      </h1>
-    </section>
-  </aside>
+  <div class="col-md-5">
+    <%= gravatar_for @user, :size => 125  %>
+    <p>
+      <%= @user.name %>
+      <% if @user.admin? %>
+        | <%= " (Admin)" %>
+      <% end %><br>
+      Member since: <%= time_tag(@user.created_at, :format=>'%B %d, %Y') %>
+    </p>
+  </div>
+  <div class="col-md-7">
+    <p><%= @user.name %>'s Posts:</p>
+    <% if @posts.any? %>
+      <ol class="posts">
+        <%= render @posts %>
+      </ol>
+      <%= will_paginate @posts %>
+    <% end %>
+  </div>
 </div>
