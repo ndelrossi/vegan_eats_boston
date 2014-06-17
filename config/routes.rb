@@ -8,7 +8,6 @@ VeganEatsBoston::Application.routes.draw do
   match '/signup',            to: 'users#new',            via: 'get'
   match '/signin',            to: 'sessions#new',         via: 'get'
   match '/signout',           to: 'sessions#destroy',     via: 'delete'
-  match '/places',            to: 'static_pages#places',  via: 'get'
   match '/blog',              to: 'static_pages#blog',    via: 'get'
   match '/about',             to: 'static_pages#about',   via: 'get'
   match '/admin',             to: 'static_pages#admin',   via: 'get'

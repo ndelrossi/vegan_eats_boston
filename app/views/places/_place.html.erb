@@ -1,4 +1,23 @@
 <li>
-  <%= link_to place.name, place %><br>
-  <%= link_to place.url_website, "http://#{place.url_website}"%>
+  <div class="col-md-6">
+    <%= link_to image_tag("image-placeholder.jpg", alt: "Company image") %>
+    <address>
+      <strong><%= link_to place.name, place %></strong><br>
+      <%= place.address_line_1 %><br>
+        <% if !place.address_line_2.empty? %>
+          <%= place.address_line_2 %>
+          <%= tag(:br) %>
+        <% end %>
+        <%= place.address_city %>, <%= place.address_state %> <%= place.address_zip_code %><br>
+      <%= place.phone_number %><br>
+      <%= link_to place.url_website, "http://#{place.url_website}"%>
+    </address>
+  </div>
+  <div class="col-md-6 text-right">
+    <span class="glyphicon glyphicon glyphicon-star"></span>
+    <span class="glyphicon glyphicon glyphicon-star"></span>
+    <span class="glyphicon glyphicon glyphicon-star"></span>
+    <span class="glyphicon glyphicon glyphicon-star"></span>
+    <span class="glyphicon glyphicon glyphicon-star"></span>
+  </div>
 </li>
