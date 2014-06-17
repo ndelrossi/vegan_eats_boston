@@ -2,19 +2,19 @@
 
 <div class="row">
   <div class="form-group col-md-12">
-    <h4><%= @place.name %></h4>
-    <p><%= link_to @place.url_website, "http://#{@place.url_website}"%><br></p>
-    <p class="place_address">    
+    <address> 
+      <strong><%= @place.name %></strong><br>
+      <%= link_to @place.url_website, "http://#{@place.url_website}"%><br>
       <%= @place.address_line_1 %><br>
       <% if !@place.address_line_2.empty? %>
         <%= @place.address_line_2 %>
         <%= tag(:br) %>
       <% end %>
       <%= @place.address_city %>, <%= @place.address_state %> <%= @place.address_zip_code %><br>
-    </p>
-    <p>
+    </address>
+    <address> 
       Phone number: <%= @place.phone_number %><br>
       Menu: <%= link_to @place.url_menu, "http://#{@place.url_menu}"%><br>
-    </p>
+    </address>
   </div>
 </div>
