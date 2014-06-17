@@ -146,6 +146,15 @@ input, textarea, select, .uneditable-input {
 
 /* places */
 
+.place {
+  img {
+    float: left;
+    margin-right: 10px;
+    height: 200px;
+    width: auto;
+  }
+}
+
 .places {
   list-style: none;
   padding: 0;

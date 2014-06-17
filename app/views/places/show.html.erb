@@ -1,7 +1,8 @@
 <% provide(:title, 'Place') %>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12 place">
+    <%= image_tag @place.primary_image.url%>
     <address> 
       <strong><%= @place.name %></strong><br>
       <%= link_to @place.url_website, "http://#{@place.url_website}"%><br>

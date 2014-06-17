@@ -1,6 +1,6 @@
 <li>
   <div class="col-xs-7">
-    <%= image_tag("image-placeholder.jpg", alt: "Company image", :class => "hidden-xs") %>
+    <%= image_tag place.primary_image.url, :class => "hidden-xs" %>
     <address>
       <strong><%= link_to place.name, place %></strong><br>
       <%= place.address_line_1 %><br>
