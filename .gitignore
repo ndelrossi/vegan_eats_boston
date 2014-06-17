@@ -19,5 +19,4 @@ doc/
 .idea
 .secret
 
-# ignore precompiled assets
-public/assets/**
+
