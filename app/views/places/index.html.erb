@@ -1,13 +1,13 @@
 <% provide(:title, 'Places') %>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-4 col-md-push-8 text-center">
+    <h1>Map here</h1>
+  </div>
+  <div class="col-md-8 col-md-pull-4">
     <ul class="places">
       <%= render @places %>
     </ul>
     <%= will_paginate %>
-  </div>
-  <div class="col-md-4 text-center">
-    <h1>Map here</h1>
   </div>
 </div>
