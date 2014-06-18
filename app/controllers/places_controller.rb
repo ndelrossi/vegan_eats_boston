@@ -1,13 +1,13 @@
 class PlacesController < ApplicationController
   include ApplicationHelper
   before_action :admin_user,  except: [:index, :show]
+  before_action :get_place, only: [:show, :edit, :update, :destroy]
 
   def index
     @places = Place.paginate(page: params[:page], :per_page => 10)
   end
 
   def show
-    @place = Place.find(params[:id])
   end
 
   def new
@@ -25,10 +25,31 @@ class PlacesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @place.update_attributes(place_params)
+      flash[:success] = "Place updated"
+      redirect_to @place
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @place.destroy
+    redirect_to admin_path
+  end
+
   private
 
     def place_params
       params.require(:place).permit(:name, :primary_image, :url_website, :url_menu, :address_line_1, :address_line_2, :address_city, :address_zip_code, :phone_number)
+    end
+
+    def get_place
+      @place = Place.find(params[:id])
     end
 
 end

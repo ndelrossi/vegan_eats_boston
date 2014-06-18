@@ -1,0 +1,40 @@
+<% provide(:title, 'Update Place') %>
+
+<div class="row">
+  <div class="form-group col-md-6 col-md-offset-3">
+    <h1 class="text-center">Update Place</h1>
+
+    <%= form_for(@place) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <%= f.label 'Name' %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label "Primary Image" %>
+      <%= f.file_field :primary_image, class: "form-control" %>
+
+      <%= f.label 'Website URL' %>
+      <%= f.text_field :url_website, class: "form-control" %>
+
+      <%= f.label 'Website URL to menu' %>
+      <%= f.text_field :url_menu, class: "form-control" %>
+
+      <%= f.label 'Address (line 1)' %>
+      <%= f.text_field :address_line_1, class: "form-control" %>
+
+      <%= f.label 'Address (line 2)' %>
+      <%= f.text_field :address_line_2, class: "form-control" %>
+
+      <%= f.label 'City' %>
+      <%= f.text_field :address_city, class: "form-control" %>
+
+      <%= f.label 'Zip code' %>
+      <%= f.text_field :address_zip_code, class: "form-control" %>
+
+      <%= f.label 'Phone number' %>
+      <%= f.text_field :phone_number, class: "form-control" %>
+
+      <%= f.submit "Update place", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
