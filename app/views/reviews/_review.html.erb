@@ -1,0 +1,13 @@
+<li>
+  <span class="timestamp">
+    <% if review.user then %>
+      Posted by <%= gravatar_for review.user, :size => 40 %>
+      <%= link_to review.user.name, review.user %><br>
+      <%= time_ago_in_words(review.created_at) %> ago.
+    <% end %>
+  </span>
+  <span class="content">
+    Rating: <%= review.rating %><br>
+    <%= review.content %>
+  </span>
+</li>

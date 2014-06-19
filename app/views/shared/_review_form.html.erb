@@ -1,0 +1,19 @@
+<div class="col-md-8">
+  <h1>Write review:</h1>
+  <div class="form-group">
+    <%= form_for(@review) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :rating %>
+      <%= f.number_field :rating, class: "form-control" %>
+
+      <%= f.label :content %>
+      <%= f.text_area :content, rows: "7", placeholder: "Compose review...", class: "form-control" %>
+
+      <%= f.hidden_field :place_id, :value => params[:id] %>
+
+      <%= f.submit "Publish review", class: "btn btn-large btn-primary" %>
+      
+    <% end %>
+  </div>
+</div>

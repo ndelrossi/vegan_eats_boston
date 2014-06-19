@@ -19,6 +19,7 @@ describe User do
   it { should respond_to(:admin) }
   it { should respond_to(:posts) }
   it { should respond_to(:comments) }
+  it { should respond_to(:reviews) }
 
   it { should be_valid }
   it { should_not be_admin }

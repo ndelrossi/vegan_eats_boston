@@ -25,4 +25,5 @@ describe Place do
   it { should respond_to(:address_state) }
   it { should respond_to(:address_zip_code) }
   it { should respond_to(:phone_number) }
+  it { should respond_to(:reviews) }
 end

@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
       flash[:success] = "Comment created!"
       redirect_to post_url(@post)
     else
-      redirect_to new_user_url
+      redirect_to signin_path
     end
   end
 
@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
     def correct_user
       @comment = current_user.comments.find_by(id: params[:id])
       if current_user.admin?
-        @comment ||= @comment = Comment.find(params[:id])
+        @comment ||= Comment.find(params[:id])
       end
       redirect_to root_url if @comment.nil?
     end

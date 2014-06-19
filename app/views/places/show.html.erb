@@ -1,7 +1,7 @@
 <% provide(:title, 'Place') %>
 
 <div class="row">
-  <div class="col-md-12 place">
+  <div class="col-md-6 place">
     <%= image_tag @place.primary_image.url%>
     <address> 
       <strong><%= @place.name %></strong><br>
@@ -17,5 +17,14 @@
       Phone number: <%= @place.phone_number %><br>
       Menu: <%= link_to @place.url_menu, "http://#{@place.url_menu}"%><br>
     </address>
+    <div class="col-md-12 place">
+      <%= render 'shared/review_form' %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h1>Reviews</h1>
+    <ol class="posts">
+      <%= render @reviews %>
+    </ol>
   </div>
 </div>

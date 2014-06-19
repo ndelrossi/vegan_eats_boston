@@ -18,5 +18,6 @@ class StaticPagesController < ApplicationController
     @comments = Comment.paginate(page: params[:page], :per_page => 10)
     @users = User.paginate(page: params[:page], :per_page => 10)
     @places = Place.paginate(page: params[:page], :per_page => 10)
+    @reviews = Review.paginate(page: params[:page], :per_page => 10)
   end
 end

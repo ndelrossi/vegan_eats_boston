@@ -9,6 +9,13 @@
       <% end %><br>
       Member since: <%= time_tag(@user.created_at, :format=>'%B %d, %Y') %>
     </p>
+    <div class="col-md-12">
+      <br><br>
+      <p><%= @user.name %>'s Reviews:</p>
+      <ol class="posts">
+        <%= render @reviews %>
+      </ol>
+    </div>
   </div>
   <div class="col-md-7">
     <p><%= @user.name %>'s Posts:</p>

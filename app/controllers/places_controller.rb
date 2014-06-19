@@ -8,6 +8,10 @@ class PlacesController < ApplicationController
   end
 
   def show
+    @place = Place.find(params[:id])
+    #@review = Review.where(:place => @place, :user => current_user)
+    @review = @place.reviews.build
+    @reviews = Review.where(:place => @place).paginate(page: params[:page], :per_page => 10)
   end
 
   def new
