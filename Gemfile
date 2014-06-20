@@ -14,6 +14,8 @@ gem 'aws-sdk'
 gem 'bootstrap-wysihtml5-rails'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'launchy', '~> 2.4.2'
+gem 'gmaps4rails'
+gem 'geocoder'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

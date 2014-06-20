@@ -5,6 +5,10 @@ class PlacesController < ApplicationController
 
   def index
     @places = Place.paginate(page: params[:page], :per_page => 10)
+    @hash = Gmaps4rails.build_markers(@places) do |place, marker|
+      marker.lat place.latitude
+      marker.lng place.longitude
+    end
   end
 
   def show
@@ -49,11 +53,10 @@ class PlacesController < ApplicationController
   private
 
     def place_params
-      params.require(:place).permit(:name, :primary_image, :url_website, :url_menu, :address_line_1, :address_line_2, :address_city, :address_zip_code, :phone_number)
+      params.require(:place).permit(:full_address, :name, :primary_image, :url_website, :url_menu, :address_line_1, :address_line_2, :address_city, :address_zip_code, :phone_number)
     end
 
     def get_place
       @place = Place.find(params[:id])
     end
-
 end

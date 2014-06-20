@@ -12,7 +12,7 @@
     <% @reviews.each do |r| %>
     <tr>
       <td><%= link_to r.user.name, r.user %></td>
-      <td><%= link_to r.place.name, r.place %></td>
+      <td><%= link_to r.place.name, r.place if !r.place.nil? %></td>
       <td><%= localize(r.created_at, :format => :long) %></td>
       <td>
         <%= link_to "edit", edit_review_path(r) %>

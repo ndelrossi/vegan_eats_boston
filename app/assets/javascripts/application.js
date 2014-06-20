@@ -14,5 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-wysihtml5
+//= require underscore
+//= require gmaps/google
 //= require turbolinks
 //= require_tree .
