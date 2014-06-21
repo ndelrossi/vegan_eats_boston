@@ -2,6 +2,7 @@ set :application, 'veganeatsboston'
 set :repo_url, 'git@github.com:ndelrossi/vegan_eats_boston.git'
 
 set :deploy_to, '/home/deploy/vegan_eats_boston'
+set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 namespace :deploy do
