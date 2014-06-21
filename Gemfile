@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.2'
 
 gem 'rails', '4.0.5'
 gem 'pg', '0.15.1'
@@ -24,7 +24,7 @@ gem 'capistrano-rbenv', github: "capistrano/rbenv"
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
-  gem 'debugger', '~> 1.6.8'
+  #gem 'debugger', '~> 1.6.8'
 end
 
 group :test do
