@@ -1,4 +1,4 @@
-require 'bundler/capistrano'
+#require 'bundler/capistrano'
 
 set :application, 'veganeatsboston'
 set :repo_url, 'git@github.com:ndelrossi/vegan_eats_boston.git'
