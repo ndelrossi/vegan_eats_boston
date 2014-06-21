@@ -11,7 +11,6 @@ set :rails_env, "production"
 set :deploy_via, :copy
 set :ssh_options, { :forward_agent => true, :port => 4321 }
 set :keep_releases, 5
-default_run_options[:pty] = true
 server "veganeatsboston.com", :app, :web, :db, :primary => true
 
 namespace :deploy do
