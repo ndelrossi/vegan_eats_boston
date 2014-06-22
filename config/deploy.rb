@@ -1,4 +1,4 @@
-set :application, 'veganeatsboston'
+set :application, 'vegan_eats_boston'
 set :repo_url, 'git@github.com:ndelrossi/vegan_eats_boston.git'
 
 set :deploy_to, '/home/deploy/vegan_eats_boston'
