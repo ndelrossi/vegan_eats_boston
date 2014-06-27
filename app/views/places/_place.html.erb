@@ -1,8 +1,12 @@
 <li>
+  <div class="row">
   <div class="col-xs-7">
     <%= image_tag place.primary_image.url, :class => "hidden-xs" %>
     <address>
-      <strong><%= link_to place.name, place %></strong><br>
+      <strong><%= link_to place.name, place %></strong>
+      <% if params[:search].present? %>
+        <%= "(" + place.distance_from(@location).round(2).to_s + " miles)" %>
+      <% end %><br>
       <%= place.address_line_1 %><br>
         <% if !place.address_line_2.empty? %>
           <%= place.address_line_2 %>
@@ -19,5 +23,6 @@
     <span class="glyphicon glyphicon glyphicon-star"></span>
     <span class="glyphicon glyphicon glyphicon-star"></span>
     <span class="glyphicon glyphicon glyphicon-star"></span>
+  </div>
   </div>
 </li>

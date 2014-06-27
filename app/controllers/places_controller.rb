@@ -4,7 +4,12 @@ class PlacesController < ApplicationController
   before_action :get_place, only: [:show, :edit, :update, :destroy]
 
   def index
-    @places = Place.paginate(page: params[:page], :per_page => 10)
+    if params[:search].present?
+      @location = Geocoder.coordinates(params[:search])
+      @places = Place.near(@location, 50).paginate(page: params[:page], :per_page => 10)
+    else
+      @places = Place.paginate(page: params[:page], :per_page => 10)
+    end
     @hash = Gmaps4rails.build_markers(@places) do |place, marker|
       marker.lat place.latitude
       marker.lng place.longitude

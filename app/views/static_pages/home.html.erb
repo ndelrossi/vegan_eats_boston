@@ -1,21 +1,24 @@
 <div class="row">
-  <div class="jumbotron col-md-5">
-    <h1>Vegan Eats Boston</h1>
-    <p>
-      Welcome to VEB. We are currently in development and are planning a Q4 2014 release.
-    </p>
-    <p>
-      <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
-    </p>
+  <div class="jumbotron col-md-12">
+    <div class="container">
+      <h1>Vegan Eats Boston</h1>
+      <p>
+        Welcome to VEB. We are currently in development and are planning a Q4 2014 release.
+      </p>
+      <p>
+        <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+      </p>
+    </div>
   </div>
-
-  <article class= "col-md-7">
-    <% if @posts.any? %>
-      <ol class="posts">
-        <%= render @posts %>
-      </ol>
-      <%= will_paginate @posts %>
-    <% end %>
-  </article>
+  <div class="container">
+    <article class= "col-md-8">
+      <% if @posts.any? %>
+        <ol class="posts">
+          <%= render @posts %>
+        </ol>
+        <%= will_paginate @posts %>
+      <% end %>
+    </article>
+  </div>
 </div>
 
