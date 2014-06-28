@@ -36,6 +36,11 @@ header {
   border-color: #e7e7e7;
 }
 
+.masthead-right {
+  margin-top: 15px;
+  text-align: right;
+}
+
 .navbar {
   border-top-width: 1px;
   margin-bottom: 0;
@@ -116,18 +121,18 @@ footer {
 }
 
 .jumbotron {
-  //background-color: white;
-  //border-bottom-width: 1px;
-  //border-bottom-color: #e7e7e7;
-  //border-bottom-style: solid;
-  //padding: 10px 0 40px;
-  background: url("boston_skyline.jpg") no-repeat center center; 
-    -webkit-background-size: 100% 100%;
-    -moz-background-size: 100% 100%;
-    -o-background-size: 100% 100%;
-    background-size: 100% 100%;
-    color: white;
-    margin-top: 0;
+  background-color: white;
+  border-bottom-width: 1px;
+  border-bottom-color: #e7e7e7;
+  border-bottom-style: solid;
+  padding: 10px 0 20px;
+  //background: url("boston_skyline.jpg") no-repeat center center; 
+  //-webkit-background-size: 100% 100%;
+  //-moz-background-size: 100% 100%;
+  //-o-background-size: 100% 100%;
+  //background-size: 100% 100%;
+  //color: white;
+  //margin-top: 0;
 }
 
 /* forms */
