@@ -5,13 +5,7 @@
       <%= image_tag place.primary_image.url %>
       <address>
         <strong><%= link_to place.name, place %></strong><br>
-        <%= place.address_line_1 %><br>
-          <% if !place.address_line_2.empty? %>
-            <%= place.address_line_2 %>
-            <%= tag(:br) %>
-          <% end %>
-          <%= place.address_city %>, <%= place.address_state %> <%= place.address_zip_code %><br>
-        <%= place.phone_number %><br>
+        <%= place.address_city %>, <%= place.address_state %><br>
       </address>
     </div>
   </div>
