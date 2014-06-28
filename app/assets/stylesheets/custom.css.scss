@@ -26,6 +26,9 @@ body {
 
 /* typography */
 
+.veb-green {
+  color: #104c00 !important;
+}
 
 /* header */
 
@@ -130,6 +133,7 @@ footer {
   border-bottom-color: #e7e7e7;
   border-bottom-style: solid;
   padding: 10px 0 20px;
+  margin-bottom: 0px;
   //background: url("boston_skyline.jpg") no-repeat center center; 
   //-webkit-background-size: 100% 100%;
   //-moz-background-size: 100% 100%;
