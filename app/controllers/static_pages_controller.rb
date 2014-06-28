@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
 
   def home
     @posts = Post.where(:approved => true).paginate(page: params[:page], :per_page => 6)
+    @places = Place.paginate(page: params[:page], :per_page => 5)
   end
 
   def blog

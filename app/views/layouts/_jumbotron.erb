@@ -9,4 +9,26 @@
       </div>
     </div>
   </div>
+  <div class="jumbotron col-md-12 three-col-list">
+    <div class="container">
+      <div class="col-md-4">
+        <h4 class="text-center">Recently Added</h4>
+        <ul class="places-home">
+          <%= render :partial => 'places/small_place', :object => @places %>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h4 class="text-center">Top Rated</h4>
+        <ul class="places-home">
+          <%= render :partial => 'places/small_place', :object => @places %>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h4 class="text-center">Recent Reviews</h4>
+        <ul class="places-home">
+          <%= render :partial => 'places/small_place', :object => @places %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

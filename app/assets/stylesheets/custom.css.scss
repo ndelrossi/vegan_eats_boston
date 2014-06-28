@@ -127,12 +127,16 @@ footer {
   @include box_sizing;
 }
 
+.three-col-list {
+  background-color: #f8f8f8 !important;
+}
+
 .jumbotron {
   background-color: white;
   border-bottom-width: 1px;
   border-bottom-color: #e7e7e7;
   border-bottom-style: solid;
-  padding: 10px 0 20px;
+  padding: 30px 0 40px;
   margin-bottom: 0px;
   //background: url("boston_skyline.jpg") no-repeat center center; 
   //-webkit-background-size: 100% 100%;
@@ -239,6 +243,28 @@ input, textarea, select, .uneditable-input {
 
   li {
     min-height: 120px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e8e8e8;
+    address {
+      line-height: 1em;
+    }
+  }
+}
+
+.places-home {
+  list-style: none;
+  padding: 0;
+  font: 1.1em Georgia, "Times New Roman", Times, serif;
+
+  img {
+    float: left;
+    margin-right: 10px;
+    height: 65px;
+    width: auto;
+  }
+
+  li {
+    height: 85px;
     padding: 10px 0;
     border-bottom: 1px solid #e8e8e8;
     address {
