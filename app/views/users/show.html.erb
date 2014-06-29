@@ -1,29 +1,40 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <div class="col-md-5">
-    <%= gravatar_for @user, :size => 125  %>
-    <p>
+  <div class="col-md-3">
+    <%= gravatar_for @user, :size => 150  %>
+    <h4>
       <%= @user.name %>
       <% if @user.admin? %>
         | <%= " (Admin)" %>
-      <% end %><br>
-      Member since: <%= time_tag(@user.created_at, :format=>'%B %d, %Y') %>
-    </p>
-    <div class="col-md-12">
-      <br><br>
-      <p><%= @user.name %>'s Reviews:</p>
-      <ol class="posts">
-        <%= render @reviews %>
-      </ol>
-    </div>
+      <% end %>
+    </h4>
+    Member since: <%= time_tag(@user.created_at, :format=>'%B %d, %Y') %>
   </div>
-  <div class="col-md-7">
-    <p><%= @user.name %>'s Posts:</p>
-    <% if @posts.any? %>
-      <ol class="posts">
-        <%= render @posts %>
-      </ol>
-      <%= will_paginate @posts %>
-    <% end %>
+  <div class="col-md-9">
+    <ul class="nav nav-tabs tabs" role="tablist">
+      <li class="active"><a href="#posts" role="tab" data-toggle="tab">Blog Posts</a></li>
+      <li><a href="#reviews" role="tab" data-toggle="tab">Reviews</a></li>
+    </ul>
+    <div id='content' class="tab-content">
+      <div class="tab-pane active" id="posts">
+        <% if @posts.any? %>
+          <ol class="posts">
+            <%= render @posts %>
+          </ol>
+          <%= will_paginate @posts %>
+        <% else %>
+          <%= content_tag(:p, "You have no posts.") %>
+        <% end %>
+      </div>
+      <div class="tab-pane" id="reviews">
+        <% if @reviews.any? %>
+          <ol class="posts">
+            <%= render @reviews %>
+          </ol>
+        <% else %>
+          <%= content_tag(:p, "You have no reviews.") %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

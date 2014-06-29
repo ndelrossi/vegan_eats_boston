@@ -147,6 +147,10 @@ footer {
   //margin-top: 0;
 }
 
+.tabs {
+  margin-bottom: 20px;
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -185,6 +189,11 @@ input, textarea, select, .uneditable-input {
     padding: 0;
     padding-bottom: 15px;
   }
+
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+  }
 }
 
 .title {
@@ -207,11 +216,6 @@ input, textarea, select, .uneditable-input {
 .timestamp {
   color: $gray;
   font-size: .8em;
-}
-
-.gravatar {
-  float: left;
-  margin-right: 10px;
 }
 
 .postimage {
