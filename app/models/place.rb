@@ -15,6 +15,6 @@ class Place < ActiveRecord::Base
     self.reviews.each do |r|
       rating_sum += r.rating
     end
-    rating = rating_sum / reviews.size
+    rating = rating_sum.to_f / reviews.size.to_f
   end
 end
