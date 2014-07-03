@@ -1,28 +1,32 @@
 <li>
   <div class="row">
-  <div class="col-xs-7">
-    <%= image_tag place.primary_image.url, :class => "hidden-xs" %>
-    <address>
-      <strong><%= link_to place.name, place %></strong>
-      <% if params[:search].present? %>
-        <%= "(" + place.distance_from(@location).round(2).to_s + " miles)" %>
-      <% end %><br>
-      <%= place.address_line_1 %><br>
-        <% if !place.address_line_2.empty? %>
-          <%= place.address_line_2 %>
-          <%= tag(:br) %>
-        <% end %>
-        <%= place.address_city %>, <%= place.address_state %> <%= place.address_zip_code %><br>
-      <%= place.phone_number %><br>
-      <%= link_to place.url_website, "http://#{place.url_website}"%>
-    </address>
-  </div>
-  <div class="col-xs-5 text-right">
-    <span class="glyphicon glyphicon glyphicon-star"></span>
-    <span class="glyphicon glyphicon glyphicon-star"></span>
-    <span class="glyphicon glyphicon glyphicon-star"></span>
-    <span class="glyphicon glyphicon glyphicon-star"></span>
-    <span class="glyphicon glyphicon glyphicon-star"></span>
-  </div>
+    <div class="col-xs-7">
+      <%= image_tag place.primary_image.url, :class => "hidden-xs" %>
+      <address>
+        <strong><%= link_to place.name, place %></strong>
+        <% if params[:search].present? %>
+          <%= "(" + place.distance_from(@location).round(2).to_s + " miles)" %>
+        <% end %><br>
+        <%= place.address_line_1 %><br>
+          <% if !place.address_line_2.empty? %>
+            <%= place.address_line_2 %>
+            <%= tag(:br) %>
+          <% end %>
+          <%= place.address_city %>, <%= place.address_state %> <%= place.address_zip_code %><br>
+        <%= place.phone_number %><br>
+        <%= link_to place.url_website, "http://#{place.url_website}"%>
+      </address>
+    </div>
+    <div class="star">
+    <div id=<%= "star_" + place.id.to_s %>></div>
+    </div>
   </div>
 </li>
+
+<script type="text/javascript">
+  $('#star_<%= place.id.to_s %>').raty({
+    readOnly: true,
+    score: <%= place.rating %>,
+    path: '/assets'
+  });
+</script>

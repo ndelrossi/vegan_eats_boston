@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-wysihtml5
+//= require jquery.raty
 //= require underscore
 //= require gmaps/google
 //= require turbolinks

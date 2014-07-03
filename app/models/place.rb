@@ -9,4 +9,12 @@ class Place < ActiveRecord::Base
   def full_address
     "#{address_line_1} #{address_city}, #{address_state}"
   end
+
+  def get_average_rating
+    rating_sum = 0
+    self.reviews.each do |r|
+      rating_sum += r.rating
+    end
+    rating = rating_sum / reviews.size
+  end
 end

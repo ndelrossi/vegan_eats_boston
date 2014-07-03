@@ -5,7 +5,8 @@
       <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :rating %>
-      <%= f.number_field :rating, class: "form-control" %>
+      <%= f.hidden_field :rating, :value => 0 %>
+      <div id="user_star"></div><br>
 
       <%= f.label :content %>
       <%= f.text_area :content, rows: "7", placeholder: "Compose review...", class: "form-control" %>
@@ -17,3 +18,15 @@
     <% end %>
   </div>
 </div>
+<script type="text/javascript">
+  $('#user_star').raty({
+    score: <%= 0 %>,
+    path: '/assets',
+    click: function(score, evt) {
+      document.getElementById('review_rating').value = score;
+      $.ajax({
+        data: { score: score }
+      }).done(function (data){});
+    }
+  });
+</script>

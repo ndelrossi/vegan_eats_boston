@@ -147,6 +147,24 @@ footer {
   //margin-top: 0;
 }
 
+#star {
+  img {
+    height: 19px;
+    width: auto;
+    margin-right: 4px;
+    float: left;
+  }
+}
+
+#user_star {
+  img {
+    height: 19px;
+    width: auto;
+    margin-right: 4px;
+    float: left;
+  }
+}
+
 .tabs {
   margin-bottom: 20px;
 }
@@ -251,6 +269,17 @@ input, textarea, select, .uneditable-input {
     border-bottom: 1px solid #e8e8e8;
     address {
       line-height: 1em;
+    }
+  }
+
+  .star {
+    float: right;
+    
+    img {
+      height: 19px;
+      width: auto;
+      margin-right: 4px;
+      float: left;
     }
   }
 }

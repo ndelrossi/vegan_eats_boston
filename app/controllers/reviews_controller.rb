@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
     @place = Place.find(params[:review][:place_id])
     @review = @place.reviews.build(reviews_params)
     @review.user = current_user
+    @place.update_attributes(:rating => @place.get_average_rating)
     if @review.save
       flash[:success] = "Review created!"
       redirect_to place_url(@place)
