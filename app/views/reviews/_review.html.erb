@@ -1,13 +1,27 @@
 <li>
-  <span class="timestamp">
-    <% if review.user then %>
-      Posted by <%= gravatar_for review.user, :size => 40 %>
-      <%= link_to review.user.name, review.user %><br>
-      <%= time_ago_in_words(review.created_at) %> ago.
-    <% end %>
-  </span>
-  <span class="content">
-    Rating: <%= review.rating %><br>
-    <%= review.content %>
-  </span>
+  <div class="clearfix">
+    <div class="col-md-6 timestamp">
+      <% if review.user then %>
+        Review by <%= gravatar_for review.user, :size => 40 %>
+        <%= link_to review.user.name, review.user %><br>
+        <%= time_ago_in_words(review.created_at) %> ago.
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <div class="star">
+        <div id=<%= "star_" + review.id.to_s %>></div>
+      </div>
+    </div>
+    <div class="col-md-12 content">
+      <p><%= review.content %></p>
+    </div>
+  </div>
 </li>
+
+<script type="text/javascript">
+  $('#star_<%= review.id.to_s %>').raty({
+    readOnly: true,
+    score: <%= review.rating %>,
+    path: '/assets'
+  });
+</script>

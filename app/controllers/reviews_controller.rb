@@ -5,6 +5,11 @@ class ReviewsController < ApplicationController
     @reviews = Review.paginate(page: params[:page])
   end
 
+  def new
+    @place = Place.find(params[:id])
+    @review = Review.new
+  end
+  
   def create
     @place = Place.find(params[:review][:place_id])
     @review = @place.reviews.build(reviews_params)
