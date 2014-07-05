@@ -29,6 +29,7 @@ class ReviewsController < ApplicationController
 
   def update
     @place = Place.find(params[:review][:place_id])
+    @place.update_attributes(:rating => @place.get_average_rating)
     if @review.update_attributes(reviews_params)
       flash[:success] = "Review updated!"
       redirect_to place_url(@place)
