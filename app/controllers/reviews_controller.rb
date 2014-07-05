@@ -24,12 +24,14 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @place = Place.find(params[:id])
   end
 
   def update
+    @place = Place.find(params[:review][:place_id])
     if @review.update_attributes(reviews_params)
-      flash[:success] = "Review updated"
-      redirect_to @review.place
+      flash[:success] = "Review updated!"
+      redirect_to place_url(@place)
     else
       render 'edit'
     end
@@ -43,14 +45,15 @@ class ReviewsController < ApplicationController
   private
 
     def reviews_params
-      params.require(:review).permit(:content, :rating)
+      params.require(:review).permit(:content, :rating, :place_id)
     end
 
     def correct_user
-      @review = current_user.reviews.find_by(id: params[:id])
-      if current_user.admin?
-        @review ||= Review.find(params[:id])
-      end
+      @review = current_user.reviews.find_by(place_id: params[:id]) ||
+        Review.find(params[:id])
+      #if current_user.admin?
+      #  @review ||= Review.find_by(place_id: params[:id])
+      #end
       redirect_to root_url if @review.nil?
     end
 end

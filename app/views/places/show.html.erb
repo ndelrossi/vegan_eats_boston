@@ -19,7 +19,7 @@
     </address>
   </div>
   <div class="col-md-2 pull-right">
-    <%= link_to "Write review", {:controller => "reviews", :action => "new", :id => @place.id }, class: "btn btn-default" %>
+    <%= link_to "Write review", new_or_edit_review_path(@place), class: "btn btn-default" %>
   </div>
 </div>
 <div class="row">
