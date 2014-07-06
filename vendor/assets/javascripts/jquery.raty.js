@@ -616,7 +616,7 @@
     click        : undefined,
     half         : false,
     halfShow     : true,
-    hints        : ['bad', 'poor', 'regular', 'good', 'gorgeous'],
+    hints        : ['bad', 'poor', 'average', 'good', 'great'],
     iconRange    : undefined,
     mouseout     : undefined,
     mouseover    : undefined,

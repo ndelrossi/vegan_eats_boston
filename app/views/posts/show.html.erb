@@ -20,7 +20,7 @@
       <% end %>
     </span>
     <span class="content"><%= @post.content.html_safe %></span>
-    <h1>Comments:</h1>
+    <h3>Comments:</h3>
     <%= render 'shared/comment_form' %>
     <ol class="posts">
       <%= render @comments %>
