@@ -1,5 +1,5 @@
 <li>
-  <span class="title"><%= link_to post.title, post_url(post) %></span>
+  <h2><%= post.title %></h2>
   <span class="timestamp">
     Posted by <%= gravatar_for post.user, :size => 40 %>
     <%= link_to post.user.name, post.user %>
