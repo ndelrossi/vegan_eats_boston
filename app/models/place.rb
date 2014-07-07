@@ -5,6 +5,7 @@ class Place < ActiveRecord::Base
   validates_attachment_content_type :primary_image, :content_type => /\Aimage\/.*\Z/
   geocoded_by :full_address
   after_validation :geocode
+  acts_as_taggable_on :categories
 
   def full_address
     "#{address_line_1} #{address_city}, #{address_state}"

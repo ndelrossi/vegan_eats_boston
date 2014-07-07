@@ -11,7 +11,8 @@
         <%= @place.address_line_2 %>
         <%= tag(:br) %>
       <% end %>
-      <%= @place.address_city %>, <%= @place.address_state %> <%= @place.address_zip_code %><br>
+      <%= @place.address_city %>, <%= @place.address_state %> <%= @place.address_zip_code %><br><br>
+      <%= @place.category_list %>
     </address>
     <address> 
       Phone number: <%= @place.phone_number %><br>

@@ -279,22 +279,34 @@ input, textarea, select, .uneditable-input {
   img {
     float: left;
     margin-right: 10px;
-    height: 100px;
+    height: 105px;
     width: auto;
   }
 
   li {
     min-height: 120px;
-    padding: 10px 0;
+    padding: 20px 0px 0px 0px;
     border-bottom: 1px solid #e8e8e8;
+
     address {
+      padding-top: 5px;
+      font-size: .9em;
       line-height: 1em;
     }
   }
 
-  .star {
+  li:first-child {
+    padding: 0px;
+  }
+
+  .place-list-right {
     float: right;
     
+    .text {
+      padding-right: 20px;
+      font-size: .9em;
+    }
+
     img {
       height: 19px;
       width: auto;

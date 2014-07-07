@@ -16,11 +16,19 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'launchy', '~> 2.4.2'
 gem 'gmaps4rails'
 gem 'geocoder'
+gem 'acts-as-taggable-on', '3.2.6'
 
 gem 'capistrano', '~> 3.1.0'
 gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-rvm', github: "capistrano/rvm"
+
+gem 'sass-rails', '~> 4.0.3'
+gem 'uglifier', '2.1.1'
+gem 'coffee-rails', '4.0.1'
+gem 'jquery-rails', '3.0.4'
+gem 'turbolinks', '1.1.1'
+gem 'jbuilder', '1.0.2'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
@@ -44,13 +52,6 @@ group :test do
   # gem 'rb-notifu', '0.0.4'
   # gem 'wdm', '0.1.0'
 end
-
-gem 'sass-rails', '~> 4.0.3'
-gem 'uglifier', '2.1.1'
-gem 'coffee-rails', '4.0.1'
-gem 'jquery-rails', '3.0.4'
-gem 'turbolinks', '1.1.1'
-gem 'jbuilder', '1.0.2'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
