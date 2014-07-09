@@ -7,6 +7,8 @@ class Place < ActiveRecord::Base
   after_validation :geocode
   acts_as_taggable_on :categories
 
+  scope :starts_with, -> (name) { where("name like ?", "#{name}%")}
+
   def full_address
     "#{address_line_1} #{address_city}, #{address_state}"
   end

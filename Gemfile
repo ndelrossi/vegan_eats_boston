@@ -17,6 +17,7 @@ gem 'launchy', '~> 2.4.2'
 gem 'gmaps4rails'
 gem 'geocoder'
 gem 'acts-as-taggable-on', '3.2.6'
+gem 'smart_listing'
 
 gem 'capistrano', '~> 3.1.0'
 gem 'capistrano-bundler', '~> 1.1.2'

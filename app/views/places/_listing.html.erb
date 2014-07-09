@@ -1,0 +1,47 @@
+<% unless smart_listing.empty? %>
+  <% smart_listing.collection.each do |place| %>
+    <ul class="places">
+      <li>
+        <div class="row">
+          <div class="col-xs-7">
+            <%= image_tag place.primary_image.url, :class => "hidden-xs" %>
+              <strong><%= link_to place.name, place %></strong>
+              <% if params[:search].present? %>
+                <%= "(" + place.distance_from(@location).round(2).to_s + " miles)" %>
+              <% end %><br>
+              <%= place.category_list %><br>
+              <address>
+                <%= place.address_line_1 %><br>
+                  <% if !place.address_line_2.empty? %>
+                    <%= place.address_line_2 %>
+                    <%= tag(:br) %>
+                  <% end %>
+                  <%= place.address_city %>, <%= place.address_state %> <%= place.address_zip_code %><br>
+                <%= place.phone_number %><br>
+                <%= link_to "website", "http://#{place.url_website}"%><%= ", " %>
+                <%= link_to "menu", "http://#{place.url_menu}"%>
+              </address>
+          </div>
+          <div class="place-list-right text-right">
+            <div id=<%= "star_" + place.id.to_s %>></div>
+            <div class="text" class="text-right">
+              (<%= pluralize(place.reviews.count, 'review') %>)<br><br>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <script type="text/javascript">
+      $('#star_<%= place.id.to_s %>').raty({
+        readOnly: true,
+        score: <%= place.rating %>,
+        path: '/assets'
+      });
+    </script>
+  <% end %>
+  <%= smart_listing.paginate %>
+  <%= smart_listing.pagination_per_page_links %>
+<% else %>
+  <%= "Nothing" %>
+<% end %>

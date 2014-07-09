@@ -1,14 +1,22 @@
 class PlacesController < ApplicationController
   include ApplicationHelper
+  include SmartListing::Helper::ControllerExtensions
+  helper  SmartListing::Helper
+
   before_action :admin_user,  except: [:index, :show]
   before_action :get_place, only: [:show, :edit, :update, :destroy]
 
   def index
+    @places = Place.all
+    @places = @places.starts_with(params[:filter]) if params[:filter].present?
+
     if params[:search].present?
       @location = Geocoder.coordinates(params[:search])
       @places = Place.near(@location, 50).paginate(page: params[:page], :per_page => 10)
     else
-      @places = Place.paginate(page: params[:page], :per_page => 10)
+      #@places = Place.paginate(page: params[:page], :per_page => 10)
+      @places = smart_listing_create :places, @places, partial: "places/listing",
+                                        default_sort: {name: "asc"}
     end
     @hash = Gmaps4rails.build_markers(@places) do |place, marker|
       marker.lat place.latitude

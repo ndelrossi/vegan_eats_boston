@@ -17,5 +17,6 @@
 //= require jquery.raty
 //= require underscore
 //= require gmaps/google
+//= require smart_listing
 //= require turbolinks
 //= require_tree .
