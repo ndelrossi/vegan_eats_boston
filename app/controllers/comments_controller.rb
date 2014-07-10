@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :correct_user,   only: [:destroy]
 
   def index
-    @comments = Comment.paginate(page: params[:page])
+    @comments = Comment.page(params[:page])
   end
 
   def create

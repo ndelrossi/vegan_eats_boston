@@ -5,11 +5,11 @@ class PostsController < ApplicationController
   before_action :admin_user,     only: [:approve, :unapprove, :index_admin]
 
   def index
-    @posts = Post.where(:approved => true).paginate(page: params[:page], :per_page => 20)
+    @posts = Post.where(:approved => true).page(params[:page]).per(20)
   end
 
   def index_admin
-    @posts = Post.paginate(page: params[:page])
+    @posts = Post.page(params[:page])
   end
 
   def show

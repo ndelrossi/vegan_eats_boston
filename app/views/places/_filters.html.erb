@@ -1,9 +1,15 @@
 <%= smart_listing_controls_for(:places) do %>
   <div class="place-filters space-to-bottom-20">
-    <h4>Filters:</h4>
-    <div class="filter input-append">
-    <%= text_field_tag :filter, '', class: "search form-control", 
-                              placeholder: "Search...", autocomplete: :off %>
+    <div class="row">
+      <div class="col-md-4">
+        <h5>Search:</h5>
+        <div class="filter input-append">
+          <%= text_field_tag :filter, '', class: "search form-control", placeholder: "Search by name...", autocomplete: :off %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h5>Sort:</h5>
+      </div>
     </div>
   </div>
 <% end %>

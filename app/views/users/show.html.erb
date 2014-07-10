@@ -21,7 +21,7 @@
           <ol class="posts">
             <%= render @posts %>
           </ol>
-          <%= will_paginate @posts %>
+          <%= paginate @posts %>
         <% else %>
           <%= content_tag(:p, "You have no posts.") %>
         <% end %>

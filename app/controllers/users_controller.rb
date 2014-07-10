@@ -5,13 +5,13 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
   
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = Post.where(:user => @user).paginate(page: params[:page], :per_page => 6)
-    @reviews = Review.where(:user => @user).paginate(page: params[:page], :per_page => 6)
+    @posts = Post.where(:user => @user).page(params[:page]).per(6)
+    @reviews = Review.where(:user => @user).page(params[:page]).per(6)
   end
   
   def new

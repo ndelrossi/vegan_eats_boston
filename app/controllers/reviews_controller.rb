@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :correct_user,   only: [:destroy, :edit, :update]
 
   def index
-    @reviews = Review.paginate(page: params[:page])
+    @reviews = Review.page(params[:page])
   end
 
   def new

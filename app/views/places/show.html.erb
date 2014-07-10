@@ -34,7 +34,7 @@
           <ol class="reviews">
             <%= render @reviews %>
           </ol>
-          <%= will_paginate @reviews %>
+          <%= paginate @reviews %>
         <% else %>
           <%= content_tag(:p, "There are no reviews.") %>
         <% end %>

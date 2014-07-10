@@ -8,16 +8,16 @@ class PlacesController < ApplicationController
 
   def index
     @places = Place.all
-    @places = @places.starts_with(params[:filter]) if params[:filter].present?
-
     if params[:search].present?
       @location = Geocoder.coordinates(params[:search])
-      #@places = Place.near(@location, 50).paginate(page: params[:page], :per_page => 10)
-    else
-      #@places = Place.paginate(page: params[:page], :per_page => 10)
-      @places = smart_listing_create :places, @places, partial: "places/listing",
-                                        default_sort: {name: "asc"}
+      @places = Place.near(@location, 50).page(params[:page]).per(10)
     end
+
+    @places = @places.contains(params[:filter]) if params[:filter].present?
+    
+    @places = smart_listing_create :places, @places, partial: "places/listing",
+                                      default_sort: {name: "asc"}
+
     @hash = Gmaps4rails.build_markers(@places) do |place, marker|
       marker.lat place.latitude
       marker.lng place.longitude
@@ -28,7 +28,7 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
     #@review = Review.where(:place => @place, :user => current_user)
     @review = @place.reviews.build
-    @reviews = Review.where(:place => @place).paginate(page: params[:page], :per_page => 10)
+    @reviews = Review.where(:place => @place).page(params[:page]).per(10)
   end
 
   def new
