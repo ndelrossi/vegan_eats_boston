@@ -12,7 +12,7 @@ class PlacesController < ApplicationController
 
     if params[:search].present?
       @location = Geocoder.coordinates(params[:search])
-      @places = Place.near(@location, 50).paginate(page: params[:page], :per_page => 10)
+      #@places = Place.near(@location, 50).paginate(page: params[:page], :per_page => 10)
     else
       #@places = Place.paginate(page: params[:page], :per_page => 10)
       @places = smart_listing_create :places, @places, partial: "places/listing",
