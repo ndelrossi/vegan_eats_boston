@@ -14,6 +14,13 @@ class PlacesController < ApplicationController
     end
 
     @places = @places.contains(params[:filter]) if params[:filter].present?
+    if params[:sort].present?
+      if params[:sort] == "rating"
+        @places = @places.order("rating DESC")
+      else
+        @places = @places.order(params[:sort])
+      end
+    end
     
     @places = smart_listing_create :places, @places, partial: "places/listing",
                                       default_sort: {name: "asc"}

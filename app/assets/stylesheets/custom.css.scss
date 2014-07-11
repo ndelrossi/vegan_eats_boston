@@ -10,14 +10,6 @@ $grayMediumLight: #eaeaea;
   box-sizing: border-box;
 }
 
-.space-to-bottom-40 {
-  margin-bottom: 40px;
-}
-
-.space-to-bottom-20 {
-  margin-bottom: 20px;
-}
-
 /* universal */
 
 html {
@@ -30,6 +22,14 @@ body {
 
 .main-content {
   margin-top: 30px;
+}
+
+.space-to-bottom-40 {
+  margin-bottom: 40px;
+}
+
+.space-to-bottom-20 {
+  margin-bottom: 20px;
 }
 
 /* typography */
@@ -189,13 +189,6 @@ footer {
 }
 
 /* forms */
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
-}
 
 #error_explanation {
   color: #f00;
