@@ -10,7 +10,7 @@ class PlacesController < ApplicationController
     @places = Place.all
     if params[:search].present?
       @location = Geocoder.coordinates(params[:search])
-      @places = Place.near(@location, 50).page(params[:page]).per(10)
+      @places = Place.near(@location, 50)
     end
 
     @places = @places.contains(params[:filter]) if params[:filter].present?
@@ -36,7 +36,6 @@ class PlacesController < ApplicationController
 
   def show
     @place = Place.find(params[:id])
-    #@review = Review.where(:place => @place, :user => current_user)
     @review = @place.reviews.build
     @reviews = Review.where(:place => @place).page(params[:page]).per(10)
   end
