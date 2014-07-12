@@ -14,6 +14,9 @@ class PlacesController < ApplicationController
     end
 
     @places = @places.contains(params[:filter]) if params[:filter].present?
+    @places = @places.cities(params[:cities]) if params[:cities].present?
+    @places = @places.tagged_with(params[:categories], :any => true) if params[:categories].present?
+
     if params[:sort].present?
       if params[:sort] == "rating"
         @places = @places.order("rating DESC")

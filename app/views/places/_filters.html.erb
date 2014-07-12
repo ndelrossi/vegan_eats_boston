@@ -18,23 +18,42 @@
           </label>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-2">
         <h5>Cities:</h5>
         <div class="checkbox form-group">
           <label class="col-md-12">
-            <input type="checkbox"> Boston
+            <%= check_box_tag("cities[]", "Boston") %> Boston
           </label>
           <label class="col-md-12">
-            <input type="checkbox"> Cambridge
+            <%= check_box_tag("cities[]", "Brookline") %> Brookline
+          </label>
+          <label class="col-md-12">
+            <%= check_box_tag("cities[]", "Cambridge") %> Cambridge
           </label>
           <label>
-            <input type="checkbox"> Somerville
+            <%= check_box_tag("cities[]", "Somerville") %> Somerville
           </label>
         </div>
-        </form>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-2">
         <h5>Categories:</h5>
+        <div class="checkbox form-group">
+          <label class="col-md-12">
+            <%= check_box_tag("categories[]", "100% Vegan") %> 100% Vegan
+          </label>
+          <label class="col-md-12">
+            <%= check_box_tag("categories[]", "Grocery") %> Grocery
+          </label>
+          <label class="col-md-12">
+            <%= check_box_tag("categories[]", "Indian") %> Indian
+          </label>
+          <label class="col-md-12">
+            <%= check_box_tag("categories[]", "Juices") %> Juices
+          </label>
+          <label>
+            <%= check_box_tag("categories[]", "Thai") %> Thai
+          </label>
+        </div>
       </div>
     </div>
   </div>

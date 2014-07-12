@@ -8,6 +8,7 @@ class Place < ActiveRecord::Base
   acts_as_taggable_on :categories
 
   scope :contains, -> (name) { where("name like ?", "%#{name}%")}
+  scope :cities, -> (cities) { where address_city: cities }
 
   def full_address
     "#{address_line_1} #{address_city}, #{address_state}"
