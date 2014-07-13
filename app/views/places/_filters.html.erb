@@ -32,24 +32,14 @@
           </label>
         </div>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-6">
         <h4>Categories:</h4>
         <div class="checkbox form-group">
-          <label class="col-xs-6">
-            <%= check_box_tag("categories[]", "100% Vegan") %> 100% Vegan
-          </label>
-          <label class="col-xs-6">
-            <%= check_box_tag("categories[]", "Grocery") %> Grocery
-          </label>
-          <label class="col-xs-6">
-            <%= check_box_tag("categories[]", "Indian") %> Indian
-          </label>
-          <label class="col-xs-6">
-            <%= check_box_tag("categories[]", "Juices") %> Juices
-          </label>
-          <label>
-            <%= check_box_tag("categories[]", "Thai") %> Thai
-          </label>
+          <% @tags.each do |tag| %>
+            <%= label_tag(nil, nil, class: 'col-xs-4') do %>
+              <%= check_box_tag("categories[]", tag) + "#{tag}" %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>

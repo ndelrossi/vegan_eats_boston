@@ -8,6 +8,8 @@ class PlacesController < ApplicationController
 
   def index
     @places = Place.all
+    @tags = Place.category_counts
+
     if params[:search].present?
       @location = Geocoder.coordinates(params[:search])
       @places = Place.near(@location, 50)
