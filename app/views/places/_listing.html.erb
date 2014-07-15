@@ -8,13 +8,13 @@
   </div>
 
   <div id="test" class="col-md-8 col-md-pull-4">
-    <% smart_listing.collection.each do |place| %>
+    <% smart_listing.collection.each_with_index do |place, index| %>
       <ul class="places">
         <li>
           <div class="row">
             <div class="col-xs-7">
               <%= image_tag place.primary_image.url, :class => "hidden-xs" %>
-                <strong><%= link_to place.name, place %></strong>
+                <strong><%= index + 1 %> <%= link_to place.name, place %></strong>
                 <% if params[:search].present? %>
                   <%= "(" + place.distance_from(@location).round(2).to_s + " miles)" %>
                 <% end %><br>
