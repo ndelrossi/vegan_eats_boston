@@ -90,5 +90,16 @@ VeganEatsBoston::Application.configure do
       :secret_access_key => ENV["AWS_SECRET_ACCESS_KEY"]
     }
   }
-  #config.action_controller.asset_host = "//#{ENV['vegan_eats_boston']}.s3.amazonaws.com"
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'gmail.com',
+    user_name:            'veganeatsboston@gmail.com',
+    password:             ENV["GMAIL_PW"],
+    authentication:       'plain',
+    enable_starttls_auto: true  }
+  
+  config.action_mailer.default_url_options = { :host => "veganeatsboston.com" }
 end
