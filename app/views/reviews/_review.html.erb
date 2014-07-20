@@ -1,5 +1,8 @@
 <li>
   <div class="clearfix">
+    <div class="col-md-12 no-left-padding">
+      <h4><%= link_to review.place.name, review.place if params[:controller] == 'users' %></h4>
+    </div>
     <div class="col-md-6 timestamp">
       <% if review.user then %>
         Review by <%= gravatar_for review.user, :size => 40 %>
