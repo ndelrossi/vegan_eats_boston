@@ -18,9 +18,8 @@
   </span>
   <span class="content"><%= post.content.html_safe %></span>
   <p>
-  <%= link_to "More", post_url(post), class: "btn btn-large btn-primary" %>
-  <span class="pull-right">
-    <%= link_to "comments", post_url(post) %>(<%= post.comments.count %>)
-  </span>
+    <%= link_to post_url(post) do %>
+      <%= pluralize(post.comments.count, 'comment') %>
+    <% end %>
   </p>
 </li>
