@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
 
   def home
     @posts = Post.where(:approved => true).page(params[:page]).per(6)
+    @places = Place.order( 'rating DESC' ).limit(10)
   end
 
   def blog

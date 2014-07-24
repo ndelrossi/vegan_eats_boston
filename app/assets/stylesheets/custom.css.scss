@@ -21,7 +21,7 @@ body {
 }
 
 .main-content {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .space-to-bottom-40 {
@@ -353,4 +353,41 @@ footer {
   border-bottom: 1px solid #e8e8e8;
   border-top: 1px solid #e8e8e8;
   margin-top: 10px;
+}
+
+
+/* front page */
+
+.front-page-list {
+  list-style: none;
+  padding: 0;
+  font: 1.1em Georgia, "Times New Roman", Times, serif;
+
+  img {
+    float: left;
+    margin-right: 10px;
+    height: 50px;
+    width: auto;
+  }
+
+  li {
+    padding: 5px 0px 5px 0px;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .place-list-right {
+    float: right;
+    
+    .text {
+      padding-right: 20px;
+      font-size: .9em;
+    }
+
+    img {
+      height: 16px;
+      width: auto;
+      margin-right: 3px;
+      float: left;
+    }
+  }
 }

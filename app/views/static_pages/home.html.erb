@@ -1,6 +1,5 @@
 <div class="row">
-  <article class= "col-md-10 col-md-offset-1">
-    <h3 class="text-center">Around Town</h3>
+  <article class="col-md-8">
     <% if @posts.any? %>
       <ol class="posts">
         <%= render @posts %>
@@ -8,5 +7,13 @@
       <%= paginate @posts %>
     <% end %>
   </article>
+  <div class="col-md-4">
+    <h3 class="text-center">Top Rated</h3>
+    <ul class="front-page-list">
+      <% @places.each do |place| %>
+        <%= render 'places/place_less', :place => place %>
+      <% end %>
+    </ul>
+  </div>
 </div>
 

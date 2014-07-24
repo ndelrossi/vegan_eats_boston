@@ -1,0 +1,23 @@
+<li>
+  <div class="row">
+    <div class="col-xs-7">
+        <strong><%= link_to place.name, place %></strong><br>
+        <%= place.address_city %>, <%= place.address_state %><br>
+        <%= place.category_list %>
+    </div>
+    <div class="place-list-right text-right">
+      <div id=<%= "star_" + place.id.to_s %>></div>
+      <div class="text" class="text-right">
+        (<%= pluralize(place.reviews.count, 'review') %>)<br><br>
+      </div>
+    </div>
+  </div>
+</li>
+
+<script type="text/javascript">
+  $('#star_<%= place.id.to_s %>').raty({
+    readOnly: true,
+    score: <%= place.rating %>,
+    path: '/assets'
+  });
+</script>
