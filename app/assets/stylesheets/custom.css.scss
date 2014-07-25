@@ -173,6 +173,10 @@ footer {
   //margin-top: 0;
 }
 
+.dropdown-menu {
+  z-index: 10000;
+}
+
 .filter {
   padding-top: 5px;
   padding-bottom: 8px;

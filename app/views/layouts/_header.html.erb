@@ -1,13 +1,18 @@
 <header class="masthead hidden-xs">
   <div class="container">
-  <div class="row">
-    <div class="col-sm-6">
-      <%= link_to image_tag("veb_logo.png", alt: "Vegan Eats Boston"), root_path, id: "logo", class: "logo-margin" %>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= link_to image_tag("veb_logo.png", alt: "Vegan Eats Boston"), root_path, id: "logo", class: "logo-margin" %>
+      </div>
+      <div class="col-sm-6 pull-right masthead-right">
+        <% if signed_in? %>
+          <%= render 'shared/account_dropdown' %>
+        <% else %>
+          <%= link_to "Sign up now!", signup_path, class: "btn btn-default btn-success" %>
+          <%= link_to "Sign in", signin_path, class: "btn btn-default btn-primary" %>
+        <% end %>
+      </div>
     </div>
-    <div class="col-sm-6 pull-right masthead-right">
-      <%= link_to "Sign up now!", signup_path, class: "btn btn-default btn-success" %>
-    </div>
-  </div>
   </div>
 </header>
 
@@ -44,7 +49,7 @@
             <%= link_to "About",   about_path %>
           </li>
           <% if signed_in? %> 
-            <li class="dropdown">
+            <li class="dropdown visible-xs">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <%= current_user.name %><b class="caret"></b>
               </a>

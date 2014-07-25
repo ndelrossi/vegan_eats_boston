@@ -1,0 +1,20 @@
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+    <%= current_user.name %>
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu pull-right">
+    <li><%= link_to "Create Post", new_post_url %></li>
+    <li><%= link_to "Create Place", new_place_path if current_user.admin? %></li>
+    <li><%= link_to "Profile", current_user %></li>
+    <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+    <li class="divider"></li>
+      <% if current_user.admin? %>
+        <li><%= link_to "Admin Page", admin_path %></li>
+        <li class="divider"></li>
+      <% end %>
+    <li>
+      <%= link_to "Sign out", signout_path, method: "delete" %>
+    </li>
+  </ul>
+</div>
