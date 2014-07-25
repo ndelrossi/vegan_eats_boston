@@ -1,12 +1,17 @@
 <% provide(:title, 'Places') %>
 
-<button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#filter-window" id="filter-button">
-  <span id="filter-text">Hide Filters</span>
-  <span class="caret"></span>
-</button>
-<div id="filter-window" class="collapse in">
-  <%= render 'places/filters' %>
+<div class="row">
+  <div class="col-md-12">
+    <button type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#filter-window" id="filter-button">
+      <span id="filter-text">Hide Filters</span>
+      <span class="caret"></span>
+    </button>
+    <div id="filter-window" class="collapse in">
+      <%= render 'places/filters' %>
+    </div>
+  </div>
 </div>
+
 <div class="row">
   <%= smart_listing_render(:places) %>
 </div>

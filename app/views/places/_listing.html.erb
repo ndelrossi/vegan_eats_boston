@@ -3,11 +3,11 @@
 
 <% unless smart_listing.empty? %>
   
-  <div class="col-md-4 col-md-push-8 text-center space-to-bottom-20">
+  <div class="col-md-5 col-md-push-7 text-center space-to-bottom-20">
     <div id="map" style='width: 100%; height: 300px;'></div>
   </div>
 
-  <div id="test" class="col-md-8 col-md-pull-4">
+  <div id="test" class="col-md-7 col-md-pull-5">
     <ul class="places">
       <% smart_listing.collection.each_with_index do |place, index| %>
         <%= render 'places/place', :place => place, :index => index %>
