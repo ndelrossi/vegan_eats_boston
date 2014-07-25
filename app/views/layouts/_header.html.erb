@@ -69,8 +69,8 @@
               </ul>
             </li>
           <% else %>
-            <li><%= link_to "Sign in", signin_path %></li>
-            <li><%= button_to "Sign up", signup_path, :method => "get", class: "btn btn-primary navbar-btn" %></li>
+            <li class="visible-xs"><%= link_to "Sign in", signin_path %></li>
+            <li class="visible-xs"><%= link_to "Sign up", signup_path %></li>
           <% end %>
         </ul>
         <%= form_tag(places_path, :method =>  :get, id: "search-form", class: "navbar-form navbar-right", role: "search") do %>
