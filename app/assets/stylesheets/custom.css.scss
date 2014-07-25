@@ -300,20 +300,14 @@ footer {
   }
 
   li {
-    min-height: 115px;
-    padding: 20px 0px 0px 0px;
+    padding: 10px 0px 10px 0px;
     border-bottom: 1px solid #e8e8e8;
-
     address {
       padding-top: 5px;
       font-size: .9em;
       line-height: 1em;
       margin-bottom: 0px;
     }
-  }
-
-  li:first-child {
-    padding: 0px;
   }
 
   .place-list-right {
