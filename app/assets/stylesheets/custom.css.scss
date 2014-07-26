@@ -36,6 +36,10 @@ body {
   padding-left: 40px;
 }
 
+.padding-to-top-25 {
+  padding-top: 25px;
+}
+
 textarea {
   width: 100%;
 }
@@ -237,19 +241,8 @@ footer {
   font: 1.3em Georgia, "Times New Roman", Times, serif;
 
   li {
-    padding: 20px 0;
-    border-top: 1px solid #e8e8e8;
-  }
-
-  li:first-child {
-    border-top: none;
-    padding: 0;
-    padding-bottom: 15px;
-  }
-
-  .gravatar {
-    float: left;
-    margin-right: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e8e8e8;
   }
 }
 
@@ -270,14 +263,18 @@ footer {
   }
 }
 
+.post-icons {
+  padding-top: 15px;
+}
+
 .timestamp {
   color: $gray;
-  font-size: .8em;
+  font-size: .9em;
   padding-left: 0;
 }
 
 .postimage {
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 /* places */

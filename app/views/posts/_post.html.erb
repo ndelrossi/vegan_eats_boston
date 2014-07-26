@@ -1,25 +1,34 @@
 <li>
-  <h2><%= post.title %></h2>
-  <span class="timestamp">
-    Posted by <%= gravatar_for post.user, :size => 40 %>
-    <%= link_to post.user.name, post.user %>
-    <br>
-    <%= time_ago_in_words(post.created_at) %> ago.
-    <% if post.user == current_user %>
-      <%= link_to "edit", edit_post_path(post) %>
-      <%= link_to "delete", post, method: :delete,
-                                    data: { confirm: "Delete this post?" } %>
-    <% end %>
-  </span>
-  <span >
-    <% if post.image? then %>
-      <%= image_tag post.image.url, :class => "img-responsive postimage" %>
-    <% end %>
-  </span>
-  <span class="content"><%= post.content.html_safe %></span>
-  <p>
-    <%= link_to post_url(post) do %>
-      <%= pluralize(post.comments.count, 'comment') %>
-    <% end %>
-  </p>
+  <div class="row">
+    <div class="col-md-12">
+      <h1><%= post.title %></h1>
+      <span class="timestamp">
+        Posted by <%= link_to post.user.name, post.user %>
+        <%= time_ago_in_words(post.created_at) %> ago.
+        <% if post.user == current_user %>
+          <%= link_to "edit", edit_post_path(post) %>
+          <%= link_to "delete", post, method: :delete,
+                                        data: { confirm: "Delete this post?" } %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-1 post-icons hidden-xs">
+      <%= gravatar_for post.user, :size => 50 %>
+    </div>
+    <div class="col-xs-11">
+      <span >
+        <% if post.image? then %>
+          <%= image_tag post.image.url, :class => "img-responsive postimage" %>
+        <% end %>
+      </span>
+      <span class="content"><%= post.content.html_safe %></span>
+      <p>
+        <%= link_to post_url(post) do %>
+          <%= pluralize(post.comments.count, 'comment') %>
+        <% end %>
+      </p>
+    </div>
+  </div>
 </li>
