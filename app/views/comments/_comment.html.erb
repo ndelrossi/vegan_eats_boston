@@ -1,10 +1,12 @@
-<li>
-  <span class="timestamp">
-    <% if comment.user then %>
-      Posted by <%= gravatar_for comment.user, :size => 40 %>
-      <%= link_to comment.user.name, comment.user %><br>
-      <%= time_ago_in_words(comment.created_at) %> ago.
-    <% end %>
-  </span>
-  <span class="content"><%= comment.content.try(:html_safe) %></span>
-</li>
+<% if comment.user %>
+  <li>
+    <div class="row">
+      <div class="col-md-2 hidden-xs hidden-sm">
+        <%= gravatar_for comment.user, :size => 50 %>
+      </div>
+      <div class="col-md-10">
+        by <%= link_to comment.user.name, comment.user %>
+        <%= time_ago_in_words(comment.created_at) %> ago.
+      <span class="content"><%= comment.content.try(:html_safe) %></span>
+  </li>
+<% end %>
