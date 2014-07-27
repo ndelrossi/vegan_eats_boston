@@ -9,7 +9,7 @@
         <%= time_ago_in_words(@post.created_at) %> ago.
         <% if @post.user == current_user %>
           <%= link_to "edit", edit_post_path(@post) %>
-          <%= link_to "delete", post, method: :delete,
+          <%= link_to "delete", @post, method: :delete,
                                         data: { confirm: "Delete this post?" } %>
         <% end %>
       </span>
