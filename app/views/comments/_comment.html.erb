@@ -1,12 +1,14 @@
 <% if comment.user %>
   <li>
-    <div class="row">
-      <div class="col-md-2 hidden-xs hidden-sm">
-        <%= gravatar_for comment.user, :size => 50 %>
+    <div class="media">
+      <%= link_to gravatar_for(comment.user, :size => 50, :class => "media-object pull-left"), comment.user, :class => "pull-left" %>
+      <div class="media-body">
+        <h4 class="media-heading">
+          by <%= link_to comment.user.name, comment.user %>
+          <%= time_ago_in_words(comment.created_at) %> ago.
+        </h4>
+        <%= comment.content.try(:html_safe) %>
       </div>
-      <div class="col-md-10">
-        by <%= link_to comment.user.name, comment.user %>
-        <%= time_ago_in_words(comment.created_at) %> ago.
-      <span class="content"><%= comment.content.try(:html_safe) %></span>
+    </div>
   </li>
 <% end %>
