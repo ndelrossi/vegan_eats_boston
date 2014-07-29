@@ -291,7 +291,8 @@ footer {
 .places {
   list-style: none;
   padding: 0;
-  font-size: 1.2em;
+  font-size: 1.1em;
+  line-height: 1.2em;
 
   img {
     float: left;
@@ -306,7 +307,7 @@ footer {
     address {
       padding-top: 5px;
       font-size: .9em;
-      line-height: 1em;
+      line-height: 1.1em;
       margin-bottom: 0px;
     }
   }
