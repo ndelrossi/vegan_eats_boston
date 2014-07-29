@@ -17,7 +17,7 @@ html {
 }
 
 body {
-
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .main-content {
@@ -238,7 +238,7 @@ footer {
 .posts {
   list-style: none;
   padding: 0;
-  font: 1.3em Georgia, "Times New Roman", Times, serif;
+  font-size: 1.3em;
 
   li {
     padding: 10px 0;
@@ -291,7 +291,7 @@ footer {
 .places {
   list-style: none;
   padding: 0;
-  font: 1.2em Georgia, "Times New Roman", Times, serif;
+  font-size: 1.2em;
 
   img {
     float: left;
@@ -333,7 +333,7 @@ footer {
 .reviews {
   list-style: none;
   padding: 0;
-  font: 1.3em Georgia, "Times New Roman", Times, serif;
+  font-size: 1.3em;
 
   li {
     padding: 10px 0px 0px 0px;
@@ -366,7 +366,8 @@ footer {
 .front-page-list {
   list-style: none;
   padding: 0;
-  font: 1.1em Georgia, "Times New Roman", Times, serif;
+  font-size: 1em;
+  line-height: 1.3em;
 
   img {
     float: left;
@@ -402,7 +403,7 @@ footer {
 .comments {
   list-style: none;
   padding: 0;
-  font: 1.2em Georgia, "Times New Roman", Times, serif;
+  font-size: 1.2em;
   border-top: 1px solid #e8e8e8;
 
   li {
