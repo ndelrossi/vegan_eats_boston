@@ -7,17 +7,21 @@
     <%= form_for(@post) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       
-      <%= f.label :title %>
-      <%= f.text_field :title, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "Image (Optional but recommended)" %>
+        <%= f.file_field :image, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :content %>
+        <%= f.text_area :content, class: "wysihtml5", rows: "15" %>
+      </div>
 
-      <%= f.label "Image (Optional but recommended)" %>
-      <%= f.file_field :image, class: "form-control" %>
-
-      <%= f.label :content %>
-      <%= f.text_area :content, class: "wysihtml5", rows: "15" %>
-
-      <br>
       <%= f.submit "Post to blog", class: "btn btn-large btn-primary" %>
+      
     <% end %>
   </div>
 </div>

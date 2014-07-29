@@ -7,13 +7,17 @@
       <%= form_for(@review) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
-        <%= f.label :rating %>
-        <%= f.hidden_field :rating, :value => @review.rating %>
-        <div id="user_star"></div><br>
+        <div class="form-group">
+          <%= f.label :rating %>
+          <%= f.hidden_field :rating, :value => @review.rating %>
+          <div id="user_star"></div>
+        </div>
 
-        <%= f.label :content %>
-        <%= f.text_area :content, rows: "7", placeholder: "Compose review...", class: "wysihtml5" %>
-
+        <div class="form-group">
+          <%= f.label :content %>
+          <%= f.text_area :content, rows: "7", placeholder: "Compose review...", class: "wysihtml5" %>
+        </div>
+        
         <%= f.hidden_field :place_id, :value => params[:id] %>
 
         <%= f.submit "Publish review", class: "btn btn-large btn-primary" %>
