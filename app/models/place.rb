@@ -9,6 +9,11 @@ class Place < ActiveRecord::Base
 
   scope :contains, -> (name) { where("name like ?", "%#{name}%")}
   scope :cities, -> (cities) { where address_city: cities }
+  scope :sort, -> (sort) {
+    direction = "ASC"
+    direction = "DESC" if sort == 'rating'
+    order("#{sort} #{direction}")
+  }
 
   def full_address
     "#{address_line_1} #{address_city}, #{address_state}"

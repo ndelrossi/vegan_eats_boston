@@ -11,31 +11,23 @@ class PlacesController < ApplicationController
     @places = Place.all
     @tags = Place.category_counts
 
-    if params[:search].present?
-      @location = Geocoder.coordinates(params[:search])
+    if params[:location].present?
+      @location = Geocoder.coordinates(params[:location])
       @places = Place.near(@location, 50)
     end
 
-    @places = @places.contains(params[:filter]) if params[:filter].present?
-    @places = @places.cities(params[:cities]) if params[:cities].present?
     @places = @places.tagged_with(params[:categories], :any => true) if params[:categories].present?
 
-    if params[:sort].present?
-      if params[:sort] == "rating"
-        @places = @places.order("rating DESC")
-      else
-        @places = @places.order(params[:sort])
-      end
+    filtering_params(params).each do |key, value|
+      @places = @places.public_send(key, value) if value.present?
     end
     
     @places = smart_listing_create :places, @places, partial: "places/listing",
-                                      default_sort: {name: "asc"}
-
+                                      default_sort: {rating: "DESC"}
     @hash = get_map_markers(@places)
   end
 
   def show
-    @place = Place.find(params[:id])
     @review = @place.reviews.build
     @reviews = Review.where(:place => @place).page(params[:page]).per(10)
   end
@@ -80,5 +72,9 @@ class PlacesController < ApplicationController
 
     def get_place
       @place = Place.find(params[:id])
+    end
+
+    def filtering_params(params)
+      params.slice(:contains, :cities, :sort)
     end
 end
