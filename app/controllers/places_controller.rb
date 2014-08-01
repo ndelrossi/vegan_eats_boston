@@ -15,13 +15,13 @@ class PlacesController < ApplicationController
       @location = Geocoder.coordinates(params[:location])
       @places = Place.near(@location, 50)
     end
-
+    
     @places = @places.tagged_with(params[:categories], :any => true) if params[:categories].present?
 
     filtering_params(params).each do |key, value|
       @places = @places.public_send(key, value) if value.present?
     end
-    
+
     @places = smart_listing_create :places, @places, partial: "places/listing",
                                       default_sort: {rating: "DESC"}
     @hash = get_map_markers(@places)

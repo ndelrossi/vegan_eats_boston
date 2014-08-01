@@ -7,7 +7,7 @@ class Place < ActiveRecord::Base
   after_validation :geocode
   acts_as_taggable_on :categories
 
-  scope :contains, -> (name) { where("name like ?", "%#{name}%")}
+  scope :contains, -> (name) { where("lower(name) like ?", "%#{name.downcase}%")}
   scope :cities, -> (cities) { where address_city: cities }
   scope :sort, -> (sort) {
     sort == 'rating' ? direction = "DESC" : direction = "ASC"
