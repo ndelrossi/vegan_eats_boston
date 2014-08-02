@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
   before_action :admin_user, only: :admin
 
   def home
-    @posts = Post.where(:approved => true).page(params[:page]).per(6)
+    @posts = Post.includes(:user).where(:approved => true).page(params[:page]).per(6)
     @places = Place.order( 'rating DESC' ).limit(10)
   end
 
