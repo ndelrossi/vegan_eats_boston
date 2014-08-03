@@ -69,29 +69,6 @@ header {
   top: 0;
   width: 100%;
   z-index:10;
-  #small-logo {
-    display: inline;
-    #logo-small {
-      img {
-        height: 40px;
-        width: auto;
-        padding-right: 5px;
-        padding-top: 7px;
-      }
-    }
-  }
-}
-
-.affix-top {
-  #small-logo {
-    display: none;
-    #logo-small {
-      img {
-        width: 0px;
-        padding-right: 0px;
-      }
-    }
-  }
 }
 
 .masthead {
