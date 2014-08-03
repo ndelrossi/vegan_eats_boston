@@ -22,7 +22,7 @@
     <div class="place-list-right text-right">
       <div id=<%= "star_" + place.id.to_s %>></div>
       <div class="text" class="text-right">
-        (<%= pluralize(place.reviews.count, 'review') %>)<br><br>
+        (<%= pluralize(place.reviews_count, 'review') %>)<br><br>
       </div>
     </div>
   </div>
