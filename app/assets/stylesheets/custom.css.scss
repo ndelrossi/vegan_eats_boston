@@ -65,6 +65,19 @@ header {
   body {
     padding-top: 60px;
   }
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index:10;
+  #small-logo {
+    display: inline;
+  }
+}
+
+.affix-top {
+  #small-logo {
+    display: none;
+  }
 }
 
 .masthead {
@@ -81,20 +94,6 @@ header {
 .navbar {
   border-top-width: 1px;
   margin-bottom: 0;
-}
-
-#nav.affix {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index:10;
-    #small-logo {
-      display: inline;
-    }
-}
-
-#small-logo {
-  display: none;
 }
 
 #logo {
