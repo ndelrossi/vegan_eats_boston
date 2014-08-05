@@ -14,6 +14,13 @@
         <%= render 'places/place_less', :place => place %>
       <% end %>
     </ul>
+
+    <h3 class="text-center">Recent Reviews</h3>
+    <ul class="front-page-list">
+      <% @reviews.each do |review| %>
+        <%= render 'reviews/review', :review => review %>
+      <% end %>
+    </ul>
   </div>
 </div>
 
