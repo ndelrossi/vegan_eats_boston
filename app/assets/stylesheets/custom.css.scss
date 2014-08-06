@@ -361,7 +361,12 @@ footer {
 
   li {
     padding: 5px 0px 5px 0px;
+    margin-bottom: 10px;
     border-bottom: 1px solid #e8e8e8;
+    h5 {
+      margin-top: 0px;
+    }
+
   }
 
   .place-list-right {
