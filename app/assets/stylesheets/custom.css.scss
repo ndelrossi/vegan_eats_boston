@@ -335,6 +335,10 @@ footer {
     border-top: none;
     padding: 0;
   }
+
+  .collapse.in {
+    display: inline;
+  }
 }
 
 /* place filters */
@@ -355,12 +359,6 @@ footer {
   font-size: 1em;
   line-height: 1.3em;
 
-  img {
-    float: left;
-    height: 50px;
-    width: auto;
-  }
-
   li {
     padding: 5px 0px 5px 0px;
     border-bottom: 1px solid #e8e8e8;
@@ -380,6 +378,10 @@ footer {
       margin-right: 3px;
       float: left;
     }
+  }
+
+  .collapse.in {
+    display: inline;
   }
 }
 

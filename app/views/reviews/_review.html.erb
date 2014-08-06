@@ -1,11 +1,9 @@
 <li>
   <div class="row">
     <div class="col-md-12">
-      <div class="col-md-12">
-        <h5>
-          <%= link_to review.place.name, review.place if params[:controller] != 'places' %>
-        </h5>
-      </div>
+      <h5>
+        <%= link_to review.place.name, review.place if params[:controller] != 'places' %>
+      </h5>
     </div>
     <div class="place-list-right">
       <div class="star">
@@ -13,32 +11,27 @@
       </div>
     </div>
     <div class="col-sm-7">
-      <div class="col-md-12">
-        <div class="media">
-          <%= link_to gravatar_for(review.user, :size => 50, :class => "media-object pull-left"), review.user, :class => "pull-left" %>
-          <div class="media-body">
-            <h5 class="media-heading small">
-              by <%= link_to review.user.name, review.user %><br>
-              <%= time_ago_in_words(review.created_at) %> ago.
-            </h5>
-          </div>
+      <div class="media">
+        <%= link_to gravatar_for(review.user, :size => 40, :class => "media-object pull-left"), review.user, :class => "pull-left" %>
+        <div class="media-body">
+          <h5 class="media-heading small">
+            by <%= link_to review.user.name, review.user %><br>
+            <%= time_ago_in_words(review.created_at) %> ago.
+          </h5>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
-      <div class="col-md-12">
-        <p class="padding-to-top-10">
-          <%= stub_text(review.content, 100).html_safe %>
-          <div id="recent-review-<%= review.id %>" class="collapse">
-            <%= text_no_stub(review.content, 100) %>
-          </div>
-          <a id="rbtn-<%= review.id %>" data-toggle="collapse" data-target="#recent-review-<%= review.id %>">
-            more
-          </a>
-        </p>
-      </div>
+    <div id="review-<%= review.id %>" class="col-md-12 padding-to-top-10">
+      <p>
+        <% if review.content.length > 500 %>
+          <%= truncate(review.content, length: 500, separator: ' ', escape: false) %>
+          <a id="rbtn-<%= review.id %>">more</a>
+        <% else %>
+          <%= review.content.html_safe %>
+        <% end %>
+      </p>
     </div>
   </div>
 </li>
@@ -51,6 +44,7 @@
   });
 
   $('#rbtn-<%= review.id %>').on('click', function() { 
+    $('#review-<%= review.id %>').html('<p><%= review.content.html_safe %></p>');
     $(this).hide();
   });
 </script>
