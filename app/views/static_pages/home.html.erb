@@ -8,14 +8,17 @@
     <%= paginate @posts %>
   </article>
   <div class="col-md-4 padding-to-top-10">
-    <h3 class="text-center">Top Rated</h3>
+    <div class="side-heading">
+      <h4>Top Rated</h4>
+    </div>
     <ul class="front-page-list">
       <% @places.each do |place| %>
         <%= render 'places/place_less', :place => place %>
       <% end %>
     </ul>
-
-    <h3 class="text-center padding-to-top-20">Recent Reviews</h3>
+    <div class="side-heading">
+      <h4>Recent Reviews</h4>
+    </div>
     <ul class="front-page-list">
       <% @reviews.each do |review| %>
         <%= render 'reviews/review', :review => review %>
