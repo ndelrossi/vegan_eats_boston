@@ -1,13 +1,43 @@
-<footer class="footer col-md-12">
-  <small>
-    Web development by Nick DelRossi
-  </small>
-  <nav>
-    <ul>
-      <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "Places", places_path, method: :get %></li>
-      <li><%= link_to "Blog", blog_path %></li>
-      <li><%= link_to "About",  about_path %></li>
-    </ul>
-  </nav>
-</footer>
+<div class="container">
+  <div class="col-md-2 footer-panel">
+    <h5>MENU</h5>
+    <nav>
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Places", places_path, method: :get %></li>
+        <li><%= link_to "Blog", blog_path %></li>
+        <li><%= link_to "About", about_path %></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="col-md-4 footer-panel">
+    <h5>ABOUT</h5>
+    <p><small>
+      Vegan Eats Boston aims to be a community resource for eating vegan in the Boston area. Sit sint omnes et, mel ne utamur eruditi, est magna labores expetendis at. 
+    </p></small>
+    <p><small>
+      Id sea primis quaeque. Posse tantas minimum duo ut, vis ei graeco causae tacimates. Cu mea malis dicam persecuti.
+    </p></small>
+  </div>
+  <div class="col-md-3 footer-panel">
+    <h5>COMMUNITY</h5>
+    <nav>
+      <ul>
+        <li><%= link_to "Boston Vegetarian Society", "http://www.bostonveg.org/" %></li>
+        <li><%= link_to "Boston Meetup", "http://www.meetup.com/Boston-Vegan-Meetup/" %></li>
+        
+      </ul>
+    </nav>
+  </div>
+  <div class="col-md-3 footer-panel">
+    <h5>CONTACT</h5>
+    <nav>
+      <ul>
+        <li><%= mail_to "veganeatsboston@gmail.com" %></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="col-md-12 text-center dev-info">
+    <small>Web development by <%= mail_to "nickwtf@gmail.com", "Nick DelRossi" %></small>
+  </div>
+</div>

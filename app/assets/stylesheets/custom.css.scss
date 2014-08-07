@@ -114,26 +114,41 @@ header {
 /* footer */
 
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid $grayMediumLight;
-  color: $gray-light;
-  a {
-    color: $gray;
-    &:hover {
-      color: $gray-darker;
-    }
-  }
-  small {
-    float: left;
-  }
-  ul {
-    float: right;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e7e7e7;
+  margin-top: 20px;
+  padding: 40px 0 30px 0;
+
+  ul { padding-left: 0; }
+  li {
     list-style: none;
-    li {
-      float: left;
-      margin-left: 10px;
+    a {
+      color: #4D4D4D;
+      font-size: 1.1em;
+      display: block;
+      padding-bottom: 7px;
+      text-decoration: none;
     }
+  }
+
+  small {
+    line-height: 1.5em;
+  }
+
+  h5 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e7e7e7;
+  }
+
+  .footer-panel {
+    padding: 0 50px 20px 50px;
+  }
+
+  .dev-info {
+    a { color: #4D4D4D; }
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #e7e7e7;
   }
 }
 
@@ -145,10 +160,6 @@ footer {
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
-}
-
-.three-col-list {
-  background-color: #f8f8f8 !important;
 }
 
 .jumbotron {
