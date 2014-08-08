@@ -18,6 +18,10 @@ VeganEatsBoston::Application.routes.draw do
   match '/posts/approve',     to: 'posts#approve',        via: 'post'
   match '/posts/unapprove',   to: 'posts#unapprove',      via: 'post'
 
+  get "/404", :to => "errors#not_found"
+  get "/422", :to => "errors#unacceptable"
+  get "/500", :to => "errors#internal_error"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
