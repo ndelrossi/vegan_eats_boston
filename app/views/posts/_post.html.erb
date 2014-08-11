@@ -24,7 +24,7 @@
     <div class="col-xs-11">
       <span >
         <% if post.image? then %>
-          <%= image_tag post.image.url, :class => "img-responsive postimage" %>
+          <%= image_tag post.image.url(:original), :class => "img-responsive postimage" %>
         <% end %>
       </span>
       <span class="content"><%= post.content.html_safe %></span>
