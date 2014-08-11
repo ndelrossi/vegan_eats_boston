@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :comments, dependent: :destroy
   
-  has_attached_file :image
+  has_attached_file :image, :styles => { :original => ['-quality 80', :jpg] }
   default_scope -> { order('created_at DESC') }
   validates :title, presence: true, length: { maximum: 80 }
   validates :content, presence: true
