@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
   :styles => {
     :original => ["1000x500>",:jpg] },
   :convert_options => {
-    :original => "-quality 75 -strip" }
+    :original => "-quality 70 -strip" }
 
   default_scope -> { order('created_at DESC') }
   validates :title, presence: true, length: { maximum: 80 }

@@ -1,7 +1,12 @@
 class Place < ActiveRecord::Base
   
   has_many :reviews, dependent: :destroy
-  has_attached_file :primary_image
+  has_attached_file :primary_image,
+  :styles => {
+    :original => ["200x200>",:jpg] },
+  :convert_options => {
+    :original => "-quality 70 -strip" }
+
   validates_attachment_content_type :primary_image, :content_type => /\Aimage\/.*\Z/
   geocoded_by :full_address
   after_validation :geocode
