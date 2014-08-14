@@ -17,6 +17,7 @@ VeganEatsBoston::Application.routes.draw do
   match '/posts_index_admin', to: 'posts#index_admin',    via: 'get'
   match '/posts/approve',     to: 'posts#approve',        via: 'post'
   match '/posts/unapprove',   to: 'posts#unapprove',      via: 'post'
+  match '/users/activate/:id',    to: 'users#activate',       via: 'get', as: 'users_activate'
 
   get "/404", :to => "errors#not_found"
   get "/422", :to => "errors#unacceptable"

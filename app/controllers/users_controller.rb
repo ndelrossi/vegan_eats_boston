@@ -21,11 +21,23 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      sign_in @user
-      flash[:success] = "Welcome to Vegan Eats Boston!"
-      redirect_to @user
+      #sign_in @user
+      @user.send_activation
+      flash[:info] = "Please follow the link in your email to activate"
+      redirect_to root_url
     else
       render 'new'
+    end
+  end
+  
+  def activate
+    @user = User.find_by_activation_token!(params[:id])
+    if @user.update_attribute(:active, true)
+      sign_in @user
+      flash[:success] = "Account activated. Welcome to Vegan Eats Boston!"
+      redirect_to @user
+    else
+      redirect_to root_url
     end
   end
 

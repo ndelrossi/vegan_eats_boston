@@ -29,6 +29,12 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver
   end
 
+  def send_activation
+    generate_token(:activation_token)
+    save!(validate: false)
+    UserMailer.activate_account(self).deliver
+  end
+
   private
 
     def create_remember_token
