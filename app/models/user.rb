@@ -30,8 +30,10 @@ class User < ActiveRecord::Base
   end
 
   def send_activation
-    generate_token(:activation_token)
-    save!(validate: false)
+    if !self.activation_token?
+      generate_token(:activation_token)
+      save!(validate: false)
+    end
     UserMailer.activate_account(self).deliver
   end
 
