@@ -1,54 +1,57 @@
 <% provide(:title, 'Create Place') %>
 
 <div class="row">
-  <div class="form-group col-md-6 col-md-offset-3">
+  <div class="col-md-6 col-md-offset-3">
     <h1 class="text-center">Create Place</h1>
-
-    <%= form_for(@place) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      
-      <div class="form-group">
-        <%= f.label 'Name' %>
-        <%= f.text_field :name, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label "Primary Image" %>
-        <%= f.file_field :primary_image, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Website URL' %>
-        <%= f.text_field :url_website, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Website URL to menu' %>
-        <%= f.text_field :url_menu, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Address (line 1)' %>
-        <%= f.text_field :address_line_1, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Address (line 2)' %>
-        <%= f.text_field :address_line_2, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'City' %>
-        <%= f.text_field :address_city, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Zip code' %>
-        <%= f.text_field :address_zip_code, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Phone number' %>
-        <%= f.text_field :phone_number, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label 'Categories' %>
-        <%= f.text_field :category_list, class: "form-control" %>
-      </div>
-      
-      <%= f.submit "Create place", class: "btn btn-large btn-primary" %>
-    <% end %>
+    <p>Note: For now we only allow places that have at least one item on the menu that is vegan without having to ask for changes.</p>
+    
+    <div class="form-group">
+      <%= form_for(@place) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        
+        <div class="form-group">
+          <%= f.label 'Name' %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label "Primary Image" %>
+          <%= f.file_field :primary_image, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label 'Website URL' %>
+          <%= f.text_field :url_website, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label 'Website URL to menu' %>
+          <%= f.text_field :url_menu, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label 'Address (line 1)' %>
+          <%= f.text_field :address_line_1, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label 'Address (line 2)' %>
+          <%= f.text_field :address_line_2, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label 'City' %>
+          <%= f.text_field :address_city, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label 'Zip code' %>
+          <%= f.text_field :address_zip_code, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label 'Phone number' %>
+          <%= f.text_field :phone_number, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label 'Categories' %>
+          <%= f.text_field :category_list, class: "form-control" %>
+        </div>
+        
+        <%= f.submit "Create place", class: "btn btn-large btn-primary" %>
+      <% end %>
+    </div>
   </div>
 </div>
