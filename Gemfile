@@ -17,6 +17,7 @@ gem 'geocoder'
 gem 'acts-as-taggable-on', '3.2.6'
 gem 'smart_listing'
 gem 'kaminari'
+gem 'dumper'
 
 gem 'capistrano', '~> 3.1.0'
 gem 'capistrano-bundler', '~> 1.1.2'

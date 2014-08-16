@@ -94,6 +94,10 @@ GEM
       nokogiri (>= 1.5.0)
       rails (>= 3.0.0)
     diff-lcs (1.2.5)
+    dumper (1.5.0)
+      multi_json (>= 1.0)
+      multipart-post (>= 1.1.5)
+      posix-spawn (>= 0.3.6)
     erubis (2.7.0)
     execjs (2.2.1)
     factory_girl (4.2.0)
@@ -131,6 +135,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.10.1)
     multi_test (0.1.1)
+    multipart-post (2.0.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
@@ -143,6 +148,7 @@ GEM
       mime-types
     pg (0.15.1)
     polyglot (0.3.5)
+    posix-spawn (0.3.9)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -246,6 +252,7 @@ DEPENDENCIES
   coffee-rails (= 4.0.1)
   cucumber-rails (= 1.4.0)
   database_cleaner!
+  dumper
   factory_girl_rails (= 4.2.1)
   faker (= 1.1.2)
   geocoder
