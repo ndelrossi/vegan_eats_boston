@@ -11,20 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814111809) do
+ActiveRecord::Schema.define(version: 20140818112633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "comments", force: true do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.integer  "post_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comments", ["user_id", "post_id", "created_at"], name: "index_comments_on_user_id_and_post_id_and_created_at", using: :btree
 
   create_table "places", force: true do |t|
     t.string   "name"
@@ -61,7 +51,6 @@ ActiveRecord::Schema.define(version: 20140814111809) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.boolean  "approved",           default: false
-    t.integer  "comments_count"
   end
 
   add_index "posts", ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at", using: :btree
