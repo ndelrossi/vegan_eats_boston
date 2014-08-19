@@ -11,7 +11,6 @@ describe Post do
   it { should respond_to(:content) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
-  it { should respond_to(:comments) }
   it { should respond_to(:approved) }
   its(:user) { should eq user }
 
