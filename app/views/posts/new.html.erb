@@ -3,6 +3,8 @@
 <div class="row">
   <div class="form-group col-md-6 col-md-offset-3">
     <h1 class="text-center">Create Post</h1>
+    
+    <p>Note: Your post will not show up on the front page until it is approved by an admin.</p>
 
     <%= form_for(@post) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
