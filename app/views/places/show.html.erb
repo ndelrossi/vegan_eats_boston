@@ -16,7 +16,7 @@
     </address>
     <address> 
       Phone number: <%= @place.phone_number %><br>
-      Menu: <%= link_to @place.url_menu, "http://#{@place.url_menu}"%><br>
+      <%= link_to "Menu", "http://#{@place.url_menu}"%><br>
     </address>
   </div>
   <div class="col-md-2 pull-right">
