@@ -38,6 +38,8 @@ class PlacesController < ApplicationController
 
   def create
     @place = Place.new(place_params)
+    @place.url_website = strip_url(@place.url_website)
+    @place.url_menu = strip_url(@place.url_menu)
     @place.address_state = 'MA'
     if @place.save
       flash[:success] = "Place created!"
@@ -76,5 +78,9 @@ class PlacesController < ApplicationController
 
     def filtering_params(params)
       params.slice(:contains, :cities, :sort)
+    end
+
+    def strip_url(url)
+      url.sub(/https?\:\/\//, '')
     end
 end

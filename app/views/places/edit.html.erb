@@ -32,9 +32,11 @@
       <%= f.text_field :address_zip_code, class: "form-control" %>
 
       <%= f.label 'Phone number' %>
+      <p>Use the format (555) 555-5555</p>
       <%= f.text_field :phone_number, class: "form-control" %>
 
       <%= f.label 'Categories' %>
+      <p>Separate with commas, e.g. Pizza, Smoothies</p>
       <%= f.text_field :category_list, class: "form-control" %>
 
       <%= f.submit "Update place", class: "btn btn-large btn-primary" %>
