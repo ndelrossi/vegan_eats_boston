@@ -1,11 +1,11 @@
 class Place < ActiveRecord::Base
   
   has_many :reviews, dependent: :destroy
-  has_attached_file :primary_image,
+  has_attached_file :primary_image, :default_url => "/assets/missing-place.jpg",
   :styles => {
     :original => ["200x200>",:jpg] },
   :convert_options => {
-    :original => "-quality 70 -strip" }
+    :original => "-quality 70 -strip -resize x400 -resize '400x<' -resize 50% -gravity center -crop 200x200+0+0 +repage" }
 
   validates_attachment_content_type :primary_image, :content_type => /\Aimage\/.*\Z/
   geocoded_by :full_address

@@ -2,22 +2,22 @@
   <div class="row">
     <div class="col-xs-7">
       <%= image_tag place.primary_image.url, :class => "hidden-xs" %>
-        <strong><%= index + 1 %> <%= link_to place.name, place %></strong>
-        <% if params[:location].present? %>
-          <%= "(" + place.distance_from(@location).round(2).to_s + " miles)" %>
-        <% end %><br>
-        <%= place.category_list %><br>
-        <address>
-          <%= place.address_line_1 %>
-            <% if !place.address_line_2.empty? %>
-              <%= ', ' + place.address_line_2 %>   
-            <% end %>
-            <%= tag(:br) %>
-            <%= place.address_city %>, <%= place.address_state %> <%= place.address_zip_code %><br>
-          <%= place.phone_number %><br>
-          <%= link_to "website", "http://#{place.url_website}"%><%= ", " %>
-          <%= link_to "menu", "http://#{place.url_menu}"%>
-        </address>
+      <strong><%= index + 1 %> <%= link_to place.name, place %></strong>
+      <% if params[:location].present? %>
+        <%= "(" + place.distance_from(@location).round(2).to_s + " miles)" %>
+      <% end %><br>
+      <%= place.category_list %><br>
+      <address>
+        <%= place.address_line_1 %>
+          <% if !place.address_line_2.empty? %>
+            <%= ', ' + place.address_line_2 %>   
+          <% end %>
+          <%= tag(:br) %>
+          <%= place.address_city %>, <%= place.address_state %> <%= place.address_zip_code %><br>
+        <%= place.phone_number %><br>
+        <%= link_to "website", "http://#{place.url_website}"%><%= ", " %>
+        <%= link_to "menu", "http://#{place.url_menu}"%>
+      </address>
     </div>
     <div class="place-list-right text-right">
       <div id=<%= "star_" + place.id.to_s %>></div>
