@@ -23,7 +23,7 @@
           </ol>
           <%= paginate @posts %>
         <% else %>
-          <%= content_tag(:p, "You have no posts.") %>
+          <%= content_tag(:p, "There are no posts.") %>
         <% end %>
       </div>
       <div class="tab-pane" id="reviews">
@@ -32,7 +32,7 @@
             <%= render @reviews %>
           </ol>
         <% else %>
-          <%= content_tag(:p, "You have no reviews.") %>
+          <%= content_tag(:p, "There are no reviews.") %>
         <% end %>
       </div>
     </div>
