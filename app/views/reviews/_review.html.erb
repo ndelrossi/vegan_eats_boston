@@ -25,12 +25,7 @@
   <div class="row">
     <div id="review-<%= review.id %>" class="col-md-12 padding-to-top-10">
       <p>
-        <% if review.content.length > 500 %>
-          <%= truncate(review.content, length: 500, separator: ' ', escape: false) %>
-          <a id="rbtn-<%= review.id %>">more</a>
-        <% else %>
-          <%= review.content.html_safe %>
-        <% end %>
+        <%= review.content.html_safe %>
       </p>
     </div>
   </div>
@@ -41,10 +36,5 @@
     readOnly: true,
     score: <%= review.rating %>,
     path: '/assets'
-  });
-
-  $('#rbtn-<%= review.id %>').on('click', function() { 
-    $('#review-<%= review.id %>').html('<p><%= review.content.html_safe %></p>');
-    $(this).hide();
   });
 </script>
