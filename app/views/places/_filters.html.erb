@@ -16,6 +16,9 @@
         <h4>Cities:</h4>
         <div class="checkbox form-group">
           <label class="col-xs-6">
+            <%= check_box_tag("cities[]", "Allston") %> Allston
+          </label>
+          <label class="col-xs-6">
             <%= check_box_tag("cities[]", "Boston") %> Boston
           </label>
           <label class="col-xs-6">
@@ -27,8 +30,11 @@
           <label class="col-xs-6">
             <%= check_box_tag("cities[]", "Newton") %> Newton
           </label>
-          <label>
+          <label class="col-xs-6">
             <%= check_box_tag("cities[]", "Somerville") %> Somerville
+          </label>
+          <label>
+            <%= check_box_tag("cities[]", "Watertown") %> Watertown
           </label>
         </div>
       </div>
