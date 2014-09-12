@@ -225,6 +225,14 @@ footer {
   margin-bottom: 20px;
 }
 
+#map-canvas img { 
+  max-width: none;
+}
+
+#map-canvas label { 
+  width: auto; display:inline; 
+} 
+
 /* forms */
 
 #error_explanation {
@@ -289,7 +297,6 @@ footer {
 .place {
   img {
     float: left;
-    margin-right: 10px;
     max-height: 200px;
     max-width: 200px;
   }
