@@ -53,11 +53,14 @@ class PlacesController < ApplicationController
   end
 
   def update
-    if @place.update_attributes(place_params)
-      flash[:success] = "Place updated"
-      redirect_to @place
-    else
-      render 'edit'
+    respond_to do |format|
+      if @place.update_attributes(place_params)
+        format.html { redirect_to(@place, :success => 'Place was successfully updated.') }
+        format.json { respond_with_bip(@place) }
+      else
+        format.html { render :action => "edit" }
+        format.json { respond_with_bip(@place) }
+      end
     end
   end
 
@@ -69,7 +72,7 @@ class PlacesController < ApplicationController
   private
 
     def place_params
-      params.require(:place).permit(:full_address, :name, :primary_image, :url_website, :url_menu, :address_line_1, :address_line_2, :address_city, :address_zip_code, :phone_number, :category_list)
+      params.require(:place).permit(:full_address, :name, :description, :primary_image, :url_website, :url_menu, :address_line_1, :address_line_2, :address_city, :address_zip_code, :phone_number, :category_list)
     end
 
     def get_place
