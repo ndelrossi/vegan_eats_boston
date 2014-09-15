@@ -72,7 +72,7 @@
         </ul>
         <%= form_tag(places_path, :method =>  :get, id: "search-form", class: "navbar-form navbar-right", role: "search") do %>
           <div class="input-group">   
-            <%= text_field_tag :location, nil, placeholder: "Search by location", class: "form-control" %>
+            <%= text_field_tag :search, nil, placeholder: "Address or name", class: "form-control" %>
             <span class="input-group-btn">
               <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
             </span>

@@ -11,11 +11,18 @@ class PlacesController < ApplicationController
     @places = Place.all
     @tags = Place.category_counts
 
-    if params[:location].present?
-      @location = Geocoder.coordinates(params[:location])
+    if params[:search].present?
+      @location = Geocoder.coordinates(params[:search])
       @places = Place.near(@location, 50)
+      
+      #Couldnt find address, search by name
+      if @places.count == 0
+        params[:contains] = params[:search]
+        params[:search] = nil
+        @places = Place.all
+      end
     end
-    
+
     @places = @places.tagged_with(params[:categories], :any => true) if params[:categories].present?
 
     filtering_params(params).each do |key, value|
