@@ -3,7 +3,7 @@
 <div class="row space-to-bottom-40">
   <div class="col-md-6 clearfix">
     <h4><%= @place.name %></h4>
-    <%= best_in_place_if signed_in? && current_user.admin?, @place, :description, :type => :textarea %><br>
+    <%= best_in_place_if signed_in? && current_user.admin?, @place, :description, :type => :textarea, :nil => "Click here to add description." %><br>
     <%= link_to @place.url_website, "http://#{@place.url_website}"%><br>
     <%= @place.category_list %><br>
 

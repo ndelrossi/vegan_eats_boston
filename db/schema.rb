@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140914123653) do
+ActiveRecord::Schema.define(version: 20140915123149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20140914123653) do
     t.float    "longitude"
     t.float    "rating",                     default: 0.0
     t.integer  "reviews_count"
-    t.text     "description",                default: "Click here as admin to add description."
+    t.text     "description"
   end
 
   add_index "places", ["created_at"], name: "index_places_on_created_at", using: :btree
