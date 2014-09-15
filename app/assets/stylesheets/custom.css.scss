@@ -225,14 +225,6 @@ footer {
   margin-bottom: 20px;
 }
 
-#map-canvas img { 
-  max-width: none;
-}
-
-#map-canvas label { 
-  width: auto; display:inline; 
-} 
-
 /* forms */
 
 #error_explanation {
@@ -301,7 +293,6 @@ footer {
     max-width: 200px;
   }
 }
-
 
 .places {
   list-style: none;
