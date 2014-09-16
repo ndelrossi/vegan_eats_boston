@@ -7,7 +7,7 @@
     </div>
     <div class="place-list-right">
       <div class="star">
-        <div id=<%= "star_" + review.id.to_s %>></div>
+        <div id=<%= "star_review" + review.id.to_s %>></div>
       </div>
     </div>
     <div class="col-sm-7">
@@ -32,7 +32,7 @@
 </li>
 
 <script type="text/javascript">
-  $('#star_<%= review.id.to_s %>').raty({
+  $('#star_review<%= review.id.to_s %>').raty({
     readOnly: true,
     score: <%= review.rating %>,
     path: '/assets'
