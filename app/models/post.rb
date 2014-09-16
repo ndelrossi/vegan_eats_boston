@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :user
   
-  has_attached_file :image,
+  has_attached_file :image, s3_permissions: :private, s3_server_side_encryption: :aes256,
   :styles => {
     :original => ["1000x500>",:jpg] },
   :convert_options => {

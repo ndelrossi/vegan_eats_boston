@@ -1,7 +1,8 @@
 class Place < ActiveRecord::Base
   
   has_many :reviews, dependent: :destroy
-  has_attached_file :primary_image, :default_url => "/assets/missing-place.jpg",
+  has_attached_file :primary_image, s3_permissions: :private, s3_server_side_encryption: :aes256,
+  :default_url => "/assets/missing-place.jpg",
   :styles => {
     :original => ["200x200>",:jpg] },
   :convert_options => {
