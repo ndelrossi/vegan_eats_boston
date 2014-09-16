@@ -7,7 +7,7 @@ module MapHelper
       marker.lat place.latitude
       marker.lng place.longitude
       marker.picture({
-       "url" => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=#{counter}|209600|000000",
+       "url" => "/assets/map-icons/icon-#{counter}.png",
        "width" =>  32,
        "height" => 32})
       marker.title place.name
