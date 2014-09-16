@@ -273,7 +273,7 @@ DEPENDENCIES
   kaminari
   launchy (~> 2.4.2)
   libnotify (= 0.8.0)
-  paperclip (~> 4.1)
+  paperclip (= 4.2)
   pg (= 0.15.1)
   rails (= 4.0.5)
   rails-i18n (~> 4.0.0)

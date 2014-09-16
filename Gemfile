@@ -7,7 +7,7 @@ gem 'bootstrap-sass', '3.1.1.1'
 gem 'sprockets', '2.11.0'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
-gem "paperclip", "~> 4.1"
+gem "paperclip", "4.2"
 gem 'aws-sdk'
 gem 'bootstrap-wysihtml5-rails'
 gem 'rails-i18n', '~> 4.0.0'
