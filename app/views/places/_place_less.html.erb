@@ -3,7 +3,7 @@
     <div class="col-xs-7">
         <strong><%= link_to place.name, place %></strong><br>
         <%= place.address_city %>, <%= place.address_state %><br>
-        <%= place.category_list %>
+        <%= place_categories(place) %>
     </div>
     <div class="place-list-right text-right">
       <div id=<%= "star_place_" + place.id.to_s %>></div>

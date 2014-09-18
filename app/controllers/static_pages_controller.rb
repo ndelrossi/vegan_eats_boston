@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
 
   def home
     @posts = Post.includes(:user).where(:approved => true).page(params[:page]).per(5)
-    @places = Place.order( 'rating DESC' ).limit(5)
+    @places = Place.includes(:categories).order( 'rating DESC' ).limit(5)
     @reviews = Review.order( 'created_at DESC' ).limit(3)
   end
 
