@@ -29,7 +29,7 @@ class PlacesController < ApplicationController
       @places = @places.public_send(key, value) if value.present?
     end
 
-    @places = smart_listing_create :places, @places, partial: "places/listing",
+    @places = smart_listing_create :places, @places.includes(:categories), partial: "places/listing",
                                       default_sort: {rating: "DESC"}
     @hash = get_map_markers(@places)
   end

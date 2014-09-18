@@ -6,7 +6,7 @@
       <% if params[:search].present? %>
         <%= "(" + place.distance_from(@location).round(2).to_s + " miles)" %>
       <% end %><br>
-      <%= place.category_list %><br>
+      <%= place_categories(place) %><br>
       <address>
         <%= place.address_line_1 %>
           <% if !place.address_line_2.empty? %>
