@@ -7,7 +7,7 @@
     <%= link_to @place.url_website, "http://#{@place.url_website}"%><br>
     <%= @place.category_list %><br>
 
-    <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=350x180&markers=color:0x209600%7C#{@place.address_line_1}+#{@place.address_city},MA" %>
+    <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=350x180&markers=color:0x209600%7C#{@place.address_line_1}+#{@place.address_city},MA" %>
 
     <address>
       <%= @place.address_line_1 %><br>
