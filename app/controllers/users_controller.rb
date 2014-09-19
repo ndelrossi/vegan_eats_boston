@@ -65,7 +65,7 @@ class UsersController < ApplicationController
     # For security. Always use (user_params) over (params[:user])
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :avatar)
     end
 
     # Before filters

@@ -3,6 +3,7 @@
 <div class="row">
   <div class="form-group col-md-4 col-md-offset-4">
     <h2 class="text-center">Update your profile</h2>
+    <p>Note: You must enter both password and confirm password to change any profile settings.</p>
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
@@ -15,18 +16,21 @@
         <%= f.text_field :email, :readonly => true, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :password %>
+        <%= f.label :password, "Password (required)" %>
         <%= f.password_field :password, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.label :password_confirmation, "Confirm Password (required)" %>
         <%= f.password_field :password_confirmation, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :avatar, "Profile Image" %>
+        <%= f.file_field :avatar %>
       </div>
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
     <br>
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails" target="_blank">change</a>
+    
   </div>
 </div>

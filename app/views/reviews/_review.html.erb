@@ -11,8 +11,8 @@
       </div>
     </div>
     <div class="col-sm-7">
-      <div class="media">
-        <%= link_to gravatar_for(review.user, :size => 40, :class => "media-object pull-left"), review.user, :class => "pull-left" %>
+      <div class="media review-img">
+        <%= link_to avatar_for(review.user, :style => :thumb, :class => "media-object pull-left"), review.user, :class => "pull-left" %>
         <div class="media-body">
           <h5 class="media-heading small">
             by <%= link_to review.user.name, review.user %><br>
