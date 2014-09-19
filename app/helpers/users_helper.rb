@@ -6,14 +6,14 @@ module UsersHelper
     if user.avatar.url != "/avatars/original/missing.png"
       image_tag user.avatar.url(options[:style])
     else
-      gravatar_for(user)
+      gravatar_for(user, options)
     end
   end
 
   # Returns the Gravatar (http://gravatar.com/) for the given user.
-  def gravatar_for(user, options = { size: 50 })
+  def gravatar_for(user, options)
     gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
-    size = options[:size]
+    options[:style] == :thumb ? size = 50 : size = 200 
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
