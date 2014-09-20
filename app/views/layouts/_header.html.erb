@@ -72,9 +72,11 @@
         </ul>
         <%= form_tag(places_path, :method =>  :get, id: "search-form", class: "navbar-form navbar-right", role: "search") do %>
           <div class="input-group">   
-            <%= text_field_tag :search, nil, placeholder: "Address or name", class: "form-control" %>
+            <%= text_field_tag :search, nil, placeholder: "Search by address or name", class: "form-control nav-search" %>
             <span class="input-group-btn">
-              <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
+              <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+                <span class="glyphicon glyphicon-search"></span> 
+              <% end %>
             </span>
           </div>
         <% end %>
