@@ -6,7 +6,8 @@
     <%= render 'posts/table_posts' %>
     <%= link_to "All posts", posts_index_admin_path %><br><br>
     <%= render 'places/table_places' %>
-    <%= link_to "All places", places_path %><br><br>
+    <%= link_to "All places", places_path %>
+    <%= paginate @places %><br><br>
     <%= render 'users/table_users' %>
     <%= link_to "All users", users_path %><br><br>
     <%= render 'reviews/table_reviews' %>
