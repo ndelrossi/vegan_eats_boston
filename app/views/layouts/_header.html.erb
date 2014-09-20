@@ -93,4 +93,12 @@
     }
   });
   $('#nav-wrapper').height($("#nav").height());
+
+  $(window).resize(function(){
+    if ($(window).width() < 767){  
+      $('.nav-search').css("cssText", "width: 100% !important;");
+    } else {
+      $('.nav-search').css("cssText", "width: 400px !important;");
+    }
+  });
 </script>
