@@ -16,7 +16,7 @@ class PlacesController < ApplicationController
       @places = Place.near(@location, 50)
       
       #Couldnt find address, search by name
-      if @places.count == 0
+      if @places.empty?
         params[:contains] = params[:search]
         params[:search] = nil
         @places = Place.all
