@@ -31,7 +31,7 @@ class PlacesController < ApplicationController
 
     @places = smart_listing_create :places, @places.includes(:categories), partial: "places/listing",
                                       default_sort: {rating: "DESC"}
-    @hash = get_map_markers(@places)
+    @map_data = get_map_markers(@places)
   end
 
   def show
