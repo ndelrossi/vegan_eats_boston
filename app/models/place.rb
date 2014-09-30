@@ -17,7 +17,7 @@ class Place < ActiveRecord::Base
   scope :cities, -> (cities) { where address_city: cities }
   scope :sort, -> (sort) {
     sort == 'rating' ? direction = "DESC" : direction = "ASC"
-    order("#{sort} #{direction}, id ASC")
+    order("#{sort} #{direction}")
   }
 
   def full_address
