@@ -10,6 +10,12 @@ $grayMediumLight: #eaeaea;
   box-sizing: border-box;
 }
 
+@media(min-width:768px) {
+  .main-content {
+    padding-left: 30px;
+  }
+}
+
 /* universal */
 
 html {
