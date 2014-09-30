@@ -8,7 +8,6 @@ class PlacesController < ApplicationController
   before_action :get_place, only: [:show, :edit, :update, :destroy]
 
   def index
-    params[:sort] = 'rating' if !params[:sort].present?
 
     @places = Place.all
     @tags = Place.category_counts
