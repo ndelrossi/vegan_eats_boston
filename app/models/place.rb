@@ -25,10 +25,6 @@ class Place < ActiveRecord::Base
   end
 
   def get_average_rating
-    rating_sum = 0
-    self.reviews.each do |r|
-      rating_sum += r.rating
-    end
-    rating = rating_sum.to_f / reviews.size.to_f
+    self.reviews.inject(0.0) { |sum, review| sum + review.rating } / reviews.size
   end
 end
