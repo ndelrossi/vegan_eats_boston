@@ -16,8 +16,6 @@ describe Review do
   it { should respond_to(:user) }
   it { should respond_to(:place_id) }
   it { should respond_to(:place) }
-  its(:user) { should eq user }
-  its(:place) { should eq place }
 
   it { should be_valid }
 

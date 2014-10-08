@@ -82,7 +82,6 @@ describe "User pages" do
     describe "page" do
       it { should have_content("Update your profile") }
       it { should have_title("Edit user") }
-      it { should have_link('change', href: 'http://gravatar.com/emails') }
     end
 
     describe "with invalid information" do
@@ -97,8 +96,8 @@ describe "User pages" do
       before do
         fill_in "Name",             with: new_name
         #fill_in "Email",            with: new_email
-        fill_in "Password",         with: user.password
-        fill_in "Confirm Password", with: user.password
+        fill_in 'user_password',         with: user.password
+        fill_in 'user_password_confirmation', with: user.password
         click_button "Save changes"
       end
 

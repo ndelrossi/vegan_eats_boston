@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Post do
+  include Rails.application.routes.url_helpers
 
   let(:user) { FactoryGirl.create(:user) }
   before { @post = user.posts.build(title: "Title", content: "Lorem ipsum", approved: true) }
@@ -12,7 +13,6 @@ describe Post do
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
   it { should respond_to(:approved) }
-  its(:user) { should eq user }
 
   it { should be_valid }
 

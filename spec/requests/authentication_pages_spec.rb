@@ -21,7 +21,7 @@ describe "Authentication" do
       it { should have_selector('div.alert.alert-danger') }
 
       describe "after visiting another page" do
-        before { click_link "Home" }
+        before { first(:link, "Home").click }
         it { should_not have_selector('div.alert.alert-danger') }
       end
     end
@@ -37,7 +37,7 @@ describe "Authentication" do
       it { should_not have_link('Sign in', href: signin_path) }
 
       describe "followed by signout" do
-        before { click_link "Sign out" }
+        before { first(:link, "Sign out").click }
         it { should have_link('Sign in') }
       end
     end
@@ -57,9 +57,8 @@ describe "Authentication" do
         end
 
         describe "after signing in" do
-
           it "should render the desired protected page" do
-            expect(page).to have_title(user.name)
+            expect(current_path).to eq edit_user_path(user)
           end
         end
       end
