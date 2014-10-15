@@ -18,12 +18,6 @@ FactoryGirl.define do
     user
   end
 
-  factory :comment do
-    content "Comment Test"
-    post
-    user
-  end
-
   factory :place do
     name "Example Place"
     url_website "www.exampleplace.com"
@@ -34,5 +28,12 @@ FactoryGirl.define do
     address_state "MA"
     address_zip_code "02108"
     phone_number "555-555-5555"
+  end
+  
+  factory :review do
+    content "This is a review"
+    rating 80
+    post
+    user
   end
 end

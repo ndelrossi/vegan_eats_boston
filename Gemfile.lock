@@ -217,6 +217,8 @@ GEM
       multi_json (~> 1.0)
       rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
+    shoulda-matchers (2.7.0)
+      activesupport (>= 3.0.0)
     smart_listing (1.0.0)
       coffee-rails
       kaminari (>= 0.15.1)
@@ -287,6 +289,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (= 0.3.20)
   selenium-webdriver (= 2.35.1)
+  shoulda-matchers
   smart_listing
   sprockets (= 2.11.0)
   turbolinks (= 2.2.3)
