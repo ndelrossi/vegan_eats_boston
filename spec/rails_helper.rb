@@ -39,6 +39,8 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  config.include FactoryGirl::Syntax::Methods
+
   config.include Capybara::DSL
 
   config.infer_spec_type_from_file_location!
