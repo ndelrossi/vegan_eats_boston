@@ -1,33 +1,21 @@
 require 'rails_helper'
 
 describe Post do
-  include Rails.application.routes.url_helpers
+  it { is_expected.to belong_to(:user) }
+  it { is_expected.to validate_presence_of(:title) }
+  it { is_expected.to ensure_length_of(:title).is_at_most(80) }
+  it { is_expected.to validate_presence_of(:content) }
+  it { is_expected.to validate_presence_of(:user_id) }
+  it { is_expected.to validate_attachment_content_type(:image).
+                allowing('image/png', 'image/gif', 'image/jpg').
+                rejecting('text/plain', 'text/xml') }
 
-  let(:user) { FactoryGirl.create(:user) }
-  before { @post = user.posts.build(title: "Title", content: "Lorem ipsum", approved: true) }
-
-  subject { @post }
-
-  it { should respond_to(:title) }
-  it { should respond_to(:content) }
-  it { should respond_to(:user_id) }
-  it { should respond_to(:user) }
-  it { should respond_to(:approved) }
-
-  it { should be_valid }
-
-  describe "when user_id is not present" do
-    before { @post.user_id = nil }
-    it { should_not be_valid }
-  end
-
-  describe "with blank title" do
-    before { @post.title = " " }
-    it { should_not be_valid }
-  end
-
-  describe "with blank content" do
-    before { @post.content = " " }
-    it { should_not be_valid }
+  describe "scopes" do
+    it 'should have a default order of date descending' do
+      create(:post, title: "one", created_at: 3.days.ago)
+      create(:post, title: "two", created_at: 1.days.ago)
+      create(:post, title: "three", created_at: 2.days.ago)
+      expect(Post.pluck(:title)).to eq(%w(two three one))
+    end
   end
 end
