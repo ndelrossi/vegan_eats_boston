@@ -2,14 +2,9 @@ require 'rails_helper'
 
 describe User do
 
-  before do
-    @user = User.new(name: "Example User", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")
-  end
-  
   describe "associations" do
-    it { is_expected.to have_many(:posts) }
-    it { is_expected.to have_many(:reviews) }
+    it { is_expected.to have_many(:posts).dependent(:destroy) }
+    it { is_expected.to have_many(:reviews).dependent(:destroy) }
   end
 
   describe "validations" do
@@ -18,6 +13,9 @@ describe User do
     it { is_expected.to validate_presence_of(:password) }
     it { is_expected.to validate_confirmation_of(:password) }
     it { is_expected.to ensure_length_of(:password).is_at_least(6) }
+    it { is_expected.to validate_attachment_content_type(:avatar).
+                  allowing('image/png', 'image/gif', 'image/jpg').
+                  rejecting('text/plain', 'text/xml') }
 
     context "email" do
       it { is_expected.to validate_presence_of(:email) }
@@ -42,66 +40,12 @@ describe User do
     end
   end
 
-  describe "admin status" do
-    context "without admin attribute set to 'true'" do
-      it "should not be an admin" do
-        user = create(:user)
-        expect(user).not_to be_admin
-      end
-    end
-    
-    context "with admin attribute set to 'true'" do
-      it "should be admin" do
-        admin = create(:user, admin: true)
-        expect(admin).to be_admin
-      end
-    end
-  end
+  describe "new" do
+    subject { create(:inactive_user) }
 
-  describe "return value of authenticate method" do
-    before { @user.save }
-    let(:found_user) { User.find_by(email: @user.email) }
-
-    describe "with valid password" do
-      it { should eq found_user.authenticate(@user.password) }
-    end
-
-    describe "with invalid password" do
-      let(:user_for_invalid_password) { found_user.authenticate("invalid") }
-
-      it { should_not eq user_for_invalid_password }
-      it { user_for_invalid_password.should be_falsey }
-    end
-  end
-
-  describe "remember token" do
-    before { @user.save }
-    it "to not be blank" do
-      expect(:remember_token).to_not be_blank
-    end
-  end
-
-  describe "post associations" do
-
-    before { @user.save }
-    let!(:older_post) do
-      FactoryGirl.create(:post, user: @user, created_at: 1.day.ago)
-    end
-    let!(:newer_post) do
-      FactoryGirl.create(:post, user: @user, created_at: 1.hour.ago)
-    end
-
-    it "should have the right posts in the right order" do
-      expect(@user.posts.to_a).to eq [newer_post, older_post]
-    end
-
-    it "should destroy associated posts" do
-      posts = @user.posts.to_a
-      @user.destroy
-      expect(posts).not_to be_empty
-      posts.each do |post|
-        expect(Post.where(id: post.id)).to be_empty
-      end
-    end
+    it { is_expected.to be_valid }
+    it { is_expected.not_to be_active }
+    it { is_expected.not_to be_admin }
+    it { expect(:remember_token).to_not be_blank }
   end
 end
