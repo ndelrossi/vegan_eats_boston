@@ -47,5 +47,11 @@ describe User do
     it { is_expected.not_to be_active }
     it { is_expected.not_to be_admin }
     it { expect(:remember_token).to_not be_blank }
+
+    it "should save the email as lowercase" do
+      user = create(:user, email: "UPPERCASE@TEST.COM")
+      user.save
+      expect(user.email).to eq "uppercase@test.com"
+    end
   end
 end
