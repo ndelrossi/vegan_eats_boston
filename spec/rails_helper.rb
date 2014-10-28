@@ -42,7 +42,6 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include Paperclip::Shoulda::Matchers
-
   config.include Capybara::DSL
 
   config.infer_spec_type_from_file_location!

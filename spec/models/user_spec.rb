@@ -48,10 +48,84 @@ describe User do
     it { is_expected.not_to be_admin }
     it { expect(:remember_token).to_not be_blank }
 
-    it "should save the email as lowercase" do
-      user = create(:user, email: "UPPERCASE@TEST.COM")
+    it "saves the email as lowercase" do
+      user = create(:user, email: "CASETEST@TEST.COM")
       user.save
-      expect(user.email).to eq "uppercase@test.com"
+      expect(user.email).to eq "casetest@test.com"
+    end
+  end
+
+  describe "#send_password_reset" do
+    let(:user) { create(:user) }
+
+    before { user.send_password_reset }
+
+    it "generates a unique password_reset_token each time" do  
+      last_token = user.password_reset_token  
+      user.send_password_reset  
+      expect(user.password_reset_token).not_to eq(last_token)  
+    end  
+  
+    it "saves the time the password reset was sent" do  
+      expect(user.reload.password_reset_sent_at).to be_present  
+    end  
+  
+    it "delivers email to user" do  
+      last_email_recipient = ActionMailer::Base.deliveries.last.to
+      expect(last_email_recipient).to eq ([user.email])  
+    end  
+  end
+
+  describe "#send_activation" do
+    let(:user) { create(:user) }
+
+    before { user.send_activation }
+
+    it "creates activation token" do  
+      expect(user.activation_token).to be_present  
+    end  
+  
+    it "delivers email to user" do  
+      last_email_recipient = ActionMailer::Base.deliveries.last.to
+      expect(last_email_recipient).to eq ([user.email])  
+    end  
+  end
+
+  describe "#create_remember_token" do
+    let(:user) { create(:user) }
+    
+    it "creates remember token" do
+      user.remember_token = nil
+      user.send(:create_remember_token)
+      expect(user.remember_token).to be_present
+    end
+  end
+
+  describe "#generate_token(column)" do
+    let(:user) { create(:user) }
+
+    it "generates a token" do
+      user.password_reset_token = nil
+      user.send(:generate_token, :password_reset_token)
+      expect(user.password_reset_token).to be_present
+    end
+  end
+
+  describe ".new_remember_token do" do
+    it "returns a random token" do
+      token = User.new_remember_token
+      token2 = User.new_remember_token
+      expect(token.length).to be >= 16
+      expect(token).to_not eq (token2)
+    end
+  end
+
+  describe ".digest" do
+    it "returns digest of token" do
+      token = "sdjfgal"
+      digest = User.digest(token)
+      expect(digest).to_not eq (token)
+      expect(digest).to eq (User.digest("sdjfgal"))
     end
   end
 end
