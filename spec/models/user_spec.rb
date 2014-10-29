@@ -40,6 +40,15 @@ describe User do
     end
   end
 
+  describe "scopes" do
+    it 'should have a default order of date descending' do
+      create(:user, name: "one", created_at: 3.days.ago)
+      create(:user, name: "two", created_at: 1.days.ago)
+      create(:user, name: "three", created_at: 2.days.ago)
+      expect(User.pluck(:name)).to eq(%w(two three one))
+    end
+  end
+
   describe "new" do
     subject { create(:inactive_user) }
 
