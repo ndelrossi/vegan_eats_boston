@@ -11,11 +11,21 @@ describe Post do
                 rejecting('text/plain', 'text/xml') }
 
   describe "scopes" do
-    it 'should have a default order of date descending' do
-      create(:post, title: "one", created_at: 3.days.ago)
-      create(:post, title: "two", created_at: 1.days.ago)
-      create(:post, title: "three", created_at: 2.days.ago)
-      expect(Post.pluck(:title)).to eq(%w(two three one))
+    describe ".default_scope" do
+      it 'should have a default order of date descending' do
+        create(:post, title: "one", created_at: 3.days.ago)
+        create(:post, title: "two", created_at: 1.days.ago)
+        create(:post, title: "three", created_at: 2.days.ago)
+        expect(Post.pluck(:title)).to eq %w(two three one)
+      end
+    end
+
+    describe ".approved" do
+      it "returns only posts with approved set to true" do
+        create(:post, title: "one", approved: true)
+        create(:post, title: "two", approved: false)
+        expect(Post.approved.pluck(:title)).to eq ["one"]
+      end
     end
   end
 end

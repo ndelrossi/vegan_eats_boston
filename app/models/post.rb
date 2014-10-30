@@ -12,4 +12,5 @@ class Post < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   default_scope -> { order('created_at DESC') }
+  scope :approved, -> { where(approved: true) }
 end
