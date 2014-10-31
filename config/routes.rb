@@ -14,9 +14,10 @@ VeganEatsBoston::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets
 
-  get 'signup'             => 'users#new'
-  get 'signin'             => 'sessions#new'
-  delete 'signout'         => 'sessions#destroy'
+  controller :sessions do
+    get    'signin'  => :new
+    delete 'signout' => :destroy
+  end
 
   controller :static_pages do
     get 'blog'  => :blog
@@ -24,6 +25,7 @@ VeganEatsBoston::Application.routes.draw do
     get 'admin' => :admin
   end
 
+  get 'signup'             => 'users#new'
   get 'users/activate/:id' => 'users#activate',     as: 'users_activate'
 
   get "/404" => "errors#not_found"
