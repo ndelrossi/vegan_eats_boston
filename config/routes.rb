@@ -5,8 +5,8 @@ VeganEatsBoston::Application.routes.draw do
   resources :users
   resources :posts do
     member do
-      put 'approve'
-      put 'unapprove'
+      patch 'approve'
+      patch 'unapprove'
     end
   end
   resources :places
