@@ -44,21 +44,13 @@ class PostsController < ApplicationController
   end
 
   def approve
-    @post = Post.find(params[:id])
-    if @post.update_attribute(:approved, true)
-      redirect_to posts_index_admin_path
-    else
-      redirect_to posts_index_admin_path
-    end 
+    @post = Post.find(params[:id]).update_attribute(:approved, true)
+    redirect_to admin_path 
   end
 
   def unapprove
-    @post = Post.find(params[:id])
-    if @post.update_attribute(:approved, false)
-      redirect_to posts_index_admin_path
-    else
-      redirect_to posts_index_admin_path
-    end 
+    @post = Post.find(params[:id]).update_attribute(:approved, false)
+    redirect_to admin_path 
   end
 
   def destroy

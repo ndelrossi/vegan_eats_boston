@@ -1,7 +1,12 @@
 VeganEatsBoston::Application.routes.draw do
 
   resources :users
-  resources :posts
+  resources :posts do
+    member do
+      put 'approve'
+      put 'unapprove'
+    end
+  end
   resources :places
   resources :reviews
   resources :sessions, only: [:new, :create, :destroy]
@@ -14,8 +19,8 @@ VeganEatsBoston::Application.routes.draw do
   match '/about',             to: 'static_pages#about',   via: 'get'
   match '/admin',             to: 'static_pages#admin',   via: 'get'
   match '/posts_index_admin', to: 'posts#index_admin',    via: 'get'
-  match '/posts/approve',     to: 'posts#approve',        via: 'post'
-  match '/posts/unapprove',   to: 'posts#unapprove',      via: 'post'
+  #match '/posts/approve',     to: 'posts#approve',        via: 'put'
+  #match '/posts/unapprove',   to: 'posts#unapprove',      via: 'put'
   match '/users/activate/:id',to: 'users#activate',       via: 'get',     as: 'users_activate'
 
   get "/404", :to => "errors#not_found"
