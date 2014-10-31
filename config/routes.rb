@@ -1,6 +1,6 @@
 VeganEatsBoston::Application.routes.draw do
 
-  root  'static_pages#home'
+  root 'static_pages#home'
 
   resources :users
   resources :posts do
@@ -17,9 +17,13 @@ VeganEatsBoston::Application.routes.draw do
   get 'signup'             => 'users#new'
   get 'signin'             => 'sessions#new'
   delete 'signout'         => 'sessions#destroy'
-  get 'blog'               => 'static_pages#blog'
-  get 'about'              => 'static_pages#about'
-  get 'admin'              => 'static_pages#admin'
+
+  controller :static_pages do
+    get 'blog'  => :blog
+    get 'about' => :about
+    get 'admin' => :admin
+  end
+
   get 'users/activate/:id' => 'users#activate',     as: 'users_activate'
 
   get "/404" => "errors#not_found"
