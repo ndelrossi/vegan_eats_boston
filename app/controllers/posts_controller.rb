@@ -44,12 +44,12 @@ class PostsController < ApplicationController
   end
 
   def approve
-    @post = Post.find(params[:id]).update_attribute(:approved, true)
+    @post = Post.find(params[:id]).approve
     redirect_to admin_path 
   end
 
   def unapprove
-    @post = Post.find(params[:id]).update_attribute(:approved, false)
+    @post = Post.find(params[:id]).unapprove
     redirect_to admin_path 
   end
 

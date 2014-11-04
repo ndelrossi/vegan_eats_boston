@@ -28,4 +28,20 @@ describe Post do
       end
     end
   end
+
+  describe "#approve" do
+    let(:post) { create(:post, approved: false) }
+    it "sets approved attribute to true" do
+      post.approve
+      expect(post.approved).to eq true  
+    end
+  end
+
+  describe "#unapprove" do
+    let(:post) { create(:post) }
+    it "sets approved attribute to false" do
+      post.unapprove
+      expect(post.approved).to eq false
+    end
+  end
 end

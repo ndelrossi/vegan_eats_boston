@@ -13,4 +13,12 @@ class Post < ActiveRecord::Base
 
   default_scope -> { order('created_at DESC') }
   scope :approved, -> { where(approved: true) }
+
+  def approve
+    update_attribute(:approved, true)
+  end
+
+  def unapprove
+    update_attribute(:approved, false)
+  end
 end
