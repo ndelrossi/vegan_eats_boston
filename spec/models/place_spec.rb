@@ -57,7 +57,7 @@ describe Place do
   describe "#update_rating" do
     let(:place) { create(:place) }
 
-    it "returns the average rating of all associated reviews" do
+    it "updates average rating of all associated reviews" do
       create(:review, place: place, rating: 100)
       create(:review, place: place, rating: 50)
       place.update_rating
