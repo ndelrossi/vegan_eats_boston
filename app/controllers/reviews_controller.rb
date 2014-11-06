@@ -11,12 +11,10 @@ class ReviewsController < ApplicationController
   end
   
   def create
-    @place = Place.find(params[:review][:place_id])
-    @review = @place.reviews.build(reviews_params)
-    @review.user = current_user
+    @review = current_user.reviews.new(reviews_params)
     if @review.save
       flash[:success] = "Review created!"
-      redirect_to place_url(@place)
+      redirect_to place_url(@review.place)
     else
       redirect_to signin_path
     end
@@ -27,10 +25,9 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @place = Place.find(params[:review][:place_id])
     if @review.update_attributes(reviews_params)
       flash[:success] = "Review updated!"
-      redirect_to place_url(@place)
+      redirect_to place_url(@review.place)
     else
       render 'edit'
     end
