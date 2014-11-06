@@ -14,7 +14,6 @@ class ReviewsController < ApplicationController
     @place = Place.find(params[:review][:place_id])
     @review = @place.reviews.build(reviews_params)
     @review.user = current_user
-    @place.update_attributes(:rating => @place.average_rating)
     if @review.save
       flash[:success] = "Review created!"
       redirect_to place_url(@place)
@@ -29,7 +28,6 @@ class ReviewsController < ApplicationController
 
   def update
     @place = Place.find(params[:review][:place_id])
-    @place.update_attributes(:rating => @place.average_rating)
     if @review.update_attributes(reviews_params)
       flash[:success] = "Review updated!"
       redirect_to place_url(@place)

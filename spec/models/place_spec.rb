@@ -54,13 +54,14 @@ describe Place do
     end
   end
 
-  describe "#average_rating" do
+  describe "#update_rating" do
     let(:place) { create(:place) }
 
     it "returns the average rating of all associated reviews" do
-      create(:review, place: place, rating: 50)
       create(:review, place: place, rating: 100)
-      expect(place.average_rating).to eq (75)
+      create(:review, place: place, rating: 50)
+      place.update_rating
+      expect(place.rating).to eq 75
     end
   end 
 end

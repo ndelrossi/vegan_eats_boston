@@ -24,7 +24,7 @@ class Place < ActiveRecord::Base
     "#{address_line_1} #{address_city}, #{address_state}"
   end
 
-  def average_rating
-    self.reviews.inject(0.0) { |sum, review| sum + review.rating } / reviews.size
+  def update_rating
+    update_attribute(:rating, reviews.average(:rating))
   end
 end

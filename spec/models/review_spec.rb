@@ -14,4 +14,22 @@ describe Review do
       expect(Review.pluck(:content)).to eq(%w(two three one))
     end
   end
+
+  describe "after_save" do
+    it "should call 'update_place_method'" do
+      review = create(:review)
+      expect(review).to receive(:update_place_rating)
+      review.save
+    end
+  end
+
+  describe "#update_place_rating" do
+    let(:place) { create(:place) }
+    let(:review) { create(:review, place: place) }
+
+    it "should call 'update_rating' on its associated place" do
+      expect(place).to receive(:update_rating).twice      
+      review.send(:update_place_rating)
+    end
+  end
 end
