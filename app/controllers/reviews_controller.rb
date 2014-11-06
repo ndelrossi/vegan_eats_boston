@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @place = Place.find(params[:id])
+    @place = Place.find(params[:place])
     @review = Review.new
   end
   
@@ -21,7 +21,6 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @place = Place.find(params[:id])
   end
 
   def update
@@ -45,7 +44,7 @@ class ReviewsController < ApplicationController
     end
 
     def correct_user
-      @review = current_user.reviews.find_by(place_id: params[:id])
+      @review = current_user.reviews.find_by(id: params[:id])
       redirect_to root_url if @review.nil?
     end
 end

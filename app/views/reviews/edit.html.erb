@@ -18,7 +18,7 @@
           <%= f.text_area :content, rows: "7", placeholder: "Compose review...", class: "wysihtml5" %>
         </div>
         
-        <%= f.hidden_field :place_id, :value => @place.id %>
+        <%= f.hidden_field :place_id, :value => @review.place.id %>
 
         <%= f.submit "Publish review", class: "btn btn-large btn-primary" %>
         
