@@ -5,7 +5,7 @@ module ReviewsHelper
     if review
       edit_review_path(review)
     else  
-      new_review_path(place: @place.id)
+      new_review_path(place_id: @place.id)
     end
   end
 end

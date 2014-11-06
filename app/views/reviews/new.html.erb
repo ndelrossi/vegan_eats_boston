@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
-    <h2>Review for <%= @place.name %>:</h2>
+    <h2>Review for <%= @review.place.name %>:</h2>
     <div class="form-group">
       <%= form_for(@review) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
@@ -18,7 +18,7 @@
           <%= f.text_area :content, rows: "7", placeholder: "Compose review...", class: "wysihtml5" %>
         </div>
         
-        <%= f.hidden_field :place_id, :value => @place.id %>
+        <%= f.hidden_field :place_id, :value => @review.place.id %>
 
         <%= f.submit "Publish review", class: "btn btn-large btn-primary" %>
         

@@ -6,8 +6,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @place = Place.find(params[:place])
-    @review = Review.new
+    @review = Review.new(place_id: params[:place_id])
   end
   
   def create
