@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @review = Review.new(place_id: params[:place_id])
+    @review = Review.new(params.permit(:place_id))
   end
   
   def create
