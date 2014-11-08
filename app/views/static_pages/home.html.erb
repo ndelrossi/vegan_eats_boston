@@ -1,18 +1,18 @@
 <div class="row">
   <article class="col-md-8">
-    <% if @posts.any? %>
+    <% if @home_page.posts.any? %>
       <ol class="posts">
-        <%= render @posts %>
+        <%= render @home_page.posts %>
       </ol>
     <% end %>
-    <%= paginate @posts %>
+    <%= paginate @home_page.posts %>
   </article>
   <div class="col-md-4 padding-to-top-10">
     <div class="side-heading">
       <h4>Top Rated</h4>
     </div>
     <ul class="front-page-list">
-      <% @places.each do |place| %>
+      <% @home_page.top_places.each do |place| %>
         <%= render 'places/place_less', :place => place %>
       <% end %>
     </ul>
@@ -20,7 +20,7 @@
       <h4>Recent Reviews</h4>
     </div>
     <ul class="front-page-list">
-      <% @reviews.each do |review| %>
+      <% @home_page.recent_reviews.each do |review| %>
         <%= render 'reviews/review', :review => review %>
       <% end %>
     </ul>
