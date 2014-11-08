@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(post_params)
+    @post = current_user.posts.new(post_params)
     if @post.save
       flash[:success] = "Post created! It will show on home page after approval."
       redirect_to @post
@@ -54,7 +54,6 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    #redirect_to posts_index_admin_path if current_user.admin? and return
     redirect_to posts_url
   end
 
@@ -65,9 +64,10 @@ class PostsController < ApplicationController
     end
 
     def correct_user
-      @post = current_user.posts.find_by(id: params[:id])
       if current_user.admin?
-        @post ||= @post = Post.find(params[:id])
+        @post = Post.find(params[:id])
+      else
+        @post = current_user.posts.find(params[:id])
       end
       redirect_to root_url if @post.nil?
     end
