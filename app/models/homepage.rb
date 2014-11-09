@@ -5,7 +5,7 @@ class Homepage
   end
 
   def posts
-    Post.includes(:user).where(:approved => true).page(@params[:page]).per(5)
+    Post.includes(:user).approved.page(@params[:page]).per(5)
   end
 
   def top_places

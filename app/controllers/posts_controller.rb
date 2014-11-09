@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update_attributes(post_params)
+    if @post.updaae_attributes(post_params)
       flash[:success] = "Post updated"
       redirect_to @post
     else

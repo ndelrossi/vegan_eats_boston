@@ -4,8 +4,6 @@ class StaticPagesController < ApplicationController
 
   def home
     @home_page = Homepage.new(params)
-    @places = Place.includes(:categories).order( 'rating DESC' ).limit(5)
-    @reviews = Review.order( 'created_at DESC' ).limit(3)
   end
 
   def blog
