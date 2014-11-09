@@ -43,6 +43,15 @@ describe Place do
         end
       end 
     end
+
+    describe "sorted_by_rating" do
+      it 'orders by rating descending' do
+        create(:place, name: "one", rating: 75)
+        create(:place, name: "two", rating: 100)
+        create(:place, name: "three", rating: 50)
+        expect(Place.sort(sort = 'rating').pluck(:name)).to eq(%w(two one three))
+      end
+    end
   end
   
   describe "#full_address" do

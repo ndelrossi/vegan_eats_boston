@@ -5,11 +5,11 @@ class Homepage
   end
 
   def posts
-    Post.includes(:user).approved.page(@params[:page]).per(5)
+    Post.approved.page(@params[:page]).per(5)
   end
 
   def top_places
-    Place.includes(:categories).order( 'rating DESC' ).limit(5)
+    Place.sorted_by_rating.limit(5)
   end
 
   def recent_reviews

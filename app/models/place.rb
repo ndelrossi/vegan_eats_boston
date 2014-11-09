@@ -19,6 +19,10 @@ class Place < ActiveRecord::Base
     sort == 'rating' ? direction = "DESC" : direction = "ASC"
     order("#{sort} #{direction}")
   }
+  scope :sorted_by_rating, -> { 
+    includes(:categories).
+    order( 'rating DESC' )
+  }
 
   def full_address
     "#{address_line_1} #{address_city}, #{address_state}"
