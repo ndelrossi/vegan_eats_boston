@@ -13,7 +13,7 @@ class Homepage
   end
 
   def recent_reviews
-    Review.order( 'created_at DESC' ).limit(3)
+    Review.limit(3)
   end
 
 end
