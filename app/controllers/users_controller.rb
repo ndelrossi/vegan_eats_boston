@@ -23,7 +23,9 @@ class UsersController < ApplicationController
     if @user.save
       #sign_in @user
       @user.send_activation
-      flash[:info] = "Please follow the link in your email to activate your account. You will not be able to log in until you activate."
+      flash[:info] = "Please follow the link in your email 
+                      to activate your account. You will not 
+                      be able to log in until you activate."
       redirect_to root_url
     else
       render 'new'
