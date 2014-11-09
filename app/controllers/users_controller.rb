@@ -21,7 +21,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      #sign_in @user
       @user.send_activation
       flash[:info] = "Please follow the link in your email 
                       to activate your account. You will not 
