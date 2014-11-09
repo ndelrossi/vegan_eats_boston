@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
   validates :user_id, presence: true
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-  default_scope -> { order('created_at DESC') }
+  default_scope -> { order(created_at: :desc) }
   scope :approved, -> {
     includes(:user). 
     where(approved: true)

@@ -9,9 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @posts = Post.where(:user => @user).page(params[:page]).per(6)
-    @reviews = Review.where(:user => @user).page(params[:page]).per(6)
+    @user_profile = UserProfile.new(params)
   end
   
   def new

@@ -1,14 +1,14 @@
-<% provide(:title, @user.name) %>
+<% provide(:title, @user_profile.name) %>
 <div class="row">
   <div class="col-md-3">
-    <%= avatar_for @user, :size => 150  %>
+    <%= avatar_for @user_profile.user, :size => 150  %>
     <h4>
-      <%= @user.name %>
-      <% if @user.admin? %>
+      <%= @user_profile.name %>
+      <% if @user_profile.admin? %>
         | <%= " (Admin)" %>
       <% end %>
     </h4>
-    Member since: <%= time_tag(@user.created_at, :format=>'%B %d, %Y') %>
+    Member since: <%= time_tag(@user_profile.user.created_at, :format=>'%B %d, %Y') %>
   </div>
   <div class="col-md-9">
     <ul class="nav nav-tabs tabs" role="tablist">
@@ -17,19 +17,19 @@
     </ul>
     <div id='content' class="tab-content">
       <div class="tab-pane active" id="posts">
-        <% if @posts.any? %>
+        <% if @user_profile.posts.any? %>
           <ol class="posts">
-            <%= render @posts %>
+            <%= render @user_profile.posts %>
           </ol>
-          <%= paginate @posts %>
+          <%= paginate @user_profile.posts, param_name: "post_page" %>
         <% else %>
           <%= content_tag(:p, "There are no posts.") %>
         <% end %>
       </div>
       <div class="tab-pane" id="reviews">
-        <% if @reviews.any? %>
+        <% if @user_profile.reviews.any? %>
           <ol class="reviews">
-            <%= render @reviews %>
+            <%= render @user_profile.reviews %>
           </ol>
         <% else %>
           <%= content_tag(:p, "There are no reviews.") %>
