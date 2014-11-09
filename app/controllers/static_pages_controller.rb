@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
   end
 
   def blog
-    @posts = Post.where(:approved => true).page(params[:page]).per(12)
+    @posts = Post.approved.page(params[:page]).per(12)
   end
 
   def about
