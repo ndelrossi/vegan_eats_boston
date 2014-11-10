@@ -1,13 +1,10 @@
 class UserProfile
+  attr_reader :user
 
   def initialize(params)
     @user = User.includes(:posts, :reviews).find(params[:id])
     @post_page = params[:post_page]
     @review_page = params[:review_page]
-  end
-
-  def user
-    @user
   end
 
   def name
