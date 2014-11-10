@@ -12,8 +12,9 @@ class SessionsController < ApplicationController
       else
         user.send_activation
         flash.now[:danger] = 'Your account has not been activated. 
-             We are sending a new activation email. Please email
-             veganeatsboston@gmail.com if you do not see an email within 30 minutes.'
+                              We are sending a new activation email. 
+                              Please email veganeatsboston@gmail.com 
+                              if you do not see an email within 30 minutes.'
         render 'new'
       end
     else
