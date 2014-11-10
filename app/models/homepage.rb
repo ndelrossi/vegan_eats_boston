@@ -9,7 +9,7 @@ class Homepage
   end
 
   def top_places
-    Place.sorted_by_rating.limit(5)
+    Place.highest_rated.limit(5)
   end
 
   def recent_reviews

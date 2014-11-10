@@ -44,7 +44,7 @@ describe Place do
       end 
     end
 
-    describe "sorted_by_rating" do
+    describe "highest_rated" do
       it 'orders by rating descending' do
         create(:place, name: "one", rating: 75)
         create(:place, name: "two", rating: 100)

@@ -19,7 +19,7 @@ class Place < ActiveRecord::Base
     sort == 'rating' ? direction = "DESC" : direction = "ASC"
     order("#{sort} #{direction}")
   }
-  scope :sorted_by_rating, -> { 
+  scope :highest_rated, -> { 
     includes(:categories).
     order( 'rating DESC' )
   }
