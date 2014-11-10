@@ -33,10 +33,12 @@ class UsersController < ApplicationController
     @user = User.find_by_activation_token!(params[:id])
     if @user.update_attribute(:active, true)
       sign_in @user
-      flash[:success] = "Your account has been activated. Welcome to Vegan Eats Boston!"
+      flash[:success] = "Your account has been activated. 
+                         Welcome to Vegan Eats Boston!"
       redirect_to @user
     else
-      flash[:danger] = "Activation failed. Please email us at veganeatsboston@gmail.com"
+      flash[:danger] = "Activation failed. Please email 
+                        us at veganeatsboston@gmail.com"
       redirect_to root_url
     end
   end
@@ -61,7 +63,6 @@ class UsersController < ApplicationController
 
   private
 
-    # For security. Always use (user_params) over (params[:user])
     def user_params
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation, :avatar)
