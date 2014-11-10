@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_back_or user
     else
-      handle_bad_login_on(user)
+      handle_bad_sign_in_on(user)
       render 'new'
     end
   end
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
     user && user.authenticate(params[:session][:password]) && user.active
   end
 
-  def handle_bad_login_on(user)
+  def handle_bad_sign_in_on(user)
     if user && !user.active
       user.send_activation
       flash.now[:danger] = 'Your account has not been activated. 
