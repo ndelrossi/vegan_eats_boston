@@ -36,7 +36,6 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @review = @place.reviews.build
     @reviews = Review.where(:place => @place).page(params[:page]).per(10)
   end
 
@@ -46,9 +45,6 @@ class PlacesController < ApplicationController
 
   def create
     @place = Place.new(place_params)
-    @place.url_website = strip_url(@place.url_website)
-    @place.url_menu = strip_url(@place.url_menu)
-    @place.address_state = 'MA'
     if @place.save
       flash[:success] = "Place created!"
       redirect_to @place
@@ -96,7 +92,4 @@ class PlacesController < ApplicationController
       params.slice(:contains, :cities, :sort)
     end
 
-    def strip_url(url)
-      url.sub(/https?\:\/\//, '')
-    end
 end

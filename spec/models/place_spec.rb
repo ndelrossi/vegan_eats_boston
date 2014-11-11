@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Place do
+
   it { is_expected.to have_many(:reviews).dependent(:destroy) }
   it { is_expected.to validate_attachment_content_type(:primary_image).
                 allowing('image/png', 'image/gif', 'image/jpg').
@@ -73,4 +74,12 @@ describe Place do
       expect(place.rating).to eq 75
     end
   end 
+
+  describe ".strip_url" do
+    it "removes http/https from url" do
+      urls = ["https://www.test.com", "www.test.com", "http://www.test.com"]
+      stripped_urls = urls.map { |url| Place.send(:strip_url, url) }
+      expect(stripped_urls).to eq ["www.test.com", "www.test.com", "www.test.com"]
+    end
+  end
 end
