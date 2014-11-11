@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe Place do
 
+  before { allow_any_instance_of(Place).to receive(:geocode).and_return([1,1]) }
+
   it { is_expected.to have_many(:reviews).dependent(:destroy) }
   it { is_expected.to validate_attachment_content_type(:primary_image).
                 allowing('image/png', 'image/gif', 'image/jpg').

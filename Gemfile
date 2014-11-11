@@ -45,6 +45,7 @@ group :test do
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'libnotify', '0.8.0'
   gem 'shoulda-matchers'
+  gem 'mocha'
 end
 
 group :doc do
