@@ -1,6 +1,5 @@
 class PlacesController < ApplicationController
   include ApplicationHelper
-  include MapHelper
   include SmartListing::Helper::ControllerExtensions
   helper  SmartListing::Helper
 
