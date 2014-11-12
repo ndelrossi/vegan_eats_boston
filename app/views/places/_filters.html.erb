@@ -44,7 +44,7 @@
       <div class="col-md-5">
         <h4>Categories:</h4>
         <div class="checkbox form-group">
-          <% @tags.each do |tag| %>
+          <% Place.category_counts.each do |tag| %>
             <%= label_tag(nil, nil, class: 'col-xs-4') do %>
               <%= check_box_tag("categories[]", tag) + "#{tag}" %>
             <% end %>

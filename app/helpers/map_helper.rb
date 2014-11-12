@@ -1,6 +1,6 @@
 module MapHelper
 
-  def get_map_markers(places)
+  def map_markers(places)
 
     counter = 1;
     @hash = Gmaps4rails.build_markers(places) do |place, marker|

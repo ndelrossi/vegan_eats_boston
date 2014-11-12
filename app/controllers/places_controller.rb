@@ -8,9 +8,7 @@ class PlacesController < ApplicationController
   before_action :get_place, only: [:show, :edit, :update, :destroy]
 
   def index
-
     @places = Place.all
-    @tags = Place.category_counts
 
     if params[:search].present?
       @location = Geocoder.coordinates(params[:search])
@@ -32,7 +30,7 @@ class PlacesController < ApplicationController
 
     @places = smart_listing_create :places, @places.includes(:categories), partial: "places/listing",
                                       default_sort: {id: "ASC"}
-    @map_data = get_map_markers(@places)
+    @map_data = map_markers(@places)
   end
 
   def show
