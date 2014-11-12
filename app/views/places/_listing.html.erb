@@ -31,7 +31,7 @@
       <%= "handler.getMap().setCenter({lat: 42.361855, lng: -71.057910});" %>
       <%= "handler.getMap().setZoom(12);" %>
     <% end %>
-    markers = handler.addMarkers(<%=raw @map_data.to_json %>);
+    markers = handler.addMarkers(<%=raw map_markers(@places).to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     <%= "handler.getMap().setZoom(12);" if smart_listing.count == 1 %>
