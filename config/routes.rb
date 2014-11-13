@@ -1,6 +1,5 @@
 VeganEatsBoston::Application.routes.draw do
 
-  get "dashboards/index"
   root 'static_pages#home'
 
   resources :users
