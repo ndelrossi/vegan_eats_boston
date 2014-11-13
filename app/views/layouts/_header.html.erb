@@ -58,6 +58,7 @@
                 <li class="divider"></li>
                   <% if current_user.admin? %>
                     <li><%= link_to "Admin Page", admin_path %></li>
+                    <li><%= link_to "New Admin Page", admin_dashboard_path %></li>
                     <li class="divider"></li>
                   <% end %>
                 <li>
