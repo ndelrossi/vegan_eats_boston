@@ -1,0 +1,3 @@
+def AdminsController < ApplicationController
+
+end

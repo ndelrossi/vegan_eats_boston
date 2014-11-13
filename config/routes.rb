@@ -1,5 +1,6 @@
 VeganEatsBoston::Application.routes.draw do
 
+  get "dashboards/index"
   root 'static_pages#home'
 
   resources :users
@@ -23,6 +24,10 @@ VeganEatsBoston::Application.routes.draw do
     get 'blog'  => :blog
     get 'about' => :about
     get 'admin' => :admin
+  end
+
+  namespace :admin do
+    get 'dashboard' => 'dashboards#index' 
   end
 
   get 'signup'             => 'users#new'
