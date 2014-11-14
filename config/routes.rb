@@ -2,7 +2,7 @@ VeganEatsBoston::Application.routes.draw do
 
   root 'static_pages#home'
 
-  resources :users
+  resources :users, except: :destroy
   resources :posts do
     member do
       patch 'approve'
@@ -27,7 +27,7 @@ VeganEatsBoston::Application.routes.draw do
 
   namespace :admin do
     get 'dashboard' => 'dashboards#index' 
-    resources :users, only: [:index, :destroy]
+    resources :users, only: :destroy
   end
 
   get 'signup'             => 'users#new'
