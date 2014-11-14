@@ -1,2 +1,27 @@
-<h1>Admin::Dashboards#index</h1>
-<p>Find me in app/views/admin/dashboards/index.html.erb</p>
+<% provide(:title, 'Admin Dashboard') %>
+
+<h2 class="text-center">Admin Dashboard</h2>
+
+<ul class="nav nav-pills">
+  <li role="presentation" class="active">
+    <a href="#users" role="tab" data-toggle="pill">Users</a>
+  </li>
+  <li role="presentation">
+    <a href="#places" role="tab" data-toggle="pill">Places</a>
+  </li>
+  <li role="presentation">
+    <a href="#posts" role="tab" data-toggle="pill">Posts</a>
+  </li>
+  <li role="presentation">
+    <a href="#reviews" role="tab" data-toggle="pill">Reviews</a>
+  </li>
+</ul>
+
+<div id='content' class="tab-content">
+  <div class="tab-pane active" id="users">
+    <%= render 'admin/users/users' %>
+  </div>
+  <div class="tab-pane" id="places">Places</div>
+  <div class="tab-pane" id="posts">Posts</div>
+  <div class="tab-pane" id="reviews">Reviews</div>
+</div>

@@ -27,6 +27,7 @@ VeganEatsBoston::Application.routes.draw do
 
   namespace :admin do
     get 'dashboard' => 'dashboards#index' 
+    resources :users, only: [:index, :destroy]
   end
 
   get 'signup'             => 'users#new'
