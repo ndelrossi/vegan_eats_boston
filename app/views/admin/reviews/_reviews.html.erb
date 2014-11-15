@@ -1,0 +1,25 @@
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Author</th>
+      <th>Place</th>
+      <th>Date Created</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reviews.each do |r| %>
+    <tr>
+      <td><%= link_to r.user.name, r.user %></td>
+      <td><%= link_to r.place.name, r.place if !r.place.nil? %></td>
+      <td><%= localize(r.created_at, :format => :long) %></td>
+      <td>
+        <%= link_to "edit", edit_review_path(r) %>
+        / <%= link_to "delete", r, method: :delete,
+                                    data: { confirm: "Delete this review?" } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @reviews, param_name: "review_page" %>
