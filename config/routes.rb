@@ -25,7 +25,6 @@ VeganEatsBoston::Application.routes.draw do
   end
 
   controller :static_pages do
-    get 'blog'  => :blog
     get 'about' => :about
   end
 
