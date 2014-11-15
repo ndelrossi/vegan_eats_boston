@@ -4,18 +4,6 @@ describe "User pages" do
 
   subject { page }
 
-  describe "index" do
-    let(:user) { FactoryGirl.create(:user) }
-    before(:each) do
-      sign_in user
-      visit users_path
-    end
-
-    it { should have_title('All users') }
-    it { should have_content('All users') }
-    
-  end
-
   describe "profile page" do
     let(:admin) { FactoryGirl.create(:admin) }
     before do 

@@ -74,11 +74,6 @@ describe "Authentication" do
           before { patch user_path(user) }
           specify { expect(response).to redirect_to(signin_path) }
         end
-
-        describe "visiting the user index" do
-          before { visit users_path }
-          it { should have_title('Sign in') }
-        end
       end
     end
 
@@ -106,7 +101,7 @@ describe "Authentication" do
       before { sign_in non_admin, no_capybara: true }
 
       describe "submitting a DELETE request to the Users#destroy action" do
-        before { delete user_path(user) }
+        before { delete admin_user_path(user) }
         specify { expect(response).to redirect_to(root_url) }
       end
     end
