@@ -15,9 +15,9 @@
       <td><%= localize(p.created_at, :format => :long) %></td>
       <td>
         <% if p.approved then %>
-          <%= link_to "unapprove", unapprove_post_path(p), method: :patch %>
+          <%= link_to "unapprove", admin_unapprove_post_path(p), method: :patch %>
         <% else %>
-          <%= link_to "approve", approve_post_path(p), method: :patch %>
+          <%= link_to "approve", admin_approve_post_path(p), method: :patch %>
         <% end %>
         / <%= link_to "edit", edit_post_path(p) %>
         / <%= link_to "delete", p, method: :delete,

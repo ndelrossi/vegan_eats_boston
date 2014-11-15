@@ -2,14 +2,9 @@ class PostsController < ApplicationController
   include ApplicationHelper
   before_action :signed_in_user,  except: :show
   before_action :correct_user,   only: [:edit, :update, :destroy]
-  before_action :admin_user,     only: [:approve, :unapprove, :index_admin]
 
   def index
     @posts = Post.approved.page(params[:page]).per(20)
-  end
-
-  def index_admin
-    @posts = Post.page(params[:page])
   end
 
   def show
@@ -40,16 +35,6 @@ class PostsController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def approve
-    @post = Post.find(params[:id]).approve
-    redirect_to admin_path 
-  end
-
-  def unapprove
-    @post = Post.find(params[:id]).unapprove
-    redirect_to admin_path 
   end
 
   def destroy
