@@ -27,4 +27,4 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @posts, param_name: "post_page" %>
+<%= paginate @posts, param_name: "post_page", :params => { anchor: 'posts' } %>

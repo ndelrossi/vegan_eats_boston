@@ -33,4 +33,8 @@
 </div>
 
 <script type="text/javascript">
+  $(document).on('ready page:load', function () {
+    $('a[href="' + window.location.hash + '"]').click();
+    window.scrollTo(0, 0);
+  });
 </script>

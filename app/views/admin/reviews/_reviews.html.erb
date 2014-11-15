@@ -22,4 +22,5 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @reviews, param_name: "review_page" %>
+<%= paginate @reviews, param_name: 'review_page', :params => { anchor: 'reviews' } %>
+

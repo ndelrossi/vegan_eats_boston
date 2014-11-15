@@ -22,4 +22,4 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @places, param_name: "place_page" %>
+<%= paginate @places, param_name: "place_page", :params => { anchor: 'places' } %>
