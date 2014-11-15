@@ -3,9 +3,6 @@ class PlacesController < ApplicationController
   include SmartListing::Helper::ControllerExtensions
   helper  SmartListing::Helper
 
-  before_action :admin_user,  except: [:index, :show]
-  before_action :get_place, only: [:show, :edit, :update, :destroy]
-
   def index
     @places = Place.all
 
@@ -32,60 +29,13 @@ class PlacesController < ApplicationController
   end
 
   def show
+    @place = Place.find(params[:id])
     @reviews = Review.where(:place => @place).page(params[:page]).per(10)
   end
 
-  def new
-    @place = Place.new
+private
+
+  def filtering_params(params)
+    params.slice(:contains, :cities, :sort)
   end
-
-  def create
-    @place = Place.new(place_params)
-    if @place.save
-      flash[:success] = "Place created!"
-      redirect_to @place
-    else
-      render 'new'
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    respond_to do |format|
-      if @place.update_attributes(place_params)
-        format.html { redirect_to(@place, 
-                      :success => 'Place was successfully updated.') }
-        format.json { respond_with_bip(@place) }
-      else
-        format.html { render :action => "edit" }
-        format.json { respond_with_bip(@place) }
-      end
-    end
-  end
-
-  def destroy
-    @place.destroy
-    redirect_to admin_path
-  end
-
-  private
-
-    def place_params
-      params.require(:place).permit(:full_address, :name, :description, 
-                                    :primary_image, :url_website, :url_menu, 
-                                    :address_line_1, :address_line_2, 
-                                    :address_city, :address_zip_code, 
-                                    :phone_number, :category_list)
-    end
-
-    def get_place
-      @place = Place.find(params[:id])
-    end
-
-    def filtering_params(params)
-      params.slice(:contains, :cities, :sort)
-    end
-
 end

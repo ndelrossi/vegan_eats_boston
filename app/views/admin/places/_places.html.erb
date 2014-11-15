@@ -1,0 +1,25 @@
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Website</th>
+      <th>Date Created</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @places.each do |place| %>
+    <tr>
+      <td><%= link_to place.name, place %></td>
+      <td><%= link_to place.url_website, "http://#{place.url_website}"%></td>
+      <td><%= localize(place.created_at, :format => :long) %></td>
+      <td>
+        <%= link_to "edit", edit_admin_place_path(place) %>
+        / <%= link_to "delete", admin_place_path(place), method: :delete,
+                                    data: { confirm: "Delete this place?" } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @places, param_name: "place_page" %>
