@@ -4,7 +4,7 @@ VeganEatsBoston::Application.routes.draw do
 
   resources :users, except: :destroy
   resources :posts
-  resources :places
+  resources :places, only: [:index, :show]
   resources :reviews
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets
@@ -23,6 +23,7 @@ VeganEatsBoston::Application.routes.draw do
   namespace :admin do
     get 'dashboard' => 'dashboards#index' 
     resources :users, only: :destroy
+    resources :places, except: [:index, :show]
     controller :posts do
       patch 'approve/:id'   => :approve,     as: 'approve_post'  
       patch 'unapprove/:id' => :unapprove,   as: 'unapprove_post'
