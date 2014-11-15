@@ -1,10 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :correct_user,   only: [:destroy, :edit, :update]
 
-  def index
-    @reviews = Review.page(params[:page])
-  end
-
   def new
     @review = Review.new(params.permit(:place_id))
   end
@@ -38,16 +34,16 @@ class ReviewsController < ApplicationController
 
   private
 
-    def reviews_params
-      params.require(:review).permit(:content, :rating, :place_id)
-    end
+  def reviews_params
+    params.require(:review).permit(:content, :rating, :place_id)
+  end
 
-    def correct_user
-      if current_user.admin?
-        @review = Review.find(params[:id])
-      else
-        @review = current_user.reviews.find(params[:id])
-      end
-      redirect_to root_url if @review.nil?
+  def correct_user
+    if current_user.admin?
+      @review = Review.find(params[:id])
+    else
+      @review = current_user.reviews.find(params[:id])
     end
+    redirect_to root_url if @review.nil?
+  end
 end

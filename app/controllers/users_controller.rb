@@ -1,12 +1,8 @@
 class UsersController < ApplicationController
   include ApplicationHelper
-  before_action :signed_in_user, only: [:index, :edit, :update]
+  before_action :signed_in_user, only: [:edit, :update]
   before_action :correct_user,   only: [:edit, :update]
   
-  def index
-    @users = User.page(params[:page])
-  end
-
   def show
     @user_profile = UserProfile.new(params)
   end

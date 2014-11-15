@@ -3,10 +3,6 @@ class PostsController < ApplicationController
   before_action :signed_in_user,  except: :show
   before_action :correct_user,   only: [:edit, :update, :destroy]
 
-  def index
-    @posts = Post.approved.page(params[:page]).per(20)
-  end
-
   def show
     @post = Post.find(params[:id])
   end

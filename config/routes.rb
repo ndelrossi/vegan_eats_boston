@@ -2,23 +2,12 @@ VeganEatsBoston::Application.routes.draw do
 
   root 'static_pages#home'
 
-  resources :users, except: :destroy
-  resources :posts
+  resources :users, except: [:index, :destroy]
+  resources :posts, except: :index
   resources :places, only: [:index, :show]
-  resources :reviews
+  resources :reviews, except: :index
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets
-
-  controller :sessions do
-    get    'signin'  => :new
-    delete 'signout' => :destroy
-  end
-
-  controller :static_pages do
-    get 'blog'  => :blog
-    get 'about' => :about
-    get 'admin' => :admin
-  end
 
   namespace :admin do
     get 'dashboard' => 'dashboards#index' 
@@ -28,6 +17,16 @@ VeganEatsBoston::Application.routes.draw do
       patch 'approve/:id'   => :approve,     as: 'approve_post'  
       patch 'unapprove/:id' => :unapprove,   as: 'unapprove_post'
     end
+  end
+
+  controller :sessions do
+    get    'signin'  => :new
+    delete 'signout' => :destroy
+  end
+
+  controller :static_pages do
+    get 'blog'  => :blog
+    get 'about' => :about
   end
 
   get 'signup'             => 'users#new'
