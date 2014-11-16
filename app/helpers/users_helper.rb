@@ -1,6 +1,6 @@
 module UsersHelper
 
-  #Get user avatar. If user did not upload image, get Gravatar image.
+  #Get user avatar. If user did not upload image, punt to gravatar_for.
   def avatar_for(user, options = { style: :original })
     #testing url prevents hitting Amazon servers if no image
     if user.avatar.url != "/avatars/original/missing.png"
