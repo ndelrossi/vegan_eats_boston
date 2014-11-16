@@ -13,7 +13,7 @@
     <%= link_to @place_profile.place.url_website, "http://#{@place_profile.place.url_website}"%><br>
     <%= @place_profile.place.category_list %><br>
 
-    <%= image_tag @place_profile.map_image_url %>
+    <%= map_image_for @place_profile.place %>
 
     <address><%= full_address_to_html_for @place_profile.place %></address>
 
