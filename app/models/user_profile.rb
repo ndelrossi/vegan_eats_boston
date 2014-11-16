@@ -1,4 +1,5 @@
 class UserProfile
+
   attr_reader :user
 
   def initialize(params)

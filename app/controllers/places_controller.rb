@@ -29,8 +29,7 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @place = Place.find(params[:id])
-    @reviews = Review.where(:place => @place).page(params[:page]).per(10)
+    @place_profile = PlaceProfile.new(params, num_of_reviews: 10)
   end
 
 private

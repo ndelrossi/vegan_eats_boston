@@ -1,42 +1,42 @@
-<% provide(:title, @place.name ) %>
+<% provide(:title, @place_profile.place.name ) %>
 
 <div class="row space-to-bottom-40">
   <div class="col-md-6 clearfix">
-    <h4><%= @place.name %></h4>
+    <h4><%= @place_profile.place.name %></h4>
     <%= best_in_place_if signed_in? && current_user.admin?,
-          @place, 
+          @place_profile.place, 
           :description, 
-          :path => admin_place_path(@place), 
+          :path => admin_place_path(@place_profile.place), 
           :type => :textarea, 
           :nil => "Click here to add description." %>
     <br>
-    <%= link_to @place.url_website, "http://#{@place.url_website}"%><br>
-    <%= @place.category_list %><br>
+    <%= link_to @place_profile.place.url_website, "http://#{@place_profile.place.url_website}"%><br>
+    <%= @place_profile.place.category_list %><br>
 
-    <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=350x180&markers=color:0x209600%7C#{@place.address_line_1}+#{@place.address_city},MA" %>
+    <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=350x180&markers=color:0x209600%7C#{@place_profile.place.address_line_1}+#{@place_profile.place.address_city},MA" %>
 
     <address>
-      <%= @place.address_line_1 %><br>
-      <% if !@place.address_line_2.empty? %>
-        <%= @place.address_line_2 %>
+      <%= @place_profile.place.address_line_1 %><br>
+      <% if !@place_profile.place.address_line_2.empty? %>
+        <%= @place_profile.place.address_line_2 %>
         <%= tag(:br) %>
       <% end %>
-      <%= @place.address_city %>, <%= @place.address_state %> <%= @place.address_zip_code %>
+      <%= @place_profile.place.address_city %>, <%= @place_profile.place.address_state %> <%= @place_profile.place.address_zip_code %>
     </address>
 
     <address> 
-      Phone number: <%= @place.phone_number %><br>
-      <%= link_to "Menu", "http://#{@place.url_menu}"%><br>
+      Phone number: <%= @place_profile.place.phone_number %><br>
+      <%= link_to "Menu", "http://#{@place_profile.place.url_menu}"%><br>
     </address>
 
-    <div id=<%= "star_" + @place.id.to_s %>></div>
+    <div id=<%= "star_" + @place_profile.place.id.to_s %>></div>
     <div class="text" class="text-right">
-      (<%= pluralize(@place.reviews_count, 'review') %>)<br><br>
-      <%= link_to "Write review", new_or_edit_review_path(@place), class: "btn btn-default" if signed_in? %><br><br>
+      (<%= pluralize(@place_profile.place.reviews_count, 'review') %>)<br><br>
+      <%= link_to "Write review", new_or_edit_review_path(@place_profile.place), class: "btn btn-default" if signed_in? %><br><br>
     </div>
 
     <div class="place-img">
-      <%= image_tag @place.primary_image.url%>
+      <%= image_tag @place_profile.place.primary_image.url%>
     </div>
   </div>
 
@@ -46,11 +46,11 @@
     </ul>
     <div id='content' class="tab-content">
       <div class="tab-pane active" id="reviews">
-        <% if @reviews.any? %>
+        <% if @place_profile.reviews.any? %>
           <ol class="reviews">
-            <%= render @reviews %>
+            <%= render @place_profile.reviews %>
           </ol>
-          <%= paginate @reviews %>
+          <%= paginate @place_profile.reviews %>
         <% else %>
           <%= content_tag(:p, "There are no reviews.") %>
         <% end %>
@@ -60,9 +60,9 @@
 </div>
 
 <script type="text/javascript">
-  $('#star_<%= @place.id.to_s %>').raty({
+  $('#star_<%= @place_profile.place.id.to_s %>').raty({
     readOnly: true,
-    score: <%= @place.rating %>,
+    score: <%= @place_profile.place.rating %>,
     path: '/assets'
   });
 
