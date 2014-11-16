@@ -8,12 +8,7 @@
       <% end %><br>
       <%= place_categories(place) %><br>
       <address>
-        <%= place.address_line_1 %>
-          <% if !place.address_line_2.empty? %>
-            <%= ', ' + place.address_line_2 %>   
-          <% end %>
-          <%= tag(:br) %>
-          <%= place.address_city %>, <%= place.address_state %> <%= place.address_zip_code %><br>
+        <%= full_address_to_html_for place %><br>
         <%= place.phone_number %><br>
         <%= link_to "website", "http://#{place.url_website}"%><%= ", " %>
         <%= link_to "menu", "http://#{place.url_menu}"%>

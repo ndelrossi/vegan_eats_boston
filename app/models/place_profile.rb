@@ -12,7 +12,9 @@ class PlaceProfile
     @place.reviews.page(@params[:page]).per(@num_of_reviews)
   end
 
-  def map_image
-
+  def map_image_url
+    "https://maps.googleapis.com/maps/api/staticmap?zoom=13"\
+    "&size=350x180&markers=color:0x209600%7C"\
+    "#{@place.address_line_1}+#{@place.address_city},MA"
   end
 end

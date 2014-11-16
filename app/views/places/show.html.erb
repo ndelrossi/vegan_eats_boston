@@ -13,16 +13,9 @@
     <%= link_to @place_profile.place.url_website, "http://#{@place_profile.place.url_website}"%><br>
     <%= @place_profile.place.category_list %><br>
 
-    <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=350x180&markers=color:0x209600%7C#{@place_profile.place.address_line_1}+#{@place_profile.place.address_city},MA" %>
+    <%= image_tag @place_profile.map_image_url %>
 
-    <address>
-      <%= @place_profile.place.address_line_1 %><br>
-      <% if !@place_profile.place.address_line_2.empty? %>
-        <%= @place_profile.place.address_line_2 %>
-        <%= tag(:br) %>
-      <% end %>
-      <%= @place_profile.place.address_city %>, <%= @place_profile.place.address_state %> <%= @place_profile.place.address_zip_code %>
-    </address>
+    <address><%= full_address_to_html_for @place_profile.place %></address>
 
     <address> 
       Phone number: <%= @place_profile.place.phone_number %><br>
