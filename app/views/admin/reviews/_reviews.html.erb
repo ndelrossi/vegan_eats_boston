@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @reviews.each do |r| %>
+    <% @admin_dashboard.reviews.each do |r| %>
     <tr>
       <td><%= link_to r.user.name, r.user %></td>
       <td><%= link_to r.place.name, r.place if !r.place.nil? %></td>
@@ -22,5 +22,6 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @reviews, param_name: 'review_page', :params => { anchor: 'reviews' } %>
+<%= paginate @admin_dashboard.reviews, 
+      param_name: 'review_page', :params => { anchor: 'reviews' } %>
 

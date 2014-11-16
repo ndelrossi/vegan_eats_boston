@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @users.each do |user| %>
+    <% @admin_dashboard.users.each do |user| %>
       <tr>
         <td><%= link_to user.name, user %></td>
         <td><%= user.email %></td>
@@ -22,4 +22,5 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @users, param_name: "user_page", :params => { anchor: 'users' } %>
+<%= paginate @admin_dashboard.users, 
+      param_name: "user_page", :params => { anchor: 'users' } %>

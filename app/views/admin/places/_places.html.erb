@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @places.each do |place| %>
+    <% @admin_dashboard.places.each do |place| %>
     <tr>
       <td><%= link_to place.name, place %></td>
       <td><%= link_to place.url_website, "http://#{place.url_website}"%></td>
@@ -22,4 +22,5 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @places, param_name: "place_page", :params => { anchor: 'places' } %>
+<%= paginate @admin_dashboard.places, 
+      param_name: "place_page", :params => { anchor: 'places' } %>
