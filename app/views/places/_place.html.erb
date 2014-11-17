@@ -7,12 +7,7 @@
         <%= "(" + place.distance_from(@location).round(2).to_s + " miles)" %>
       <% end %><br>
       <%= place_categories(place) %><br>
-      <address>
-        <%= full_address_to_html_for place %><br>
-        <%= place.phone_number %><br>
-        <%= link_to "website", "http://#{place.url_website}"%><%= ", " %>
-        <%= link_to "menu", "http://#{place.url_menu}"%>
-      </address>
+      <%= render 'places/full_address_with_links', place: place %>
     </div>
     <div class="place-list-right text-right">
       <div id=<%= "star_" + place.id.to_s %>></div>

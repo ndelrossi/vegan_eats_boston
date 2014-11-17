@@ -2,7 +2,7 @@
 
 <div class="row space-to-bottom-40">
   <div class="col-md-6 clearfix">
-    <h4><%= @place_profile.place.name %></h4>
+    <h4><%= @place_profile.name %></h4>
     <%= best_in_place_if signed_in? && current_user.admin?,
           @place_profile.place, 
           :description, 
@@ -10,17 +10,12 @@
           :type => :textarea, 
           :nil => "Click here to add description." %>
     <br>
-    <%= link_to @place_profile.place.url_website, "http://#{@place_profile.place.url_website}"%><br>
-    <%= @place_profile.place.category_list %><br>
+    <%= link_to @place_profile.website, "http://#{@place_profile.website}"%><br>
+    <%= @place_profile.categories %><br>
 
     <%= map_image_for @place_profile.place %>
 
-    <address><%= full_address_to_html_for @place_profile.place %></address>
-
-    <address> 
-      Phone number: <%= @place_profile.place.phone_number %><br>
-      <%= link_to "Menu", "http://#{@place_profile.place.url_menu}"%><br>
-    </address>
+    <%= render 'places/full_address_with_links', place: @place_profile.place %>
 
     <div id=<%= "star_" + @place_profile.place.id.to_s %>></div>
     <div class="text" class="text-right">

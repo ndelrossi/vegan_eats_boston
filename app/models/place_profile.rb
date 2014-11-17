@@ -8,13 +8,27 @@ class PlaceProfile
     @place = Place.find(@params[:id])
   end
 
-  def reviews
-    @place.reviews.page(@params[:page]).per(@num_of_reviews)
+  def name
+    @place.name
   end
 
-  def map_image_url
-    "https://maps.googleapis.com/maps/api/staticmap?zoom=13"\
-    "&size=350x180&markers=color:0x209600%7C"\
-    "#{@place.address_line_1}+#{@place.address_city},MA"
+  def website
+    @place.url_website
+  end
+
+  def menu
+    @place.url_menu
+  end
+
+  def phone_number
+    @place.phone_number
+  end
+
+  def categories
+    @place.category_list
+  end
+
+  def reviews
+    @place.reviews.page(@params[:page]).per(@num_of_reviews)
   end
 end

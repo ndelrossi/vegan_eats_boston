@@ -10,14 +10,4 @@ module PlacesHelper
     "&size=350x180&markers=color:0x209600%7C"\
     "#{place.address_line_1}+#{place.address_city},MA"
   end
-
-  def full_address_to_html_for(place)
-    if place.address_line_2.empty?
-      line2 = ""
-    else
-      line2 = "#{place.address_line_2}<br>"
-    end
-    "#{place.address_line_1}<br>#{line2}#{place.address_city}, "\
-    "#{place.address_state} #{place.address_zip_code}".html_safe
-  end
 end
