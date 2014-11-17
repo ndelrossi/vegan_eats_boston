@@ -9,6 +9,6 @@
 
   <%= place.address_city + ", " + place.address_state + " " + place.address_zip_code %><br>
   <%= place.phone_number %><br>
-  <%= link_to "website", "http://#{place.url_website}" + ", " %>
+  <%= link_to "website", "http://#{place.url_website}" %><%= ", " %>
   <%= link_to "menu", "http://#{place.url_menu}"%>
 </address>
