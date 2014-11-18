@@ -1,12 +1,7 @@
 <address>
   <%= place.address_line_1 %><br>
-
-  <% if place.address_line_2.empty? %>
-    <%= "" %>
-  <% else %>
-    <%= place.address_line_2 %><br>
-  <% end %>
-
+  <%= place.address_line_2 %>
+  <%= tag :br unless place.address_line_2.empty? %>
   <%= place.address_city + ", " + place.address_state + " " + place.address_zip_code %><br>
   <%= place.phone_number %><br>
   <%= link_to "website", "http://#{place.url_website}" %><%= ", " %>
