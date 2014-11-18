@@ -29,7 +29,7 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @place_profile = PlaceProfile.new(params, num_of_reviews: 10)
+    @profile = PlaceProfile.new(params, num_of_reviews: 10)
   end
 
 private

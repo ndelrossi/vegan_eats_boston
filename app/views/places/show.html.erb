@@ -1,31 +1,16 @@
-<% provide(:title, @place_profile.name ) %>
+<% provide(:title, @profile.name ) %>
 
-<div class="row space-to-bottom-40">
+<div class="row">
   <div class="col-md-6 clearfix">
-    <h4><%= @place_profile.name %></h4>
-    <%= best_in_place_if signed_in? && current_user.admin?,
-          @place_profile.place, 
-          :description, 
-          :path => admin_place_path(@place_profile.place), 
-          :type => :textarea, 
-          :nil => "Click here to add description." %>
-    <br>
-    <%= link_to @place_profile.website, "http://#{@place_profile.website}"%><br>
-    <%= @place_profile.categories %><br>
-
-    <%= map_image_for @place_profile.place %>
-
-    <%= render 'places/full_address_with_links', place: @place_profile.place %>
-
-    <div id=<%= "star_" + @place_profile.place.id.to_s %>></div>
-    <div class="text" class="text-right">
-      (<%= pluralize(@place_profile.place.reviews_count, 'review') %>)<br><br>
-      <%= link_to "Write review", new_or_edit_review_path(@place_profile.place), class: "btn btn-default" if signed_in? %><br><br>
-    </div>
-
-    <div class="place-img">
-      <%= image_tag @place_profile.place.primary_image.url%>
-    </div>
+    <h4><%= @profile.name %></h4>
+    <%= editable_description_for(@profile.place) %><br>
+    <%= link_to @profile.website, "http://#{@profile.website}"%><br>
+    <%= @profile.categories %><br>
+    <%= map_image_for @profile.place %>
+    <%= render 'places/full_address_with_links', place: @profile.place %>
+    <%= write_review_button_for(@profile.place) %><br>
+    <%= render 'places/review_stars', place: @profile.place %>
+    <div class="place-img"><%= primary_image_for @profile.place %></div>
   </div>
 
   <div class="col-md-6 padding-to-top-10">
@@ -34,11 +19,11 @@
     </ul>
     <div id='content' class="tab-content">
       <div class="tab-pane active" id="reviews">
-        <% if @place_profile.reviews.any? %>
+        <% if @profile.reviews.any? %>
           <ol class="reviews">
-            <%= render @place_profile.reviews %>
+            <%= render @profile.reviews %>
           </ol>
-          <%= paginate @place_profile.reviews %>
+          <%= paginate @profile.reviews %>
         <% else %>
           <%= content_tag(:p, "There are no reviews.") %>
         <% end %>
@@ -47,12 +32,3 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  $('#star_<%= @place_profile.place.id.to_s %>').raty({
-    readOnly: true,
-    score: <%= @place_profile.place.rating %>,
-    path: '/assets'
-  });
-
-  $(".best_in_place").best_in_place();
-</script>

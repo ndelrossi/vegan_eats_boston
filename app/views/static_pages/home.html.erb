@@ -1,12 +1,11 @@
 <div class="row">
   <article class="col-md-8">
-    <% if @home_page.posts.any? %>
-      <ol class="posts">
-        <%= render @home_page.posts %>
-      </ol>
-    <% end %>
+    <ol class="posts">
+      <%= render @home_page.posts if @home_page.posts.any? %>
+    </ol>
     <%= paginate @home_page.posts %>
   </article>
+
   <div class="col-md-4 padding-to-top-10">
     <div class="side-heading">
       <h4>Top Rated</h4>
