@@ -25,25 +25,7 @@
             <%= link_to "About",   about_path %>
           </li>
           <% if signed_in? %> 
-            <li class="dropdown visible-xs">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= current_user.name %><b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Create Post", new_post_url %></li>
-                <li><%= link_to "Create Place", new_admin_place_path if current_user.admin? %></li>
-                <li><%= link_to "Profile", current_user %></li>
-                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-                <li class="divider"></li>
-                  <% if current_user.admin? %>
-                    <li><%= link_to "Admin Page", admin_dashboard_path %></li>
-                    <li class="divider"></li>
-                  <% end %>
-                <li>
-                  <%= link_to "Sign out", signout_path, method: "delete" %>
-                </li>
-              </ul>
-            </li>
+            <%= render 'shared/account_dropdown_mobile' %>
           <% else %>
             <li class="visible-xs"><%= link_to "Sign in", signin_path %></li>
             <li class="visible-xs"><%= link_to "Sign up", signup_path %></li>

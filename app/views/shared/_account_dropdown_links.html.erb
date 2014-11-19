@@ -1,0 +1,10 @@
+<li><%= link_to "Create Post", new_post_url %></li>
+<li><%= link_to "Create Place", new_admin_place_path if current_user.admin? %></li>
+<li><%= link_to "Profile", current_user %></li>
+<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+<li class="divider"></li>
+<% if current_user.admin? %>
+  <li><%= link_to "Admin Page", admin_dashboard_path %></li>
+  <li class="divider"></li>
+<% end %>
+<li><%= link_to "Sign out", signout_path, method: "delete" %></li>
