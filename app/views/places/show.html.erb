@@ -13,22 +13,16 @@
     <div class="place-img"><%= primary_image_for @profile.place %></div>
   </div>
 
-  <div class="col-md-6 padding-to-top-10">
-    <ul class="nav nav-tabs tabs" role="tablist">
-      <li class="active"><a href="#reviews" role="tab" data-toggle="tab">Reviews</a></li>
-    </ul>
-    <div id='content' class="tab-content">
-      <div class="tab-pane active" id="reviews">
-        <% if @profile.reviews.any? %>
-          <ol class="reviews">
-            <%= render @profile.reviews %>
-          </ol>
-          <%= paginate @profile.reviews %>
-        <% else %>
-          <%= content_tag(:p, "There are no reviews.") %>
-        <% end %>
-      </div>
-    </div>
+  <div class="col-md-6">
+    <h4>Reviews</h4>
+    <% if @profile.reviews.any? %>
+      <ol class="reviews">
+        <%= render @profile.reviews %>
+      </ol>
+      <%= paginate @profile.reviews %>
+    <% else %>
+      <%= content_tag(:p, "There are no reviews.") %>
+    <% end %>
   </div>
 </div>
 
