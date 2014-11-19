@@ -1,11 +1,12 @@
 <li>
   <div class="row">
     <div class="col-xs-7">
-        <strong><%= link_to place.name, place %></strong><br>
-        <%= place.address_city %>, <%= place.address_state %><br>
-        <%= place_categories(place) %>
+      <strong><%= link_to place.name, place %></strong><br>
+      <%= place.address_city %>, <%= place.address_state %><br>
+      <%= place_categories(place) %>
     </div>
     <div class="place-list-right text-right">
       <%= render 'places/review_stars', place: place %>
+    </div>
   </div>
 </li>
