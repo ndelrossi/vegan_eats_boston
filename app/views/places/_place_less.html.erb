@@ -6,18 +6,6 @@
         <%= place_categories(place) %>
     </div>
     <div class="place-list-right text-right">
-      <div id=<%= "star_place_" + place.id.to_s %>></div>
-      <div class="text" class="text-right">
-        (<%= pluralize(place.reviews_count, 'review') %>)<br><br>
-      </div>
-    </div>
+      <%= render 'places/review_stars', place: place %>
   </div>
 </li>
-
-<script type="text/javascript">
-  $('#star_place_<%= place.id.to_s %>').raty({
-    readOnly: true,
-    score: <%= place.rating %>,
-    path: '/assets'
-  });
-</script>

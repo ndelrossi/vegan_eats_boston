@@ -1,10 +1,10 @@
-<div id=<%= "star_" + place.id.to_s %>></div>
+<div id=<%= "star_place" + place.id.to_s %>></div>
 <div class="text" class="text-right">
   (<%= pluralize(place.reviews_count, 'review') %>)
 </div><br>
 
 <script type="text/javascript">
-  $('#star_<%= place.id.to_s %>').raty({
+  $('#star_place<%= place.id.to_s %>').raty({
     readOnly: true,
     score: <%= place.rating %>,
     path: '/assets'
