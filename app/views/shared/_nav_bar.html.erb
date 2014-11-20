@@ -22,16 +22,7 @@
             <li class="visible-xs"><%= link_to "Sign up", signup_path %></li>
           <% end %>
         </ul>
-        <%= form_tag(places_path, :method =>  :get, id: "search-form", class: "navbar-form navbar-right", role: "search") do %>
-          <div class="input-group">   
-            <%= text_field_tag :search, nil, placeholder: "Search by address or name", class: "form-control nav-search" %>
-            <span class="input-group-btn">
-              <%= button_tag(type: 'submit', class: "btn btn-success") do %>
-                <span class="glyphicon glyphicon-search"></span> 
-              <% end %>
-            </span>
-          </div>
-        <% end %>
+        <%= render 'shared/search_bar' %>
       </div>
     </div>
   </nav>
