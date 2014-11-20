@@ -1,6 +1,5 @@
 <div id="nav-wrapper">
-  <nav id="nav">
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
+  <nav id="nav" class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-links">
@@ -15,15 +14,9 @@
       </div>
       <div class="navbar-collapse collapse" id="nav-links">
         <ul class="nav navbar-nav navbar-left">
-          <li>
-            <%= link_to "Home", root_path %>
-          </li>
-          <li>
-            <%= link_to "Places", places_path, method: :get %>
-          </li>
-          <li>
-            <%= link_to "About",   about_path %>
-          </li>
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Places", places_path, method: :get %></li>
+          <li><%= link_to "About", about_path %></li>
           <% if signed_in? %> 
             <%= render 'shared/account_dropdown_mobile' %>
           <% else %>
@@ -42,7 +35,6 @@
           </div>
         <% end %>
       </div>
-    </div>
     </div>
   </nav>
 </div>
