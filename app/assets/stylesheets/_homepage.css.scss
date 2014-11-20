@@ -1,0 +1,54 @@
+.front-page-list {
+  list-style: none;
+  padding: 0;
+  font-size: 1em;
+  line-height: 1.3em;
+
+  li {
+    padding: 5px 0px 10px 0px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #e8e8e8;
+    h5 {
+      margin-top: 0px;
+    }
+    p {
+      margin-bottom: 0px;
+    }
+
+  .review-img {
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  }
+
+  .place-list-right {
+    float: right;
+    
+    .text {
+      padding-right: 20px;
+      font-size: .9em;
+    }
+
+    img {
+      height: 16px;
+      width: auto;
+      margin-right: 3px;
+      float: left;
+    }
+  }
+
+  .collapse.in {
+    display: inline;
+  }
+}
+
+.side-heading {
+  h4 {
+    margin-bottom: 5px;
+  }
+  margin-bottom: 5px;
+  border-bottom: 1px solid #e8e8e8;
+}
