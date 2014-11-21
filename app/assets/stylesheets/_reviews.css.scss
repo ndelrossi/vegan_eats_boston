@@ -1,0 +1,27 @@
+.reviews {
+  list-style: none;
+  padding: 0;
+  font-size: 1.1em;
+
+  .review-img {
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  li {
+    padding: 10px 0px 0px 0px;
+    border-top: 1px solid #e8e8e8;
+  }
+
+  li:first-child {
+    border-top: none;
+    padding: 0;
+  }
+
+  .collapse.in {
+    display: inline;
+  }
+}
+

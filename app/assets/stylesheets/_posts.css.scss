@@ -1,0 +1,43 @@
+.posts {
+  list-style: none;
+  padding: 0;
+  font-size: 1.2em;
+  margin-top: -20px;
+
+  li {
+    padding: 10px 0;
+    border-bottom: 1px solid #e8e8e8;
+  }
+}
+
+.title {
+  @extend h3;
+  margin: 0;
+  text-align:left;
+  display: block;
+  padding-bottom: 5px;
+}
+
+.content {
+  display: block;
+  padding: 10px 0;
+  line-height: 1.5;
+  img {
+    @extend .img-responsive;
+  }
+}
+
+.post-icons {
+  padding-top: 15px;
+}
+
+.timestamp {
+  color: $gray;
+  font-size: .9em;
+  padding-left: 0;
+}
+
+.postimage {
+  margin-top: 15px;
+}
+
