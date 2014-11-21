@@ -1,0 +1,19 @@
+@import "bootstrap";
+
+@media(min-width:768px) {
+  .main-content {
+    padding-left: 30px;
+  }
+}
+
+html {
+  overflow-y: scroll;
+}
+
+a:hover {
+  cursor:pointer;
+}
+
+textarea {
+  width: 100%;
+}

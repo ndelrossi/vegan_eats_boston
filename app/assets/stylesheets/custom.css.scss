@@ -1,35 +1,3 @@
-@import "bootstrap";
-
-/* mixins, variables, etc. */
-
-$grayMediumLight: #eaeaea;
-
-@mixin box_sizing {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-@media(min-width:768px) {
-  .main-content {
-    padding-left: 30px;
-  }
-}
-
-/* universal */
-
-html {
-  overflow-y: scroll;
-}
-
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-a:hover {
- cursor:pointer;
-}
-
 .main-content {
   margin-top: 20px;
 }
@@ -58,19 +26,8 @@ a:hover {
   padding-bottom: 10px;
 }
 
-
-textarea {
-  width: 100%;
-}
-
 .no-left-padding {
   padding-left: 0px;
-}
-
-/* typography */
-
-.veb-green {
-  color: #104c00 !important;
 }
 
 /* header */
