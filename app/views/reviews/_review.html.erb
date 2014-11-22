@@ -6,9 +6,7 @@
       </h5>
     </div>
     <div class="place-list-right">
-      <div class="star">
-        <div id=<%= "star_review" + review.id.to_s %>></div>
-      </div>
+      <%= render 'shared/stars_for_review', review: review %>
     </div>
     <div class="col-sm-7">
       <div class="media review-img">
@@ -30,11 +28,3 @@
     </div>
   </div>
 </li>
-
-<script type="text/javascript">
-  $('#star_review<%= review.id.to_s %>').raty({
-    readOnly: true,
-    score: <%= review.rating %>,
-    path: '/assets'
-  });
-</script>

@@ -9,7 +9,7 @@
     <%= map_image_for @profile.place %>
     <%= render 'places/full_address_with_links', place: @profile.place %>
     <%= write_review_button_for(@profile.place) %><br>
-    <%= render 'shared/review_stars', place: @profile.place %>
+    <%= render 'shared/stars_for_place', place: @profile.place %>
     <div class="place-img"><%= primary_image_for @profile.place %></div>
   </div>
 

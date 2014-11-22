@@ -1,0 +1,11 @@
+<div class="star">
+  <div id=<%= "star_review" + review.id.to_s %>></div>
+</div>
+
+<script type="text/javascript">
+  $('#star_review<%= review.id.to_s %>').raty({
+    readOnly: true,
+    score: <%= review.rating %>,
+    path: '/assets'
+  });
+</script>
