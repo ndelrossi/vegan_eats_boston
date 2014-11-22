@@ -1,61 +1,6 @@
 <%= smart_listing_controls_for(:places) do %>
-  <div class="place-filters">
-    <div class="row">
-      <div class="col-md-2">
-        <h4>Sort by:</h4>
-        <div class="radio">
-          <label class="col-xs-12">
-            <%= radio_button_tag(:sort, "rating") %> Highest Rated
-          </label>
-          <label>
-            <%= radio_button_tag(:sort, "name") %> Name
-          </label>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <h4>Cities:</h4>
-        <div class="checkbox form-group">
-          <label class="col-xs-6">
-            <%= check_box_tag("cities[]", "Allston") %> Allston
-          </label>
-          <label class="col-xs-6">
-            <%= check_box_tag("cities[]", "Boston") %> Boston
-          </label>
-          <label class="col-xs-6">
-            <%= check_box_tag("cities[]", "Brookline") %> Brookline
-          </label>
-          <label class="col-xs-6">
-            <%= check_box_tag("cities[]", "Cambridge") %> Cambridge
-          </label>
-          <label class="col-xs-6">
-            <%= check_box_tag("cities[]", "Jamaica Plain") %> Jamaica Plain
-          </label>
-          <label class="col-xs-6">
-            <%= check_box_tag("cities[]", "Newton") %> Newton
-          </label>
-          <label class="col-xs-6">
-            <%= check_box_tag("cities[]", "Somerville") %> Somerville
-          </label>
-          <label>
-            <%= check_box_tag("cities[]", "Watertown") %> Watertown
-          </label>
-        </div>
-      </div>
-      <div class="col-md-5">
-        <h4>Categories:</h4>
-        <div class="checkbox form-group">
-          <% Place.category_counts.each do |tag| %>
-            <%= label_tag(nil, nil, class: 'col-xs-4') do %>
-              <%= check_box_tag("categories[]", tag) + "#{tag}" %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="filter input-append col-md-4">
-        <%= text_field_tag :contains, '', class: "search form-control", placeholder: "Filter by name...", autocomplete: :off %>
-      </div>
-    </div>
+  <div>
+    <%= render 'places/dropdown_for_sort' %>
+    <%= render 'places/dropdown_for_cities' %>
   </div>
 <% end %>

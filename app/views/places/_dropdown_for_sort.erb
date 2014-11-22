@@ -1,0 +1,12 @@
+<div class="btn-group">
+  <button type="button" 
+          class="btn btn-default dropdown-toggle" 
+          data-toggle="dropdown" aria-expanded="false">
+    Sort by <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu filter-links" role="menu">
+    <li><%= radio_button_tag(:sort, "rating") %> Highest Rated</li>
+    <li><%= radio_button_tag(:sort, "name") %> Name</li>
+  </ul>
+</div>
+
