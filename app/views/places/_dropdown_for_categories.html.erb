@@ -1,0 +1,12 @@
+<div class="btn-group">
+  <button type="button" 
+          class="btn btn-default dropdown-toggle" 
+          data-toggle="dropdown" aria-expanded="false">
+    Categories <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu filter-links" role="menu">
+    <% Place.category_counts.each do |tag| %>
+      <li><%= check_box_tag("categories[]", tag) + " #{tag}" %></li>
+    <% end %>
+  </ul>
+</div>
