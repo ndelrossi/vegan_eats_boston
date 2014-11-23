@@ -1,14 +1,23 @@
 <%= smart_listing_controls_for(:places) do %>
   <div class="place-filters">
+    <div class="col-xs-3 filter-search">
+      <%= text_field_tag :contains, 
+                         '', 
+                         class: "search form-control", 
+                         placeholder: "Filter by name...", 
+                         autocomplete: :off %>
+    </div>
     <%= render 'places/dropdown_for_sort' %>
     <%= render 'places/dropdown_for_cities' %>
     <%= render 'places/dropdown_for_categories' %>
-    <div class="col-md-3 filter">
-        <%= text_field_tag :contains, 
-                           '', 
-                           class: "search form-control", 
-                           placeholder: "Filter by name...", 
-                           autocomplete: :off %>
-    </div>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  // This prevents dropdowns from closing after checkbox select.
+  $('.dropdown-menu').on('click', function(e) {
+    if($(this).hasClass('checkbox-menu')) {
+        e.stopPropagation();
+    }
+});
+</script>
