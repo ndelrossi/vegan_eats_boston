@@ -19,5 +19,19 @@
     if($(this).hasClass('checkbox-menu')) {
         e.stopPropagation();
     }
-});
+  });
+
+  var delay = (function(){
+    var timer = 0;
+    return function(callback, ms){
+      clearTimeout (timer);
+      timer = setTimeout(callback, ms);
+    };
+  })();
+
+  $('#contains').keyup(function() {
+    delay(function(){
+      $('#contains').submit();
+    }, 600 );
+  });
 </script>
