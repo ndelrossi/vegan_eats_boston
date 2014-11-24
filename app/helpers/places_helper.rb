@@ -35,4 +35,16 @@ module PlacesHelper
   def distance_between(place, location)
     "(" + place.distance_from(location).round(2).to_s + " miles)"
   end
+
+  def filtered_results_text(count, params)
+    result = "#{count} results"
+    if params[:search].present?
+      result += " for: " + params[:search].to_s
+    end
+    if params[:contains].present?
+      result += " for: " + params[:contains].to_s
+    end
+      
+    result
+  end
 end
