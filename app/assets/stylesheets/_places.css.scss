@@ -30,6 +30,10 @@
       margin-bottom: 0px;
     }
   }
+  
+  li:first-child {
+    padding-top: 0;
+  }
 
   .place-list-right {
     float: right;
@@ -49,6 +53,11 @@
 }
 
 /* place filters */
+
+.result-text {
+  padding: 0 0 10px 0;
+  font-size: 1.2em;
+}
 
 .place-filters {
   padding-bottom: 10px;
