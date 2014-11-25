@@ -43,5 +43,6 @@ module PlacesHelper
     elsif params[:contains].present?
       result += " for: " + params[:contains].to_s
     end
+    result
   end
 end
