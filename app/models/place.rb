@@ -17,7 +17,7 @@ class Place < ActiveRecord::Base
                 self.url_menu = Place.strip_url(url_menu) }
 
   scope :contains, -> (name) { 
-    where("lower(name) like ?", "%#{name.downcase}%")
+    where("lower(places.name) like ?", "%#{name.downcase.gsub('.', ' ')}%")
   }
   scope :cities, -> (cities) { where address_city: cities }
   scope :sort, -> (sort) {
