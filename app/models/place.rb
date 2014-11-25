@@ -18,7 +18,6 @@ class Place < ActiveRecord::Base
 
   scope :contains, -> (name) { 
     where("lower(name) like ?", "%#{name.downcase}%")
-    order(rating: :desc)
   }
   scope :cities, -> (cities) { where address_city: cities }
   scope :sort, -> (sort) {
