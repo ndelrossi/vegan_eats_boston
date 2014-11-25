@@ -16,7 +16,10 @@ class Place < ActiveRecord::Base
   before_save { self.url_website = Place.strip_url(url_website)
                 self.url_menu = Place.strip_url(url_menu) }
 
-  scope :contains, -> (name) { where("lower(name) like ?", "%#{name.downcase}%")}
+  scope :contains, -> (name) { 
+    where("lower(name) like ?", "%#{name.downcase}%")
+    order(rating: :desc)
+  }
   scope :cities, -> (cities) { where address_city: cities }
   scope :sort, -> (sort) {
     sort == 'rating' ? direction = "DESC" : direction = "ASC"
@@ -24,7 +27,7 @@ class Place < ActiveRecord::Base
   }
   scope :highest_rated, -> { 
     includes(:categories).
-    order( 'rating DESC' )
+    order(rating: :desc)
   }
 
   def full_address

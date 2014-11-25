@@ -40,11 +40,8 @@ module PlacesHelper
     result = "#{count} results"
     if params[:search].present?
       result += " for: " + params[:search].to_s
-    end
-    if params[:contains].present?
+    elsif params[:contains].present?
       result += " for: " + params[:contains].to_s
     end
-      
-    result
   end
 end
