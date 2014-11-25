@@ -11,6 +11,7 @@
         <span class="visible-xs-block"><%= website_logo %></span>
       </div>
       <div class="navbar-collapse collapse" id="nav-links">
+        <%= render 'shared/search_bar' %>
         <ul class="nav navbar-nav navbar-left">
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Places", places_path, method: :get %></li>
@@ -22,7 +23,6 @@
             <li class="visible-xs"><%= link_to "Sign up", signup_path %></li>
           <% end %>
         </ul>
-        <%= render 'shared/search_bar' %>
       </div>
     </div>
   </nav>
