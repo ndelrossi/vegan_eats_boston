@@ -1,31 +1,5 @@
 <% provide(:title, @profile.name ) %>
 
-<div class="row">
-  <div class="col-md-6 clearfix">
-    <h4><%= @profile.name %></h4>
-    <%= editable_description_for(@profile.place) %><br>
-    <%= link_to @profile.website, "http://#{@profile.website}"%><br>
-    <%= @profile.categories %><br>
-    <%= map_image_for @profile.place %>
-    <%= render 'places/full_address_with_links', place: @profile.place %>
-    <%= write_review_button_for(@profile.place) %><br>
-    <%= render 'shared/stars_for_place', place: @profile.place %>
-    <div class="place-img"><%= primary_image_for @profile.place %></div>
-  </div>
-
-  <div class="col-md-6">
-    <h4>Reviews</h4>
-    <% if @profile.reviews.any? %>
-      <ol class="reviews">
-        <%= render @profile.reviews %>
-      </ol>
-      <%= paginate @profile.reviews %>
-    <% else %>
-      <%= content_tag(:p, "There are no reviews.") %>
-    <% end %>
-  </div>
+<div class=" col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+  <%= map_image_for(@profile.place, width: 640, height: 220, scale: 2) %>
 </div>
-
-<script type="text/javascript">
-  $(".best_in_place").best_in_place();
-</script>
