@@ -31,3 +31,10 @@ textarea {
   margin-top: 45px;
   @include box_sizing;
 }
+
+/* Prevents text field zoom on mobile phones */
+input[type='text'],
+input[type='number'],
+textarea {
+  font-size: 16px;
+}
