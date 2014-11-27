@@ -16,7 +16,7 @@ module PlacesHelper
   end
 
   def primary_image_for(place)
-    image_tag place.primary_image.url
+    image_tag place.primary_image.url, class: 'img-rounded'
   end
 
   def editable_description_for(place)
