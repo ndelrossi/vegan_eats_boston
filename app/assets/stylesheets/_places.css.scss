@@ -1,14 +1,10 @@
-.place-img {
-  padding-bottom: 15px;
-  img {
-    max-height: 100px;
-    max-width: 100px;
-  }
-}
-
 .place-show-left {
   padding-top: 10px;
   padding-left: 0;
+  .media img {
+    max-height: 100px;
+    max-width: 100px;
+  }
 }
 
 .place-show-right {

@@ -1,33 +1,32 @@
 <% provide(:title, @profile.name ) %>
 
 <div class="col-md-6 place-show-left">
+
   <div class="media">
-    <a class="pull-left place-img">
-      <%= primary_image_for @profile.place %>
-    </a>
+    <span class="pull-left"><%= primary_image_for @profile.place %></span>
     <div class="media-body">
       <h3 class="media-heading"><%= @profile.name %></h3>
       <%= @profile.categories %><br>
       <%= render 'shared/stars_for_place', place: @profile.place %>
     </div>
   </div>
-    <% if signed_in? %>
-      <%= write_review_button_for(@profile.place) %><br>
-    <% end %>
-    <h5><%= link_to @profile.website, "http://#{@profile.website}"%></h5>
-    <p><%= editable_description_for(@profile.place) %></p>
-    <%= map_image_for(@profile.place, width: 450, height: 150, scale: 2) %>
-    <p><%= render 'places/full_address_with_links', place: @profile.place %></p>
+
+  <% if signed_in? %>
+    <%= write_review_button_for(@profile.place) %><br>
+  <% end %>
+
+  <h5><%= link_to @profile.website, "http://#{@profile.website}"%></h5>
+  <p><%= editable_description_for(@profile.place) %></p>
+  <%= map_image_for(@profile.place, width: 450, height: 150, scale: 2) %>
+  <p><%= render 'places/full_address_with_links', place: @profile.place %></p>
 </div>
 
 <div class="col-md-6 place-show-right">
   <h4>Reviews</h4>
-    <% if @profile.reviews.any? %>
-      <ol class="reviews">
-        <%= render @profile.reviews %>
-      </ol>
-      <%= paginate @profile.reviews %>
-    <% else %>
-      <%= content_tag(:p, "There are no reviews.") %>
-    <% end %>
+  <% if @profile.reviews.any? %>
+    <ol class="reviews"><%= render @profile.reviews %></ol>
+    <%= paginate @profile.reviews %>
+  <% else %>
+    <%= content_tag(:p, "There are no reviews.") %>
+  <% end %>
 </div>
