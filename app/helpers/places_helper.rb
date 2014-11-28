@@ -7,7 +7,7 @@ module PlacesHelper
 
   def map_image_for(place, options = {})
     width = options[:width] || 350
-    height = options[:height] || 180
+    height = options[:height] || 150
     scale = options[:scale] || 1
     image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=14"\
     "&size=#{width}x#{height}&scale=#{scale}&markers=color:0x209600%7C"\
