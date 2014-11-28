@@ -1,6 +1,6 @@
 <% provide(:title, @profile.name ) %>
 
-<div class="col-md-6 place-show-left">
+<div class="col-md-5 place-show-left">
 
   <div class="media">
     <span class="pull-left"><%= primary_image_for @profile.place %></span>
@@ -21,7 +21,7 @@
   <p><%= render 'places/full_address_with_links', place: @profile.place %></p>
 </div>
 
-<div class="col-md-6 place-show-right">
+<div class="col-md-6 col-md-offset-1 no-padding">
   <h4>Reviews</h4>
   <% if @profile.reviews.any? %>
     <ol class="reviews"><%= render @profile.reviews %></ol>
