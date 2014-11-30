@@ -5,7 +5,7 @@
         <%= link_to review.place.name, review.place if params[:controller] != 'places' %>
       </h5>
     </div>
-    <div class="place-list-right">
+    <div>
       <%= render 'shared/stars_for_review', review: review %>
     </div>
     <div class="col-sm-7">
