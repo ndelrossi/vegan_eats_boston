@@ -21,7 +21,7 @@
   <p><%= render 'places/full_address_with_links', place: @profile.place %></p>
 </div>
 
-<div class="col-md-6 col-md-offset-1 no-padding">
+<div class="col-md-5 col-md-offset-1 no-padding">
   <h4>Reviews</h4>
   <% if @profile.reviews.any? %>
     <ol class="reviews"><%= render @profile.reviews %></ol>

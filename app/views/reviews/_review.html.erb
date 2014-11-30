@@ -1,30 +1,18 @@
 <li>
   <div class="row">
-    <div class="col-md-12">
-      <h5>
-        <%= link_to review.place.name, review.place if params[:controller] != 'places' %>
-      </h5>
-    </div>
-    <div>
-      <%= render 'shared/stars_for_review', review: review %>
-    </div>
-    <div class="col-sm-7">
-      <div class="media review-img">
-        <%= link_to avatar_for(review.user, :style => :thumb, :class => "media-object pull-left"), review.user, :class => "pull-left" %>
-        <div class="media-body">
-          <h5 class="media-heading small">
-            by <%= link_to review.user.name, review.user %><br>
-            <%= time_ago_in_words(review.created_at) %> ago.
-          </h5>
-        </div>
+    <div class="col-xs-12 media">
+      <% if params[:controller] != 'places' %>
+        <h5><%= link_to review.place.name, review.place %></h5>
+      <% end %>
+      <span class="pull-left"><%= link_to avatar_for review.user, style: :thumb %></span>
+      <div class="media-body">
+        by <%= link_to review.user.name, review.user %>
+        <%= time_ago_in_words(review.created_at) %> ago.
+        <%= render 'shared/stars_for_review', review: review %>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div id="review-<%= review.id %>" class="col-md-12 review">
-      <p>
-        <%= review.content.html_safe %>
-      </p>
+    <div class="col-xs-12 review">
+      <p><%= review.content.html_safe %></p>
     </div>
   </div>
 </li>
