@@ -4,7 +4,7 @@ module UsersHelper
   def avatar_for(user, options = { style: :original })
     #testing url prevents hitting Amazon servers if no image
     if user.avatar.url != "/avatars/original/missing.png"
-      image_tag user.avatar.url(options[:style])
+      image_tag user.avatar.url(options[:style]), class: 'img-rounded'
     else
       gravatar_for(user, options)
     end
@@ -15,7 +15,7 @@ module UsersHelper
     gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
     options[:style] == :thumb ? size = 50 : size = 200 
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
-    image_tag(gravatar_url, alt: user.name, class: "gravatar")
+    image_tag(gravatar_url, alt: user.name, class: "gravatar img-rounded")
   end
 
 end

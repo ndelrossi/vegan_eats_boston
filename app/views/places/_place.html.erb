@@ -1,7 +1,7 @@
 <li>
   <div class="row">
     <div class="col-xs-7">
-      <%= image_tag place.primary_image.url, :class => "hidden-xs" %>
+      <%= image_tag place.primary_image.url, class: "hidden-xs img-rounded" %>
       <strong><%= index + 1 %> <%= link_to place.name, place %></strong>
       <%= distance_between(place, @location) if params[:search].present? %><br>
       <%= place_categories(place) %><br>
