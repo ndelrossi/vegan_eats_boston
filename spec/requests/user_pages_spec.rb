@@ -11,22 +11,22 @@ describe "User pages" do
       visit user_path(admin)
     end
 
-    it { should have_content(admin.name) }
-    it { should have_title(admin.name) }
+    it { is_expected.to have_content(admin.name) }
+    it { is_expected.to have_title(admin.name) }
   end
 
   describe "signup page" do
     before { visit signup_path }
 
-    it { should have_content('Sign up') }
-    it { should have_title(full_title('Sign up')) }
+    it { is_expected.to have_content('Sign up') }
+    it { is_expected.to have_title(full_title('Sign up')) }
   end
 
   describe "signup page" do
     before { visit signup_path }
 
-    it { should have_content('Sign up') }
-    it { should have_title(full_title('Sign up')) }
+    it { is_expected.to have_content('Sign up') }
+    it { is_expected.to have_title(full_title('Sign up')) }
   end
 
   describe "signup" do
@@ -68,14 +68,14 @@ describe "User pages" do
     end
 
     describe "page" do
-      it { should have_content("Update your profile") }
-      it { should have_title("Edit user") }
+      it { is_expected.to have_content("Update your profile") }
+      it { is_expected.to have_title("Edit user") }
     end
 
     describe "with invalid information" do
       before { click_button "Save changes" }
 
-      it { should have_content('error') }
+      it { is_expected.to have_content('error') }
     end
 
     describe "with valid information" do
@@ -83,17 +83,15 @@ describe "User pages" do
       let(:new_email) { "new@example.com" }
       before do
         fill_in "Name",             with: new_name
-        #fill_in "Email",            with: new_email
         fill_in 'user_password',         with: user.password
         fill_in 'user_password_confirmation', with: user.password
         click_button "Save changes"
       end
 
-      it { should have_title(new_name) }
-      it { should have_selector('div.alert.alert-success') }
-      it { should have_link('Sign out', href: signout_path) }
+      it { is_expected.to have_title(new_name) }
+      it { is_expected.to have_selector('div.alert.alert-success') }
+      it { is_expected.to have_link('Sign out', href: signout_path) }
       specify { expect(user.reload.name).to  eq new_name }
-      #specify { expect(user.reload.email).to eq new_email }
     end
   end
 end
