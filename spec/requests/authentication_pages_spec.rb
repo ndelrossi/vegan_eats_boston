@@ -7,8 +7,8 @@ describe "Authentication" do
   describe "signin page" do
     before { visit signin_path }
 
-    it { should have_content('Sign in') }
-    it { should have_title('Sign in') }
+    it { is_expected.to have_content('Sign in') }
+    it { is_expected.to have_title('Sign in') }
   end
 
   describe "signin" do
@@ -17,12 +17,12 @@ describe "Authentication" do
     describe "with invalid information" do
       before { click_button "Sign in" }
 
-      it { should have_title('Sign in') }
-      it { should have_selector('div.alert.alert-danger') }
+      it { is_expected.to have_title('Sign in') }
+      it { is_expected.to have_selector('div.alert.alert-danger') }
 
       describe "after visiting another page" do
         before { first(:link, "Home").click }
-        it { should_not have_selector('div.alert.alert-danger') }
+        it { is_expected.to_not have_selector('div.alert.alert-danger') }
       end
     end
 
@@ -30,15 +30,15 @@ describe "Authentication" do
       let(:user) { FactoryGirl.create(:user) }
       before { sign_in user }
 
-      it { should have_title(user.name) }
-      it { should have_link('Profile',     href: user_path(user)) }
-      it { should have_link('Settings',    href: edit_user_path(user)) }
-      it { should have_link('Sign out',    href: signout_path) }
-      it { should_not have_link('Sign in', href: signin_path) }
+      it { is_expected.to have_title(user.name) }
+      it { is_expected.to have_link('Profile',     href: user_path(user)) }
+      it { is_expected.to have_link('Settings',    href: edit_user_path(user)) }
+      it { is_expected.to have_link('Sign out',    href: signout_path) }
+      it { is_expected.to_not have_link('Sign in', href: signin_path) }
 
       describe "followed by signout" do
         before { first(:link, "Sign out").click }
-        it { should have_link('Sign in') }
+        it { is_expected.to have_link('Sign in') }
       end
     end
   end
@@ -67,7 +67,7 @@ describe "Authentication" do
 
         describe "visiting the edit page" do
           before { visit edit_user_path(user) }
-          it { should have_title('Sign in') }
+          it { is_expected.to have_title('Sign in') }
         end
 
         describe "submitting to the update action" do
