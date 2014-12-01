@@ -5,8 +5,7 @@ describe "Static pages" do
   subject { page }
 
   describe "Home page" do
-    let!(:p1) { create(:post, title: "Title", content: "Foo", approved: true) }
-    let!(:p2) { create(:post, title: "Title", content: "Bar", approved: true) }
+    let!(:post) { create(:post, title: "Foo", content: "Bar", approved: true) }
     before { visit root_path }
 
     it { is_expected.to have_content('Vegan Eats Boston') }
@@ -14,9 +13,8 @@ describe "Static pages" do
     it { is_expected.to_not have_title('| Home') }
 
     describe "posts" do
-      
-      it { is_expected.to have_content(p1.content) }
-      it { is_expected.to have_content(p2.content) }
+      it { is_expected.to have_content "Foo" }
+      it { is_expected.to have_content "Bar" }
     end
   end
 
