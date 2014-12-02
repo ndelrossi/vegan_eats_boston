@@ -10,7 +10,7 @@ feature "User signs in" do
     expect(page).to have_content('Sign out')
   end
 
-  scenario "with invalid email and password" do
+  scenario "with invalid password" do
     user = create(:user, email: "user@example.com")
     user.password = "wrongpassword"     
 
