@@ -20,4 +20,12 @@ feature "User signs in" do
     expect(page).to have_content('Invalid email/password combination')
     expect(page).to_not have_title("Vegan Eats Boston | #{user.name}")
   end
+
+  scenario "with admin account" do
+    user = create(:admin)
+
+    sign_in user
+
+    expect(page).to have_content('Admin Page')
+  end
 end
