@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 describe Review do
+
+  before { allow_any_instance_of(Place).to receive(:geocode).and_return([1,1]) }
+
   it { is_expected.to belong_to(:user) } 
   it { is_expected.to belong_to(:place) } 
   it { is_expected.to validate_presence_of(:user_id) }
