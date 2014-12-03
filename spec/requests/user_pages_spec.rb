@@ -52,11 +52,6 @@ describe "User pages" do
       it "should create a user" do
         expect { click_button submit }.to change(User, :count).by(1)
       end
-
-      describe "after saving the user" do
-        before { click_button submit }
-        let(:user) { User.find_by(email: 'user@example.com') }
-      end
     end
   end
 
@@ -82,8 +77,8 @@ describe "User pages" do
       let(:new_name)  { "New Name" }
       let(:new_email) { "new@example.com" }
       before do
-        fill_in "Name",             with: new_name
-        fill_in 'user_password',         with: user.password
+        fill_in "Name",                       with: new_name
+        fill_in 'user_password',              with: user.password
         fill_in 'user_password_confirmation', with: user.password
         click_button "Save changes"
       end
