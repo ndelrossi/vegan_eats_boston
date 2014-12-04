@@ -21,8 +21,8 @@ class Admin::PlacesController < AdminsController
   def update
     respond_to do |format|
       if @place.update_attributes(place_params)
-        format.html { redirect_to(@place, 
-                      :success => 'Place was successfully updated.') }
+        format.html { flash[:success] = "Place updated"
+                      redirect_to admin_dashboard_path }
         format.json { respond_with_bip(@place) }
       else
         format.html { render :action => "edit" }
@@ -33,7 +33,8 @@ class Admin::PlacesController < AdminsController
 
   def destroy
     @place.destroy
-    redirect_to admin_path
+    flash[:success] = "Place deleted"
+    redirect_to admin_dashboard_path
   end
 
   private
