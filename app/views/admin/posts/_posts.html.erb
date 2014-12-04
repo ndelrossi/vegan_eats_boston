@@ -20,7 +20,7 @@
           <%= link_to "approve", admin_approve_post_path(p), method: :patch %>
         <% end %>
         / <%= link_to "edit", edit_post_path(p) %>
-        / <%= link_to "delete", p, method: :delete,
+        / <%= link_to "delete", p, method: :delete, id: "delete-post-#{p.id}",
                                     data: { confirm: "Delete this post?" } %>
       </td>
     </tr>

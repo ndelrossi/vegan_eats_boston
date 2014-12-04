@@ -14,8 +14,8 @@ VeganEatsBoston::Application.routes.draw do
     resources :users, only: :destroy
     resources :places, except: [:index, :show]
     controller :posts do
-      patch 'approve/:id'   => :approve,     as: 'approve_post'  
-      patch 'unapprove/:id' => :unapprove,   as: 'unapprove_post'
+      patch 'posts/approve/:id'   => :approve,     as: 'approve_post'  
+      patch 'posts/unapprove/:id' => :unapprove,   as: 'unapprove_post'
     end
   end
 
