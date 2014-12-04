@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 feature "Admin manages users" do
-  scenario "deleting a user" do
-    admin = create(:admin)
-    user = create(:user, name: "UserFoo")
+  let(:admin) { create(:admin) }
+  let!(:user) { create(:user, name: "UserFoo") }
 
+  scenario "deleting a user" do
     sign_in admin
     visit_admin_users
     find(:xpath, "//a[@href='/admin/users/#{user.id}']").click
@@ -15,9 +15,6 @@ feature "Admin manages users" do
   end
 
   scenario "editing a user" do
-    admin = create(:admin)
-    user = create(:user, name: "UserFoo")
-
     sign_in admin
     visit_admin_users
     find(:xpath, "//a[@href='/users/#{user.id}/edit']").click
