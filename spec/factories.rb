@@ -33,12 +33,6 @@ FactoryGirl.define do
     phone_number "555-555-5555"
   end
 
-  factory :empty_place, class: Place do
-    name "Example Place"
-    url_website "www.exampleplace.com"
-    url_menu "www.exampleplace.com/menu"
-  end
-  
   factory :review do
     content "This is a review"
     rating 80
