@@ -1,26 +1,36 @@
 require 'rails_helper'
 
 feature "visitor searches places" do
+  let!(:place1) { create(:place, name:             "FooBarPlace",
+                                 address_city:     "Cambridge",
+                                 address_line_1:   "700 Mass Ave",
+                                 address_zip_code: "02139") }
+
+  let!(:place2) { create(:place, name:             "FooPlace",
+                                 address_city:     "Cambridge",
+                                 address_line_1:   "400 Mass Ave",
+                                 address_zip_code: "02139") }
+
+  let!(:place3) { create(:place, name:             "BarBazPlace",
+                                 address_city:     "Cambridge",
+                                 address_line_1:   "1000 Mass Ave",
+                                 address_zip_code: "02139") }
+
   scenario "with address" do
-    place1 = create(:place, name:             "Place1",
-                            address_city:     "Cambridge",
-                            address_line_1:   "700 Mass Ave",
-                            address_zip_code: "02139")
-
-    place2 = create(:place, name:             "Place2",
-                            address_city:     "Cambridge",
-                            address_line_1:   "400 Mass Ave",
-                            address_zip_code: "02139")
-
-    place3 = create(:place, name:             "Place3",
-                            address_city:     "Cambridge",
-                            address_line_1:   "1000 Mass Ave",
-                            address_zip_code: "02139")
-
     visit root_path
     fill_in "search", with: "100 Mass Ave Cambridge, MA"
     click_button "search-submit"
 
-    expect(page.text).to match(/Place2.*Place1.*Place3/)
+    expect(page.text).to match(/FooPlace.*FooBarPlace.*BarBazPlace/)
+  end
+  
+  scenario "with name" do
+    visit root_path
+    fill_in "search", with: "Bar"
+    click_button "search-submit"
+
+    expect(page).to have_content("FooBarPlace")
+    expect(page).to have_content("BarBazPlace")
+    expect(page).not_to have_content("FooPlace")
   end
 end

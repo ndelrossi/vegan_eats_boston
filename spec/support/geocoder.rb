@@ -32,3 +32,6 @@ Geocoder::Lookup::Test.add_stub(
     }
   ]
 )
+
+#Default should not return geocoding
+Geocoder::Lookup::Test.set_default_stub([{}])
