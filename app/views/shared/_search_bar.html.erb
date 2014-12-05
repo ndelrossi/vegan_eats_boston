@@ -11,7 +11,9 @@
                        class: "form-control nav-search" %>
 
     <span class="input-group-btn">
-      <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+      <%= button_tag(type: 'submit', 
+                     id: "search-submit", 
+                     class: "btn btn-success") do %>
         <span class="glyphicon glyphicon-search"></span> 
       <% end %>
     </span>

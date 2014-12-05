@@ -25,12 +25,18 @@ FactoryGirl.define do
     name "Example Place"
     url_website "www.exampleplace.com"
     url_menu "www.exampleplace.com/menu"
-    address_line_1 "11 Example Ave"
+    address_line_1 "100 Mass Ave"
     address_line_2 "Floor 2"
-    address_city "Boston"
+    address_city "Cambridge"
     address_state "MA"
-    address_zip_code "02108"
+    address_zip_code "02139"
     phone_number "555-555-5555"
+  end
+
+  factory :empty_place, class: Place do
+    name "Example Place"
+    url_website "www.exampleplace.com"
+    url_menu "www.exampleplace.com/menu"
   end
   
   factory :review do
