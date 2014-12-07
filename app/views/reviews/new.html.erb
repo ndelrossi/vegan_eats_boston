@@ -34,7 +34,7 @@
     score: <%= 0 %>,
     path: '/assets',
     click: function(score, evt) {
-      document.getElementById('review_rating').value = score;
+      document.getElementById('rating').value = score;
       $.ajax({
         data: { score: score }
       }).done(function (data){});

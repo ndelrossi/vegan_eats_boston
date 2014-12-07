@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
       flash[:success] = "Review created!"
       redirect_to place_url(@review.place)
     else
-      redirect_to signin_path
+      render 'new'
     end
   end
 

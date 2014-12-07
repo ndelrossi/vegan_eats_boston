@@ -35,7 +35,7 @@ FactoryGirl.define do
 
   factory :review do
     content "This is a review"
-    rating 80
+    rating 5
     user
     place
   end

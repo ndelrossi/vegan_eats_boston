@@ -9,7 +9,7 @@
 
         <div class="form-group">
           <%= f.label :rating %>
-          <%= f.hidden_field :rating, :value => @review.rating %>
+          <%= f.hidden_field :rating, id: 'rating' %>
           <div id="user_star"></div>
         </div>
 
@@ -31,7 +31,7 @@
     score: <%= @review.rating %>,
     path: '/assets',
     click: function(score, evt) {
-      document.getElementById('review_rating').value = score;
+      document.getElementById('rating').value = score;
       $.ajax({
         data: { score: score }
       }).done(function (data){});
