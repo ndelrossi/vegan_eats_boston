@@ -70,10 +70,10 @@ describe Place do
     let(:place) { create(:place) }
 
     it "updates average rating of all associated reviews" do
-      create(:review, place: place, rating: 100)
-      create(:review, place: place, rating: 50)
+      create(:review, place: place, rating: 5)
+      create(:review, place: place, rating: 4)
       place.update_rating
-      expect(place.rating).to eq 75
+      expect(place.rating).to eq 4.5
     end
   end 
 
