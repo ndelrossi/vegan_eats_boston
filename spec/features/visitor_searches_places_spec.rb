@@ -16,7 +16,7 @@ feature "visitor searches places" do
                                  address_line_1:   "1000 Mass Ave",
                                  address_zip_code: "02139") }
 
-  scenario "with address" do
+  scenario "visitor searches with address" do
     visit root_path
     fill_in "search", with: "100 Mass Ave Cambridge, MA"
     click_button "search-submit"
@@ -24,7 +24,7 @@ feature "visitor searches places" do
     expect(page.text).to match(/FooPlace.*FooBarPlace.*BarBazPlace/)
   end
   
-  scenario "with name" do
+  scenario "vivisotr searches with name" do
     visit root_path
     fill_in "search", with: "Bar"
     click_button "search-submit"
