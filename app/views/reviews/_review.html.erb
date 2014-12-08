@@ -8,6 +8,13 @@
       <div class="media-body">
         by <%= link_to review.user.name, review.user %>
         <%= time_ago_in_words(review.created_at) %> ago.
+        <% if review.user == current_user %>
+          <%= link_to "edit", edit_review_path(review), 
+                              id: "edit-review-#{review.id}" %>
+          <%= link_to "delete", review, method: :delete,
+                                        data: { confirm: "Delete this review?" }, 
+                                        id: "delete-review-#{review.id}" %>
+        <% end %>
         <%= render 'shared/stars_for_review', review: review %>
       </div>
     </div>
