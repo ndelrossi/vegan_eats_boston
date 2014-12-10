@@ -3,6 +3,7 @@ require 'rails_helper'
 feature "Visitor filters places" do
   let!(:p1) { create(:place, name: "FooBiz", 
                              address_city: "Newton",
+                             category_list: "Pizza",
                              rating: 4) }
   let!(:p2) { create(:place, name: "Bar", 
                              address_city: "Cambridge",
@@ -37,5 +38,26 @@ feature "Visitor filters places" do
     wait_for_ajax
 
     expect(page.text).to match(/Bar.*FooBaz.*FooBiz/)
+  end
+
+  scenario "visitor filters places by selecting cities", js: true do
+    click_button("Cities")
+    find(:css, "#cities_[value='Somerville']").set(true)
+    find(:css, "#cities_[value='Cambridge']").set(true)
+    wait_for_ajax
+
+    expect(page).to have_content("FooBaz")
+    expect(page).to have_content("Bar")
+    expect(page).not_to have_content("FooBiz")
+  end
+
+  scenario "visitor filters places by selecting categories", js: true do
+    click_button("Categories")
+    find(:css, "#categories_[value='Pizza']").set(true)
+    wait_for_ajax
+
+    expect(page).to have_content("FooBiz")
+    expect(page).not_to have_content("Bar")
+    expect(page).not_to have_content("FooBaz")
   end
 end

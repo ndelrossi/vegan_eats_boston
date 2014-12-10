@@ -31,6 +31,10 @@ FactoryGirl.define do
     address_state "MA"
     address_zip_code "02139"
     phone_number "555-555-5555"
+
+    trait :pizza do
+      after(:create) { |place| place.update_attributes(category_list: 'pizza') }
+    end
   end
 
   factory :review do
