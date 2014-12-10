@@ -26,7 +26,16 @@ feature "Visitor filters places" do
   scenario "visitor sorts places by rating", js: true do
     click_button("Sort by")
     choose('sort_rating')  
+    wait_for_ajax
 
     expect(page.text).to match(/Bar.*FooBiz.*FooBaz/)
+  end
+
+  scenario "visitor sorts places by name", js: true do
+    click_button("Sort by")
+    choose('sort_name')  
+    wait_for_ajax
+
+    expect(page.text).to match(/Bar.*FooBaz.*FooBiz/)
   end
 end
