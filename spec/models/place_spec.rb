@@ -77,6 +77,14 @@ describe Place do
     end
   end 
 
+  describe ".all_cities" do
+    it "returns a unique list of all cities used" do
+      create(:place, address_city: "Boston") 
+      create(:place, address_city: "Newton")
+      expect(Place.all_cities).to eq ["Boston", "Newton"]   
+    end
+  end
+
   describe ".strip_url" do
     it "removes http/https from url" do
       urls = ["https://www.test.com", "www.test.com", "http://www.test.com"]

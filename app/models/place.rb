@@ -39,9 +39,13 @@ class Place < ActiveRecord::Base
     update_attribute(:rating, reviews.average(:rating))
   end
 
+  def self.all_cities
+    pluck(:address_city).uniq
+  end
+
   private
 
-  def Place.strip_url(url)
+  def self.strip_url(url)
     url.sub(/https?\:\/\//, '')
   end
 end

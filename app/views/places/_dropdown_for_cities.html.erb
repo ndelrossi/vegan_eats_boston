@@ -5,13 +5,9 @@
     Cities <span class="caret"></span>
   </button>
   <ul class="dropdown-menu filter-links checkbox-menu" role="menu">
-    <li><%= check_box_tag("cities[]", "Allston") %> Allston</li>
-    <li><%= check_box_tag("cities[]", "Boston") %> Boston</li>
-    <li><%= check_box_tag("cities[]", "Brookline") %> Brookline</li>
-    <li><%= check_box_tag("cities[]", "Cambridge") %> Cambridge</li>
-    <li><%= check_box_tag("cities[]", "Jamaica Plain") %> Jamaica Plain</li>
-    <li><%= check_box_tag("cities[]", "Newton") %> Newton</li>
-    <li><%= check_box_tag("cities[]", "Somerville") %> Somerville</li>
-    <li><%= check_box_tag("cities[]", "Watertown") %> Watertown</li>
+    <% Place.all_cities.each do |city| %>
+      <li><%= check_box_tag("cities[]", city) + " #{city}" %></li>
+    <% end %>
   </ul>
 </div>
+
