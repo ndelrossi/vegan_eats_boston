@@ -8,7 +8,7 @@ feature "Admin manages places" do
     sign_in admin
     visit_admin_places_page
 
-    find(:xpath, "//a[@href='/admin/places/#{place.id}']").click
+    find(:xpath, "//a[@href='/admin/places/#{place.friendly_id}']").click
 
     expect(page).to have_content("Place deleted")
     click_link "admin-places"
@@ -19,7 +19,7 @@ feature "Admin manages places" do
     sign_in admin
     visit_admin_places_page
 
-    find(:xpath, "//a[@href='/admin/places/#{place.id}/edit']").click
+    find(:xpath, "//a[@href='/admin/places/#{place.friendly_id}/edit']").click
     fill_in "place_name", with: "BarPlace"
     click_button "Update place"
 

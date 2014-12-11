@@ -48,6 +48,6 @@ class Admin::PlacesController < AdminsController
     end
 
     def find_place
-      @place = Place.find(params[:id])
+      @place = Place.friendly.find(params[:id])
     end
 end
