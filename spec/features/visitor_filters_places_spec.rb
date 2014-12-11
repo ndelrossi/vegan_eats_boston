@@ -7,6 +7,7 @@ feature "Visitor filters places" do
                              rating: 4) }
   let!(:p2) { create(:place, name: "Bar", 
                              address_city: "Cambridge",
+                             category_list: "Pizza",
                              rating: 5) }
   let!(:p3) { create(:place, name: "FooBaz", 
                              address_city: "Somerville",
@@ -57,7 +58,20 @@ feature "Visitor filters places" do
     wait_for_ajax
 
     expect(page).to have_content("FooBiz")
-    expect(page).not_to have_content("Bar")
+    expect(page).to have_content("Bar")
     expect(page).not_to have_content("FooBaz")
+  end
+
+  scenario "visitor filters places by category and city and sorts by rating", js: true do
+    click_button("Sort by")
+    choose('sort_rating')  
+    find("#categories_button").trigger("click")
+    find(:css, "#categories_[value='Pizza']").set(true)
+    find("#cities_button").trigger("click")
+    find(:css, "#cities_[value='Cambridge']").set(true)
+    find(:css, "#cities_[value='Newton']").set(true)
+    wait_for_ajax
+
+    expect(page.text).to match(/Bar.*FooBiz/)
   end
 end
