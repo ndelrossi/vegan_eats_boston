@@ -1,4 +1,6 @@
 class Place < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
   has_many :reviews, dependent: :destroy
   has_attached_file :primary_image, 
                     s3_permissions: :private, 
@@ -37,6 +39,10 @@ class Place < ActiveRecord::Base
 
   def update_rating
     update_attribute(:rating, reviews.average(:rating))
+  end
+
+  def should_generate_new_friendly_id?
+    true
   end
 
   def self.all_cities

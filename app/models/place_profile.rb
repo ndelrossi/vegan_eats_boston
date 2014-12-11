@@ -5,7 +5,7 @@ class PlaceProfile
   def initialize(params, options = { num_of_reviews: 10 } )
     @params = params
     @num_of_reviews = options[:num_of_reviews]
-    @place = Place.find(@params[:id])
+    @place = Place.friendly.find(@params[:id])
   end
 
   def name
