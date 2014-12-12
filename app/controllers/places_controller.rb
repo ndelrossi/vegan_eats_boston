@@ -20,9 +20,7 @@ class PlacesController < ApplicationController
 
     @places = @places.tagged_with(params[:categories], :any => true) if params[:categories].present?
 
-    filtering_params(params).each do |key, value|
-      @places = @places.public_send(key, value) if value.present?
-    end
+    @places = @places.filter(params.slice(:contains, :cities, :sort))
 
     @places = smart_listing_create :places, @places.includes(:categories), partial: "places/listing",
                                       default_sort: {id: "ASC"}
@@ -30,11 +28,5 @@ class PlacesController < ApplicationController
 
   def show
     @profile = PlaceProfile.new(params, num_of_reviews: 10)
-  end
-
-private
-
-  def filtering_params(params)
-    params.slice(:contains, :cities, :sort)
   end
 end
