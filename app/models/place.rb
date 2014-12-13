@@ -1,6 +1,7 @@
 class Place < ActiveRecord::Base
   include Filterable
   extend FriendlyId
+  cattr_accessor :search_location
   friendly_id :name, use: :slugged
   has_many :reviews, dependent: :destroy
   has_attached_file :primary_image, 
@@ -36,6 +37,16 @@ class Place < ActiveRecord::Base
     includes(:categories).
     order(rating: :desc)
   }
+  scope :search, -> (search) {
+    # "search" can be address or name. Check for address first.
+    # If no results from address, check for matching name.
+    results = Place.near(geolocation_for(search), 50)
+    if results.empty?
+      self.all.contains(search)
+    else
+      results
+    end
+  }
 
   def full_address
     "#{address_line_1} #{address_city}, #{address_state}"
@@ -51,6 +62,10 @@ class Place < ActiveRecord::Base
 
   def self.all_cities
     pluck(:address_city).uniq
+  end
+
+  def self.geolocation_for(loc)
+    self.search_location = Geocoder.coordinates(loc)
   end
 
   private

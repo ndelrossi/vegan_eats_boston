@@ -1,4 +1,5 @@
 require 'rails_helper'
+include PlacesHelper
 
 feature "visitor searches places" do
   let!(:place1) { create(:place, name:             "FooBarPlace",
