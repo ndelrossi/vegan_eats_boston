@@ -27,6 +27,14 @@ describe Place do
       end
     end
 
+    describe "categories" do
+      it "returns all places with provided categories" do
+        create(:place, name: "one", category_list: "Pizza")
+        create(:place, name: "two", category_list: "Smoothies")
+        expect(Place.categories(["Pizza", "Indian"]).pluck(:name)).to eq ["one"]
+      end
+    end
+
     describe "sort" do
       context "with sort set to 'rating'" do
         it 'orders by rating descending' do

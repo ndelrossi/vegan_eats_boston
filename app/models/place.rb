@@ -25,6 +25,9 @@ class Place < ActiveRecord::Base
     where("lower(places.name) like ?", "%#{name.downcase.gsub('.', ' ')}%")
   }
   scope :cities, -> (cities) { where address_city: cities }
+  scope :categories, -> (categories) {
+    tagged_with(categories, :any => true)
+  }
   scope :sort, -> (sort) {
     sort == 'rating' ? direction = "DESC" : direction = "ASC"
     order("#{sort} #{direction}")

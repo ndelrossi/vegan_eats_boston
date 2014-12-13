@@ -18,9 +18,7 @@ class PlacesController < ApplicationController
       end
     end
 
-    @places = @places.tagged_with(params[:categories], :any => true) if params[:categories].present?
-
-    @places = @places.filter(params.slice(:contains, :cities, :sort))
+    @places = @places.filter(params.slice(:contains, :cities, :sort, :categories))
 
     @places = smart_listing_create :places, @places.includes(:categories), partial: "places/listing",
                                       default_sort: {id: "ASC"}
