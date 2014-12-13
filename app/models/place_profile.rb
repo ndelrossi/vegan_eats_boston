@@ -2,9 +2,9 @@ class PlaceProfile
 
   attr_reader :place
 
-  def initialize(params, options = { num_of_reviews: 10 } )
+  def initialize(params, options = { reviews_per_page: 10 } )
     @params = params
-    @num_of_reviews = options[:num_of_reviews]
+    @reviews_per_page = options[:reviews_per_page]
     @place = Place.friendly.find(@params[:id])
   end
 
@@ -29,6 +29,6 @@ class PlaceProfile
   end
 
   def reviews
-    @place.reviews.page(@params[:page]).per(@num_of_reviews)
+    @place.reviews.page(@params[:page]).per(@reviews_per_page)
   end
 end

@@ -5,25 +5,27 @@ class PlacesController < ApplicationController
 
   def index
     @places = Place.all
-    
-    #if params[:search].present?
-    #  @places = Place.near(geolocation_for(params[:search]), 50)
-    #  
-      #Couldnt find address, search by name
-    #  if @places.empty?
-    #    params[:contains] = params[:search]
-    #    params[:search] = nil
-    #    @places = Place.all
-    #  end
-    #end
-
-    @places = @places.filter(params.slice(:search, :contains, :cities, :sort, :categories))
+    if params[:search].present?
+      @places = Place.near(coordinates, 50)
+      if @places.empty?
+        params[:contains] = params[:search]
+        params[:search] = nil
+        @places = Place.all
+      end
+    end
+    @places = @places.filter(params.slice(:contains, :cities, :sort, :categories))
 
     @places = smart_listing_create :places, @places.includes(:categories), partial: "places/listing",
                                       default_sort: {id: "ASC"}
   end
 
   def show
-    @profile = PlaceProfile.new(params, num_of_reviews: 10)
+    @profile = PlaceProfile.new(params, reviews_per_page: 10)
+  end
+
+  private
+
+  def coordinates
+    @location = Geocoder.coordinates(params[:search])
   end
 end
