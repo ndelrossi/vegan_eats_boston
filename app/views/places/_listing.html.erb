@@ -35,4 +35,11 @@
     handler.fitMapToBounds();
     <%= "handler.getMap().setZoom(12);" if smart_listing.count == 1 %>
   });
+  var ready;
+  ready = function() {
+    $("html, body").animate({ scrollTop: 0 }, 200);
+  };
+
+  $(document).ready(ready);
+  $(document).on('page:load', ready);
 </script>
